@@ -114,5 +114,5 @@ eclipse {
 
 
 war {
-    baseName 'route-web'
+    baseName 'ch-route-web'
 }
