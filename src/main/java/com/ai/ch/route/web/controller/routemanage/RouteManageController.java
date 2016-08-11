@@ -39,11 +39,11 @@ import com.ai.slp.route.api.routemanage.param.RoutePageSearchRequest;
 import com.ai.slp.route.api.routemanage.param.RoutePageSearchResponse;
 import com.ai.slp.route.api.routemanage.param.RoutePageSearchVo;
 import com.alibaba.fastjson.JSON;
-@RequestMapping(value="/routemanage")
+//@RequestMapping(value="/routemanage")
 @RestController
 public class RouteManageController {
 	private static final Logger log = LoggerFactory.getLogger(RouteManageController.class);
-	@RequestMapping(value="/addRoute",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="/routemanage/addRoute",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String addRoute(HttpServletRequest request){
 		String flag = "true";
@@ -56,7 +56,7 @@ public class RouteManageController {
 		
 		return flag;
 	}
-	@RequestMapping(value="/queryPageSearch",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value="/routemanage/queryPageSearch",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseData<PageInfo<RoutePageSearchVo>> queryPageSearch(HttpServletRequest request) {
 		//
