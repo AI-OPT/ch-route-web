@@ -35,100 +35,50 @@ import com.ai.slp.common.api.cache.param.SysParamMultiCond;
 import com.ai.slp.common.api.cache.param.SysParamSingleCond;
 import com.ai.slp.route.api.routemanage.interfaces.IRouteManageSV;
 import com.ai.slp.route.api.routemanage.param.RouteAddParamRequest;
+import com.ai.slp.route.api.routemanage.param.RoutePageSearchRequest;
+import com.ai.slp.route.api.routemanage.param.RoutePageSearchResponse;
+import com.ai.slp.route.api.routemanage.param.RoutePageSearchVo;
 import com.alibaba.fastjson.JSON;
-
+@RequestMapping(value="/routemanage")
 @RestController
 public class RouteManageController {
 	private static final Logger log = LoggerFactory.getLogger(RouteManageController.class);
-	@RequestMapping(value="/routemanage/routeAdd",method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	@RequestMapping(value="/addRoute",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String addRoute(HttpServletRequest request){
 		String flag = "true";
+		
 		RouteAddParamRequest routeAddParamRequest = RequestParameterUtils.request2Bean(request, RouteAddParamRequest.class);
 		//
+		log.info("routeName:"+routeAddParamRequest.getRouteName());
+		log.info("request:"+JSON.toJSONString(routeAddParamRequest));
 		DubboConsumerFactory.getService(IRouteManageSV.class).addRoute(routeAddParamRequest);
 		
 		return flag;
 	}
-//	@RequestMapping(value="/account/queryAccountBalanceDetailList",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-//	@ResponseBody
-//	public ResponseData<PageInfo<ChargeBaseInfo>> queryAccountBalanceDetailList(HttpServletRequest request) {
-//		String strPageNo=(null==request.getParameter("pageNo"))?"1":request.getParameter("pageNo");
-//        String strPageSize=(null==request.getParameter("pageSize"))?"10":request.getParameter("pageSize");
-//		//
-//        String busiType = request.getParameter("busiType");
-//        //
-//        String selectDateId = request.getParameter("selectDateId");
-//        log.info("selectDateId:"+selectDateId);
-//        //
-//		String startTime = request.getParameter("startTime");
-//		String endTime = request.getParameter("endTime");
-//		log.info("startTime:"+startTime);
-//		log.info("endTime:"+endTime);
-//        //
-//		ResponseData<PageInfo<ChargeBaseInfo>> responseData;
-//		//
-//		ChargeInfoQueryByAcctIdParam chargeInfoQueryByAcctIdParam = new ChargeInfoQueryByAcctIdParam();
-//		SLPClientUser user = this.getUserInfo(request);
-//		chargeInfoQueryByAcctIdParam.setAccountId(user.getAcctId());//(new Long(ACCOUNT_ID));
-//		chargeInfoQueryByAcctIdParam.setTenantId(user.getTenantId());//(TENANT_ID);
-//		//
-//		if(!StringUtil.isBlank(busiType)){
-//			chargeInfoQueryByAcctIdParam.setBusiType(busiType);
-//		}
-//		PageInfo<ChargeBaseInfo> chargeBaseInfoPageInfo = new PageInfo<ChargeBaseInfo>();
-//		chargeBaseInfoPageInfo.setPageNo(Integer.valueOf(strPageNo));
-//		chargeBaseInfoPageInfo.setPageSize(Integer.valueOf(strPageSize));
-//		chargeInfoQueryByAcctIdParam.setPageInfo(chargeBaseInfoPageInfo);
-//		//
-//		
-//		//快速检索 近三个月  近一个月 近七天 
-//		if(!StringUtil.isBlank(selectDateId)){
-//			//
-//			Map<String,String> time = new HashMap<String,String>();
-//			if(selectDateId.startsWith("MONTH_")){
-//				String monthAmount = selectDateId.replace("MONTH_", "");
-//				time = DateUtil.getTimeInterval(Calendar.MONTH, Integer.valueOf(monthAmount));
-//			}
-//			//
-//			if(selectDateId.startsWith("DAY_")){
-//				String dayAmount = selectDateId.replace("DAY_", "");
-//				time = DateUtil.getTimeInterval(Calendar.DATE, Integer.valueOf(dayAmount));
-//			}
-//			log.info("selectDate startTime:"+time);
-//			//
-//			if(!selectDateId.startsWith("ALL")){
-//				chargeInfoQueryByAcctIdParam.setStartTime(Timestamp.valueOf(time.get(DateUtil.KEY_START_TIME)));
-//				chargeInfoQueryByAcctIdParam.setEndTime(Timestamp.valueOf(time.get(DateUtil.KEY_END_TIME)));
-//			}
-//		}else{
-//			//如果开始时间和结束时间不为空
-//			if(!StringUtil.isBlank(startTime) && !StringUtil.isBlank(endTime)){
-//				chargeInfoQueryByAcctIdParam.setStartTime(DateUtil.getTimestamp(startTime+" 00:00:00",DateUtil.DATETIME_FORMAT));
-//				chargeInfoQueryByAcctIdParam.setEndTime(DateUtil.getTimestamp(endTime+" 23:59:59",DateUtil.DATETIME_FORMAT));
-//			}else{
-//				//默认查询7天前的记录
-//				Map<String,String> time = new HashMap<String,String>();
-//				time = DateUtil.getTimeInterval(Calendar.DATE, 7);
-//				log.info("selectDate default startTime:"+time);
-//				chargeInfoQueryByAcctIdParam.setStartTime(Timestamp.valueOf(time.get(DateUtil.KEY_START_TIME)));
-//				chargeInfoQueryByAcctIdParam.setEndTime(Timestamp.valueOf(time.get(DateUtil.KEY_END_TIME)));
-//			}
-//		}
-//		
-//		//
-//		PageInfo<ChargeBaseInfo> pageInfo = DubboConsumerFactory.getService(IPaymentQuerySV.class).queryChargeBaseInfoByAcctId(chargeInfoQueryByAcctIdParam);
-//		//
-//		pageInfo = this.getChargeBaseInfoPageInfo(pageInfo);
-//		//
-//		log.info(" queryAccountBalanceDetailList json:"+JSON.toJSONString(pageInfo));
-//		//
-//		responseData = new ResponseData<PageInfo<ChargeBaseInfo>>(ResponseData.AJAX_STATUS_SUCCESS,"success",pageInfo);
-//		//
-//		log.info(" ResponseData json:"+JSON.toJSONString(responseData));
-//		//
-//		return responseData;
-//    }
-//	
+	@RequestMapping(value="/queryPageSearch",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ResponseData<PageInfo<RoutePageSearchVo>> queryPageSearch(HttpServletRequest request) {
+		//
+		String strPageNo=(null==request.getParameter("pageNo"))?"1":request.getParameter("pageNo");
+        String strPageSize=(null==request.getParameter("pageSize"))?"10":request.getParameter("pageSize");
+		
+        RoutePageSearchRequest routePageSearchRequest = RequestParameterUtils.request2Bean(request, RoutePageSearchRequest.class);
+        //
+        routePageSearchRequest.setPageNo(Integer.parseInt(strPageNo));
+        routePageSearchRequest.setPageSize(Integer.parseInt(strPageSize));
+		//
+        RoutePageSearchResponse response = DubboConsumerFactory.getService(IRouteManageSV.class).queryPageSearch(routePageSearchRequest);
+        PageInfo<RoutePageSearchVo> pageInfo = response.getPageInfo();
+        //
+		ResponseData<PageInfo<RoutePageSearchVo>> responseData;
+		//
+		responseData = new ResponseData< PageInfo<RoutePageSearchVo>>(ResponseData.AJAX_STATUS_SUCCESS,"success",pageInfo);
+		//
+		log.info(" ResponseData json:"+JSON.toJSONString(responseData));
+		//
+		return responseData;
+    }
+	
 	
 }

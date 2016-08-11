@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="uedroot" value="${pageContext.request.contextPath}/template/default"/>
 <!DOCTYPE html>
@@ -8,6 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <%@include file="/inc/inc.jsp" %>
+<script type="text/javascript">
+	var pager;
+	(function () {
+		seajs.use('app/jsp/route_manage/add', function (AddPager) {
+			pager = new AddPager({element: document.body});
+			pager.render();
+		});
+	})();
+</script>
 <title>添加仓库信息</title>
 </head>
 <body>
@@ -26,7 +35,7 @@
 							<!--白色背景-->
 							<!--查询条件-->
 							<div class="form-label">
-
+								<form id="addRouteForm">
 								<div class="panel panel-primary">
 									<div class="panel-heading">
 										<h3 class="panel-title">仓库管理>>新建仓库</h3>
@@ -39,27 +48,29 @@
 											<div class="panel-body">
 												<ul>
 													<li class="col-md-12">
-
+														<input type="hidden" name="command.tenantId" value="CH" />
 														<p class="word">仓库名称</p>
 														<p>
-															<input name="" class="int-text int-medium " type="text" />
+															<input name="command.routeName" class="int-text int-medium " type="text" />
 														</p>
 													</li>
 													<li class="col-md-12">
 														<p class="word">所在地址</p>
 														<p>
-															<select id="" name="" class="int-text int-medium ">
-																<option value="">北京市</option>
-																<option value="">天津市</option>
-																<option value="">河北省</option>
-															</select> <select id="" name="" class="int-text int-medium ">
-																<option value="">北京市</option>
-																<option value="">天津市</option>
-																<option value="">河北省</option>
-															</select> <select id="" name="" class="int-text int-medium ">
-																<option value="">北京市</option>
-																<option value="">天津市</option>
-																<option value="">河北省</option>
+															<select id="" name="command.provCode" class="int-text int-medium ">
+																<option value="1">北京市</option>
+																<option value="2">天津市</option>
+																<option value="3">河北省</option>
+															</select> 
+															<select id="" name="command.cityCode" class="int-text int-medium ">
+																<option value="101">北京市</option>
+																<option value="102">天津市</option>
+																<option value="103">河北省</option>
+															</select> 
+															<select id="" name="command.countyCode" class="int-text int-medium ">
+																<option value="10101">北京市</option>
+																<option value="10102">天津市</option>
+																<option value="10103">河北省</option>
 															</select>
 														</p>
 													</li>
@@ -67,7 +78,7 @@
 
 														<p class="word">详细地址</p>
 														<p>
-															<input name="" class="int-text int-medium " type="text" />
+															<input name="command.address" class="int-text int-medium " type="text" />
 														</p>
 													</li>
 												</ul>
@@ -89,7 +100,7 @@
 										</div>
 									</div>
 								</div>
-
+								</form>
 							</div>
 							<!--查询结束-->
 						</div>
@@ -113,8 +124,9 @@
 						<button type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
 							data-dismiss="modal">关闭</button>
-						<button onclick="javascript:alert('保存成功');" type="button"
-							class="biu-btn  btn-primary btn-blue btn-medium ml-10">
+						<button id="addRouteButtonId" type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">
 							确认</button>
 					</div>
 				</div>
