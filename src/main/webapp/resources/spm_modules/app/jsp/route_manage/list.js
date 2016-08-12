@@ -30,8 +30,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	//事件代理
     	events: {
     		//查询
-            //"click #BTN_SEARCH":"_search",
-            "click #addRouteButtonId":"_addRoute"
+            "click #queryRouteButtonId":"_queryPageSearch"
         },
     	//重写父类
     	setup: function () {
@@ -39,11 +38,11 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     		this._queryPageSearch();
     	},
     	_queryPageSearch:function(){
-    		//var data = $("#queryRouteForm").serialize();
-    		//alert('pageSearch');
+    		var data = $("#queryRouteForm").serialize();
+    		//alert('queryParam：'+data);
     		//
     		$("#pagination").runnerPagination({
-				url: _base+"/routemanage/queryPageSearch?command.tenantId=CH",
+				url: _base+"/routemanage/queryPageSearch?command.tenantId=CH&"+data,
 				method: "POST",
 				dataType: "json",
 				processing: true,

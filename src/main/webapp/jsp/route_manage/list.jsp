@@ -35,21 +35,22 @@
 							<!--白色背景-->
 							<!--查询条件-->
 							<div class="form-label">
+							<form id="queryRouteForm">
 								<ul>
 									<li class="col-md-6">
 										<p class="word">仓库名称</p>
 										<p>
-											<input name="control_date" class="int-text int-medium "
+											<input name="command.routeName" class="int-text int-medium "
 												type="text" />
 										</p>
 										<p>
-											<input type="button"
+											<input id="queryRouteButtonId" type="button"
 												class="biu-btn  btn-primary btn-blue btn-medium ml-10"
 												value="搜  索">
 										</p>
 									</li>
 								</ul>
-
+</form>
 							</div>
 							<!--查询结束-->
 						</div>
@@ -232,7 +233,7 @@
 					<script id="pageSearchTmpl" type="text/x-jsrender">
 					  	{{for}}
 						<tr>
-							<td>{{:index+1}}</td>
+							<td>{{:index}}</td>
 							<td>{{:state}}</td>											
 							<td>{{:routeId}}</td>
 							<td>{{:routeName}}</td>
