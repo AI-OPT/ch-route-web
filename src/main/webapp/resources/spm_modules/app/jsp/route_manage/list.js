@@ -40,7 +40,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	},
     	_queryPageSearch:function(){
     		//var data = $("#queryRouteForm").serialize();
-    		alert('pageSearch');
+    		//alert('pageSearch');
     		//
     		$("#pagination").runnerPagination({
 				url: _base+"/routemanage/queryPageSearch?command.tenantId=CH",
