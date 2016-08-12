@@ -37,6 +37,46 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     		ListPager.superclass.setup.call(this);
     		this._queryPageSearch();
     	},
+    	_reset:function(){
+    		$('#updateRouteFormId')[0].reset();
+    	},
+    	_edit:function(routeId,routeName,provCode,cityCode,countyCode,address){
+    		$('#updateRouteFormId :input[id=routeId]').val(routeId);
+    		$('#updateRouteFormId :input[id=routeName]').val(routeName);
+    		$('#updateRouteFormId :input[id=address]').val(address);
+    	},
+    	_update:function(){
+    		var data = $("#updateRouteFormId").serialize();
+    		var routeId = $('#updateRouteFormId :input[id=routeId]').val();
+    		//
+    		var operMethod = '';
+    		var msg = '';
+    		if(routeId != ''){
+    			operMethod = "updateRoute";
+    			msg = "修改";
+    		}else{
+    			operMethod = "addRoute";
+    			msg = "保存";
+    		}
+    		
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "text",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/routemanage/"+operMethod+"?"+data,
+					data:"",
+					success: function(data){
+						if(data == 'true'){
+							alert(msg+'成功');
+							location.href=_base+"/jsp/route_manage/list.jsp";
+						}
+						
+					}
+				}
+			);
+    	},
     	_queryPageSearch:function(){
     		var data = $("#queryRouteForm").serialize();
     		//alert('queryParam：'+data);

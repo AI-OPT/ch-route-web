@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -35,22 +35,22 @@
 							<!--白色背景-->
 							<!--查询条件-->
 							<div class="form-label">
-							<form id="queryRouteForm">
-								<ul>
-									<li class="col-md-6">
-										<p class="word">仓库名称</p>
-										<p>
-											<input name="command.routeName" class="int-text int-medium "
-												type="text" />
-										</p>
-										<p>
-											<input id="queryRouteButtonId" type="button"
-												class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-												value="搜  索">
-										</p>
-									</li>
-								</ul>
-</form>
+								<form id="queryRouteForm">
+									<ul>
+										<li class="col-md-6">
+											<p class="word">仓库名称</p>
+											<p>
+												<input name="command.routeName" class="int-text int-medium "
+													type="text" />
+											</p>
+											<p>
+												<input id="queryRouteButtonId" type="button"
+													class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+													value="搜  索">
+											</p>
+										</li>
+									</ul>
+								</form>
 							</div>
 							<!--查询结束-->
 						</div>
@@ -77,9 +77,10 @@
 							<div class="row">
 								<!--删格化-->
 								<p class="left ml-30">
-									<input type="button"
+									<input type="button" data-toggle="modal"
+												data-target="#editModal" 
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
-										value="新  增">
+										value="新  增" onclick="pager._reset();">
 									<!-- <input type="button"
 									class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
 									value="删  除"> -->
@@ -149,40 +150,52 @@
 									<h3 class="panel-title">仓库信息</h3>
 								</div>
 								<div class="panel-body">
-									<ul>
-										<li class="col-md-12">
+									<form id="updateRouteFormId">
+										<ul>
+											<li class="col-md-12">
+											<input type="hidden"
+												name="command.tenantId" value="CH" />
+											<input type="hidden" id="routeId"
+												name="command.routeId" value="" />
+												<p class="word">仓库名称</p>
+												<p>
+													<input name="command.routeName" id="routeName"
+														class="int-text int-medium " type="text" />
+												</p>
+											</li>
+											<li class="col-md-12">
+												<p class="word">所在地址</p>
+												<p>
+													<select id="provCode" name="command.provCode"
+														class="int-text int-medium ">
+														<option value="1">北京市</option>
+														<option value="2">天津市</option>
+														<option value="3">河北省</option>
+													</select> 
+													<select id="cityCode" name="command.cityCode"
+														class="int-text int-medium ">
+														<option value="101">北京市</option>
+														<option value="102">天津市</option>
+														<option value="103">河北省</option>
+													</select> 
+													<select id="countyCode" name="command.countyCode"
+														class="int-text int-medium ">
+														<option value="10101">北京市</option>
+														<option value="10102">天津市</option>
+														<option value="10103">河北省</option>
+													</select>
+												</p>
+											</li>
+											<li class="col-md-12">
 
-											<p class="word">仓库名称</p>
-											<p>
-												<input name="" class="int-text int-medium " type="text" />
-											</p>
-										</li>
-										<li class="col-md-12">
-											<p class="word">所在地址</p>
-											<p>
-												<select id="" name="" class="int-text int-medium ">
-													<option value="">北京市</option>
-													<option value="">天津市</option>
-													<option value="">河北省</option>
-												</select> <select id="" name="" class="int-text int-medium ">
-													<option value="">北京市</option>
-													<option value="">天津市</option>
-													<option value="">河北省</option>
-												</select> <select id="" name="" class="int-text int-medium ">
-													<option value="">北京市</option>
-													<option value="">天津市</option>
-													<option value="">河北省</option>
-												</select>
-											</p>
-										</li>
-										<li class="col-md-12">
-
-											<p class="word">详细地址</p>
-											<p>
-												<input name="" class="int-text int-medium " type="text" />
-											</p>
-										</li>
-									</ul>
+												<p class="word">详细地址</p>
+												<p>
+													<input id="address" name="command.address" class="int-text int-medium "
+														type="text" />
+												</p>
+											</li>
+										</ul>
+									</form>
 								</div>
 							</div>
 
@@ -192,8 +205,9 @@
 						<button type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
 							data-dismiss="modal">关闭</button>
-						<button onclick="javascript:alert('保存成功');" type="button"
-							class="biu-btn  btn-primary btn-blue btn-medium ml-10">
+						<button onclick="pager._update();" type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">
 							确认</button>
 					</div>
 				</div>
@@ -230,7 +244,7 @@
 		<!-- 模态框（Modal） 结束-->
 	</div>
 </body>
-					<script id="pageSearchTmpl" type="text/x-jsrender">
+<script id="pageSearchTmpl" type="text/x-jsrender">
 					  	{{for}}
 						<tr>
 							<td>{{:index}}</td>
@@ -240,7 +254,7 @@
 							<td>{{:provCode}}|{{:cityCode}}</td>
 							<td><a href="#">查看商品列表</a></td>
 							<td><a href="#" data-toggle="modal"
-												data-target="#editModal">编辑</a> <a href="#"
+												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> <a href="#"
 												data-toggle="modal" data-target="#stopSureModal">暂停</a> <a
 												href="#">废弃</a></td>
 						</tr>
