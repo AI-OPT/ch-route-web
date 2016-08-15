@@ -39,7 +39,7 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     	},
     	_queryPageSearch:function(){
     		var data = $("#queryForm").serialize();
-    		alert('queryParam：'+data);
+    		//alert('queryParam：'+data);
     		//
     		$("#pagination").runnerPagination({
 				url: _base+"/routeprodsupplymanage/queryPageSearch?command.tenantId=SLP&"+data,
