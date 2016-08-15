@@ -153,7 +153,7 @@
 									<form id="updateRouteFormId">
 										<ul>
 											<li class="col-md-12">
-											<input type="hidden"
+											<input type="hidden" id="tenantId"
 												name="command.tenantId" value="CH" />
 											<input type="hidden" id="routeId"
 												name="command.routeId" value="" />
