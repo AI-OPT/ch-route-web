@@ -89,9 +89,9 @@ dependencies {
     compile 'com.ai.slp.common:cache:1.0-SNAPSHOT'
     compile 'com.ai.slp.common:servicenum:1.0.1-SNAPSHOT'
     compile 'com.ai.slp.product:webfront:1.1-SNAPSHOT'
-    
+    //路由管理
     compile 'com.ai.slp.route:routemanage:1.0-SNAPSHOT'
-	
+	compile 'com.ai.slp.route:routeprodsupplymanage:1.0-SNAPSHOT'
     testCompile(
             "org.springframework:spring-test:4.1.7.RELEASE",
             "junit:junit:4.12"
