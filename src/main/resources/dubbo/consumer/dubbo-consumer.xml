@@ -62,7 +62,11 @@
 	<!-- 路由管理 -->
 	<dubbo:reference id="routeManageSV"
 		interface="com.ai.slp.route.api.routemanage.interfaces.IRouteManageSV" />
+	
 	<dubbo:reference id="routeProdSupplyManageSV"
 		interface="com.ai.slp.route.api.routeprodsupplymanage.interfaces.IRouteProdSupplyManageSV" />
+	
+	<dubbo:reference id="routeSupplyAddsLogManageSV"
+		interface="com.ai.slp.route.api.routesupplyaddslog.interfaces.IRouteSupplyAddsLogManageSV" />
 	
 </beans>
