@@ -43,10 +43,10 @@
 		registry="baasRegistry" />
 	-->
 	
-	<!-- 地区查询 
+	<!-- 地区查询 -->
 	<dubbo:reference id="iGnAreaQuerySV"
 		interface="com.ai.slp.common.api.area.interfaces.IGnAreaQuerySV" />
-	-->
+	
 	<!-- 缓存
 	<dubbo:reference id="iCacheSV"
 		interface="com.ai.slp.common.api.cache.interfaces.ICacheSV" />

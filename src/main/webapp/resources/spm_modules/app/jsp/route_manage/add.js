@@ -36,6 +36,7 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     	//重写父类
     	setup: function () {
     		AddPager.superclass.setup.call(this);
+    		this._getProvinceList();
     	},
     	_addRoute:function(){
     		var data = $("#addRouteForm").serialize();
@@ -52,6 +53,72 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
 						if(data == 'true'){
 							alert('保存成功');
 						}
+						
+					}
+				}
+			);
+    	},
+    	_getProvinceList:function(){
+
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/areaquery/getProvinceList",
+					data:"",
+					success: function(data){
+						//alert(data.length);
+						var option = "<option value=''>--请选择--</option>";
+						for(var i=0;i<data.length;i++){
+							option += "<option value='"+data[i].provinceCode+"'>"+data[i].areaName+"</option>";
+						}
+						$('#provinceCode').html(option);
+					}
+				}
+			);
+    	},
+    	_getCityListByProviceCode:function(provinceCode){
+    		//var provinceCode = $(obj).val();
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/areaquery/getCityListByProviceCode?provinceCode="+provinceCode,
+					data:"",
+					success: function(data){
+						var option = "<option value=''>--请选择--</option>";
+						for(var i=0;i<data.length;i++){
+							option += "<option value='"+data[i].cityCode+"'>"+data[i].areaName+"</option>";
+						}
+						//alert(option);
+						$('#cityCode').html(option);
+						
+					}
+				}
+			);
+    	},
+    	_getCountyListByCityCode:function(cityCode){
+
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/areaquery/getCountyListByCityCode?cityCode="+cityCode,
+					data:"",
+					success: function(data){
+						var option = "<option value=''>--请选择--</option>";
+						for(var i=0;i<data.length;i++){
+							option += "<option value='"+data[i].cityCode+"'>"+data[i].areaName+"</option>";
+						}
+						//alert(option);
+						$('#countyCode').html(option);
+						
 						
 					}
 				}

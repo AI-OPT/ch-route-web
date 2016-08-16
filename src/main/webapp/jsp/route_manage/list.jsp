@@ -251,7 +251,7 @@
 							<td>{{:state}}</td>											
 							<td>{{:routeId}}</td>
 							<td>{{:routeName}}</td>
-							<td>{{:provCode}}|{{:cityCode}}</td>
+							<td>{{:provName}}|{{:cityName}}|{{:countyName}}</td>
 							<td><a href="#">查看商品列表</a></td>
 							<td><a href="#" data-toggle="modal"
 												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> <a href="#"

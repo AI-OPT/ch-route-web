@@ -57,20 +57,14 @@
 													<li class="col-md-12">
 														<p class="word">所在地址</p>
 														<p>
-															<select id="" name="command.provCode" class="int-text int-medium ">
-																<option value="1">北京市</option>
-																<option value="2">天津市</option>
-																<option value="3">河北省</option>
+															<select id="provinceCode" name="command.provCode" onchange="pager._getCityListByProviceCode(this.value)" class="int-text int-medium ">
+																<option value="">--请选择--</option>
 															</select> 
-															<select id="" name="command.cityCode" class="int-text int-medium ">
-																<option value="101">北京市</option>
-																<option value="102">天津市</option>
-																<option value="103">河北省</option>
+															<select id="cityCode" name="command.cityCode" onchange="pager._getCountyListByCityCode(this.value)" class="int-text int-medium ">
+																<option value="">--请选择--</option>
 															</select> 
-															<select id="" name="command.countyCode" class="int-text int-medium ">
-																<option value="10101">北京市</option>
-																<option value="10102">天津市</option>
-																<option value="10103">河北省</option>
+															<select id="countyCode" name="command.countyCode" class="int-text int-medium ">
+																<option value="">--请选择--</option>
 															</select>
 														</p>
 													</li>
