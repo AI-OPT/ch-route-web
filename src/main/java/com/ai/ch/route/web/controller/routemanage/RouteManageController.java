@@ -20,6 +20,7 @@ import com.ai.slp.route.api.routemanage.param.RoutePageSearchRequest;
 import com.ai.slp.route.api.routemanage.param.RoutePageSearchResponse;
 import com.ai.slp.route.api.routemanage.param.RoutePageSearchVo;
 import com.ai.slp.route.api.routemanage.param.RouteUpdateParamRequest;
+import com.ai.slp.route.api.routemanage.param.RouteUpdateStateRequest;
 import com.alibaba.fastjson.JSON;
 @RequestMapping(value="/routemanage")
 @RestController
@@ -74,5 +75,16 @@ public class RouteManageController {
 		
 		return flag;
 	}
-	
+	@RequestMapping(value="/updateRouteState",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String updateRouteState(HttpServletRequest request){
+		String flag = "true";
+		
+		RouteUpdateStateRequest routeUpdateStateRequest = RequestParameterUtils.request2Bean(request, RouteUpdateStateRequest.class);
+		//
+		log.info("request:"+JSON.toJSONString(routeUpdateStateRequest));
+		DubboConsumerFactory.getService(IRouteManageSV.class).updateRouteState(routeUpdateStateRequest);
+		
+		return flag;
+	}
 }

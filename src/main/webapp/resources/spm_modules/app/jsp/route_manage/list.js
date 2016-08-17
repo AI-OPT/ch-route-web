@@ -229,6 +229,30 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 					}
 				}
 			);
+    	},
+    	_editState:function(tenantId,routeId,state){
+    		$('#updateRouteStateForm_tenantId').val(tenantId);
+    		$('#updateRouteStateForm_routeId').val(routeId);
+    		$('#updateRouteStateForm_state').val(state);
+    		//
+    	},
+    	_updateRouteState:function(){
+    		var data = $("#updateRouteStateForm").serialize();
+    		//alert(data);
+    		ajaxController.ajax({
+				type: "POST",
+				dataType: "json",
+				processing: true,
+				message: "请等待...",
+				contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+				url: _base+"/routemanage/updateRouteState?"+data,
+				data:"",
+				success: function(data){
+					alert("操作成功");
+					location.href=_base+"/jsp/route_manage/list.jsp";
+				}
+			}
+		);
     	}
       	
       	

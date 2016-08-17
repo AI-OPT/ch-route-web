@@ -221,13 +221,21 @@
 							aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="myModalLabel">提示信息</h4>
 					</div>
-					<div class="modal-body">您确定要暂停当前仓库吗？</div>
+					<div class="modal-body">
+						<form id="updateRouteStateForm">
+							<input type="hidden" id="updateRouteStateForm_tenantId" name="command.tenantId" value="CH"/>
+							<input type="hidden" id="updateRouteStateForm_routeId" name="command.routeId" value=""/>
+							<input type="hidden" id="updateRouteStateForm_state" name="command.state" value=""/>
+						</form>
+						您确定要暂停当前仓库吗？
+					</div>
 					<div class="modal-footer">
 						<button type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
 							data-dismiss="modal">关闭</button>
-						<button onclick="javascript:alert('保存成功');" type="button"
-							class="biu-btn  btn-primary btn-blue btn-medium ml-10">
+						<button onclick="pager._updateRouteState();" type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10" 
+							data-dismiss="modal">
 							确认</button>
 					</div>
 				</div>
@@ -246,9 +254,9 @@
 							{{if state == '1'}}
 								新增
 							{{/if}}
-							{{if state != '1'}}
-								{{:state}}
-							{{/if}}	
+							{{if state == '5'}}
+								手动暂停
+							{{/if}}
 							
 							</td>											
 							<td>{{:routeId}}</td>
@@ -256,9 +264,10 @@
 							<td>{{:provName}}|{{:cityName}}|{{:countyName}}</td>
 							<td><a href="#">查看商品列表</a></td>
 							<td><a href="#" data-toggle="modal"
-												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> <a href="#"
-												data-toggle="modal" data-target="#stopSureModal">暂停</a> <a
-												href="#">废弃</a></td>
+												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
+								<a href="#" onclick="pager._editState('CH','{{:routeId}}','5');" data-toggle="modal" data-target="#stopSureModal">暂停</a>
+								 
+								<a href="#">废弃</a></td>
 						</tr>
 						{{/for}}
 					  </script>
