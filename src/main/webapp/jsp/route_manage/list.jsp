@@ -242,7 +242,15 @@
 					  	{{for}}
 						<tr>
 							<td>{{:index}}</td>
-							<td>{{:state}}</td>											
+							<td>
+							{{if state == '1'}}
+								新增
+							{{/if}}
+							{{if state != '1'}}
+								{{:state}}
+							{{/if}}	
+							
+							</td>											
 							<td>{{:routeId}}</td>
 							<td>{{:routeName}}</td>
 							<td>{{:provName}}|{{:cityName}}|{{:countyName}}</td>
