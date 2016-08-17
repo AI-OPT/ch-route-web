@@ -114,7 +114,7 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
 					success: function(data){
 						var option = "<option value=''>--请选择--</option>";
 						for(var i=0;i<data.length;i++){
-							option += "<option value='"+data[i].cityCode+"'>"+data[i].areaName+"</option>";
+							option += "<option value='"+data[i].areaCode+"'>"+data[i].areaName+"</option>";
 						}
 						//alert(option);
 						$('#countyCode').html(option);

@@ -78,7 +78,7 @@
 								<!--删格化-->
 								<p class="left ml-30">
 									<input type="button" data-toggle="modal"
-												data-target="#editModal" 
+										data-target="#editModal"
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
 										value="新  增" onclick="pager._reset();">
 									<!-- <input type="button"
@@ -152,37 +152,32 @@
 								<div class="panel-body">
 									<form id="updateRouteFormId">
 										<ul>
-											<li class="col-md-12">
-											<input type="hidden" id="tenantId"
-												name="command.tenantId" value="CH" />
-											<input type="hidden" id="routeId"
-												name="command.routeId" value="" />
+											<li class="col-md-12"><input type="hidden" id="tenantId"
+												name="command.tenantId" value="CH" /> <input type="hidden"
+												id="routeId" name="command.routeId" value="" />
 												<p class="word">仓库名称</p>
 												<p>
 													<input name="command.routeName" id="routeName"
 														class="int-text int-medium " type="text" />
-												</p>
-											</li>
+												</p></li>
 											<li class="col-md-12">
 												<p class="word">所在地址</p>
 												<p>
-													<select id="provCode" name="command.provCode"
+													<input type="hidden" id="provinceCode_old"/>
+													<input type="hidden" id="cityCode_old"/>
+													<input type="hidden" id="countyCode_old"/>
+													
+													<select id="provinceCode" name="command.provCode"
+														onchange="pager._getCityListByProviceCode(this.value)"
 														class="int-text int-medium ">
-														<option value="1">北京市</option>
-														<option value="2">天津市</option>
-														<option value="3">河北省</option>
-													</select> 
-													<select id="cityCode" name="command.cityCode"
+														<option value="">--请选择--</option>
+													</select> <select id="cityCode" name="command.cityCode"
+														onchange="pager._getCountyListByCityCode(this.value)"
 														class="int-text int-medium ">
-														<option value="101">北京市</option>
-														<option value="102">天津市</option>
-														<option value="103">河北省</option>
-													</select> 
-													<select id="countyCode" name="command.countyCode"
+														<option value="">--请选择--</option>
+													</select> <select id="countyCode" name="command.countyCode"
 														class="int-text int-medium ">
-														<option value="10101">北京市</option>
-														<option value="10102">天津市</option>
-														<option value="10103">河北省</option>
+														<option value="">--请选择--</option>
 													</select>
 												</p>
 											</li>
@@ -190,8 +185,8 @@
 
 												<p class="word">详细地址</p>
 												<p>
-													<input id="address" name="command.address" class="int-text int-medium "
-														type="text" />
+													<input id="address" name="command.address"
+														class="int-text int-medium " type="text" />
 												</p>
 											</li>
 										</ul>
@@ -207,8 +202,7 @@
 							data-dismiss="modal">关闭</button>
 						<button onclick="pager._update();" type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-							data-dismiss="modal">
-							确认</button>
+							data-dismiss="modal">确认</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->

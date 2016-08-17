@@ -39,13 +39,32 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	},
     	_reset:function(){
     		$('#updateRouteFormId')[0].reset();
+    		//
+    		$('#provinceCode_old').val('');
+    		$('#cityCode_old').val('');
+    		$('#countyCode_old').val('');
+    		//
+    		$('#provinceCode').html('');
+    		$('#cityCode').html('');
+    		$('#countyCode').html('');
+    		
+    		//
+    		this._getProvinceList('');
     	},
     	_edit:function(routeId,routeName,provCode,cityCode,countyCode,address){
     		$('#updateRouteFormId :input[id=routeId]').val(routeId);
     		$('#updateRouteFormId :input[id=routeName]').val(routeName);
     		$('#updateRouteFormId :input[id=address]').val(address);
+    		//
+    		$('#provinceCode_old').val(provCode);
+    		$('#cityCode_old').val(cityCode);
+    		$('#countyCode_old').val(countyCode);
+    		//
+    		this._getProvinceList(provCode);
+    		 
     	},
     	_update:function(){
+    		//
     		var data = $("#updateRouteFormId").serialize();
     		var routeId = $('#updateRouteFormId :input[id=routeId]').val();
     		//
@@ -101,7 +120,117 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 					
 				}
 			});
+    	},
+    	_getProvinceList:function(provCode){
+    		
+    		var _this = this;
+    		
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/areaquery/getProvinceList",
+					data:"",
+					success: function(data){
+						//alert(data.length);
+						var option ="<option value=''>--请选择--</option>";
+						for(var i=0;i<data.length;i++){
+							option += "<option value='"+data[i].provinceCode+"'>"+data[i].areaName+"</option>";
+						}
+						$('#provinceCode').html(option);
+						
+						//如果省份编码不为空就选中
+						if(provCode != ''){
+							$("#provinceCode").find("option[value='"+provCode+"']").attr("selected",true);
+							//
+							_this._getCityListByProviceCode(provCode);
+						}
+					}
+				}
+			);
+    	},
+    	_getCityListByProviceCode:function(provinceCode){
+    		if(provinceCode == ""){
+    			$('#cityCode').html('');
+    			$('#countyCode').html('');
+    			return;
+    		}
+    		var _this = this;
+    		//var provinceCode = $(obj).val();
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/areaquery/getCityListByProviceCode?provinceCode="+provinceCode,
+					data:"",
+					success: function(data){
+						var option = "<option value=''>--请选择--</option>";
+						for(var i=0;i<data.length;i++){
+							option += "<option value='"+data[i].cityCode+"'>"+data[i].areaName+"</option>";
+						}
+						//alert(option);
+						$('#cityCode').html(option);
+						//
+						//如果城市编码不为空就选中
+						var cityCode = $('#cityCode_old').val();
+						if(cityCode != ''){
+							
+							$("#cityCode").find("option[value='"+cityCode+"']").attr("selected",true);
+							//
+							_this._getCountyListByCityCode(cityCode);
+						}
+					}
+				}
+			);
+    	},
+    	_getCountyListByCityCode:function(cityCode){
+    		if(cityCode == ""){
+    			$('#countyCode').html('');
+    			return;
+    		}
+    		var _this = this;
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/areaquery/getCountyListByCityCode?cityCode="+cityCode,
+					data:"",
+					success: function(data){
+						var option = "<option value=''>--请选择--</option>";
+						for(var i=0;i<data.length;i++){
+							option += "<option value='"+data[i].areaCode+"'>"+data[i].areaName+"</option>";
+						}
+						//alert(option);
+						$('#countyCode').html(option);
+						//
+						//如果区域编码不为空就选中
+						var countyCode = $('#countyCode_old').val();
+						if(countyCode != ''){
+							$("#countyCode").find("option[value='"+countyCode+"']").attr("selected",true);
+						}
+						
+						//
+						var cityCode = $('#cityCode_old').val();
+						var citySelCode = $('#cityCode option:selected').val();
+						if(citySelCode == ""){
+							$("#countyCode").html("<option value=''>--请选择--</option>");
+						}
+//						var provCode = $('#provinceCode option:selected').val();
+//						
+//						if(provCode != $('#provinceCode_old').val()){
+//							$('#countyCode').html("<option value=''>--请选择--</option>");
+//						}
+					}
+				}
+			);
     	}
+      	
       	
     	
     });
