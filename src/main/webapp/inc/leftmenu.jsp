@@ -29,7 +29,7 @@
                     </a>
                     <!--二级菜单-->
                     <ul class="submenu">
-                        <li><a href="${_base}/jsp/route_manage/add.jsp">新建路由</a></li>
+                        <li><a href="${_base}/jsp/route_manage/add.jsp" target="mainFrame">新建路由</a></li>
                         <li><a href="#">添加路由规则</a></li>
                         <li><a href="#">新增预警接收人</a></li>
                     </ul>
