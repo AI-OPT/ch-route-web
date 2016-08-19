@@ -37,6 +37,38 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     		ListPager.superclass.setup.call(this);
     		this._queryPageSearch();
     	},
+    	_openUpdateUsableNumForm:function(supplyId,supplyName,usableNum){
+    		$('#updateUsableNumForm_supplyId').val(supplyId);
+    		$('#updateUsableNumForm_supplyName').val(supplyName);
+    		$('#updateUsableNumForm_usableNum').val('');
+    		//
+    		
+    	},
+    	_updateUsableNum:function(){
+    		var data = $("#updateUsableNumForm").serialize();
+    		var usableNum = $('#updateUsableNumForm_usableNum').val();
+    		if(usableNum == ''){
+    			alert("请输入仓储量");
+    			return;
+    		}
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "text",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/routeprodsupplymanage/updateUsableNum?"+data,
+					data:"",
+					success: function(data){
+						if(data == 'true'){
+							alert('操作成功');
+							location.href=_base+"/jsp/route_prod_supply_manage/list.jsp";
+						}
+						
+					}
+				}
+			);
+    	},
     	_queryPageSearch:function(){
     		var data = $("#queryForm").serialize();
     		//alert('queryParam：'+data);

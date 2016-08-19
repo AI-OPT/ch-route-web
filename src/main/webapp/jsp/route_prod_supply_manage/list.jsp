@@ -154,22 +154,25 @@
 					</div>
 					<div class="modal-body" style="min-height: 120px;">
 						<div class="form-label">
+							<form id="updateUsableNumForm">
 							<div class="panel panel-info">
 								<div class="panel-heading">
 									<h3 class="panel-title">仓储量</h3>
 								</div>
 								<div class="panel-body">
-									<input name="" class="int-text int-medium " type="text" />
+									<input id="updateUsableNumForm_supplyId" name="command.supplyId" type="hidden"/>
+									<input id="updateUsableNumForm_supplyName" name="command.supplyName" type="hidden"/>
+									<input id="updateUsableNumForm_usableNum" name="command.usableNum" class="int-text int-medium " type="text" />
 								</div>
 							</div>
-
+							</form>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
 							data-dismiss="modal">关闭</button>
-						<button onclick="javascript:alert('保存成功');" type="button"
+						<button onclick="pager._updateUsableNum();" type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10">
 							确认</button>
 					</div>
@@ -187,10 +190,10 @@
 							<td>{{:index}}</td>
 							<td>{{:supplyId}}</td>
 							<td>{{:supplyName}}</td>
-							<td>{{:uasble}}</td>
+							<td>{{:usableNum}}</td>
 							<td>{{:totalNum}}</td>
 							<td><a href="#" data-toggle="modal"
-													data-target="#amountModal">增加仓储量</a></td>
+													data-target="#amountModal" onclick="pager._openUpdateUsableNumForm('{{:supplyId}}','{{:supplyName}}');">增加仓储量</a></td>
 							<td><a href="#">仓储量变更记录</a></td>
 						</tr>
 						{{/for}}

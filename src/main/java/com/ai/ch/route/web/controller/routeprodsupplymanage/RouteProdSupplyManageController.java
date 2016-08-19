@@ -17,6 +17,7 @@ import com.ai.slp.route.api.routeprodsupplymanage.interfaces.IRouteProdSupplyMan
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchResponse;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchVo;
+import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyUpdateUsableNumRequest;
 import com.alibaba.fastjson.JSON;
 
 @RequestMapping(value="/routeprodsupplymanage")
@@ -46,6 +47,16 @@ public class RouteProdSupplyManageController {
 		log.info(" ResponseData json:"+JSON.toJSONString(responseData));
 		//
 		return responseData;
+	}
+	@RequestMapping(value="/updateUsableNum",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String updateUsableNum(HttpServletRequest request) {
+		String flag = "true";
+		//
+		RouteProdSupplyUpdateUsableNumRequest requestVo = RequestParameterUtils.request2Bean(request, RouteProdSupplyUpdateUsableNumRequest.class);
+		DubboConsumerFactory.getService(IRouteProdSupplyManageSV.class).updateUsableNum(requestVo);
+		//
+		return flag;
 	}
 
 }
