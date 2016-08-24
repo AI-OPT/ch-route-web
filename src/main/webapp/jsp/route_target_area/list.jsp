@@ -9,15 +9,15 @@
 <title>分配仓库配货区域</title>
 <%@include file="/inc/inc.jsp"%>
 <script type="text/javascript">
-	/* var pager;
+	var pager;
 	(function() {
-	seajs.use('app/jsp/route_sel_prod/list', function(ListPager) {
+	seajs.use('app/jsp/route_target_area/list', function(ListPager) {
 		pager = new ListPager({
 			element : document.body
 		});
 		pager.render();
 	});
-	})();  */
+	})();
 </script>
 </head>
 <body>
@@ -35,8 +35,8 @@
 							<!--白色背景-->
 							<!--查询条件-->
 							<div class="form-label">
-								<form id="queryRouteForm">
-
+								<form id="queryForm">
+									<input name="command.routeGroupId" type="hidden" value="12345"/>
 									<ul>
 										<li class="col-md-6">
 											<p class="word">商品ID:</p>
@@ -78,30 +78,10 @@
 
 							<div class="main-box-body clearfix">
 								<div class="form-label">
-									<form id="queryRouteForm">
-
-										<ul>
-											<li class="col-md-20">
-												<p class="word">
-													<input type="radio"  />
-												</p>
-												<p>第一仓库</p>
-												<p>北京 上海  天津   <a href="#" data-toggle="modal"
-												data-target="#editModal">编辑</a></p>
-											</li>
-
-										</ul>
-										<ul>
-											<li class="col-md-20">
-												<p class="word">
-													<input type="radio"  />
-												</p>
-												<p>第一仓库</p>
-												<p>北京 上海  天津   <a href="#" data-toggle="modal"
-												data-target="#editModal">编辑</a></p>
-											</li>
-
-										</ul>
+									<form id="areaForm">
+										
+										<div id="table_info_id_pay_id"></div>
+										<!-- 
 										<ul>
 											<li class="col-md-20">
 												<p class="word">
@@ -112,11 +92,18 @@
 												data-target="#editModal">编辑</a></p>
 											</li>
 
-										</ul>
+										</ul> -->
 
 									</form>
 								</div>
+								<div id="showMessageDiv"></div>
 							</div>
+							<!--分页-->
+								<div class="paging">
+									<ul id="pagination">
+									</ul>
+
+								</div>
 						</div>
 					</div>
 				</div>
@@ -197,6 +184,24 @@
 		</div>
 		<!-- 模态框（Modal） 结束-->
 </body>
+<script id="pageSearchTmpl" type="text/x-jsrender">
+					  	{{for}}
+							<ul>
+								<li class="col-md-20">
+									<p class="word">
+										<input type="radio"  />
+									</p>
+									<p>{{:routeName}}</p>
+									<p> {{for area}}
+											{{:provinceName}} [<a onclick="#">删除</a>]  
+										{{/for}}
+										<a href="#" data-toggle="modal"
+												data-target="#editModal">编辑</a></p>
+								</li>
 
+							</ul>
+						{{/for}}
+					  </script>
+</html>
 </html>
 
