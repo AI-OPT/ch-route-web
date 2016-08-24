@@ -9,15 +9,15 @@
 <title>配货组下仓库列表(某商品)</title>
 <%@include file="/inc/inc.jsp"%>
 <script type="text/javascript">
-	/* var pager;
+	var pager;
 	(function() {
-	seajs.use('app/jsp/route_sel_prod/list', function(ListPager) {
+	seajs.use('app/jsp/route_item/list', function(ListPager) {
 		pager = new ListPager({
 			element : document.body
 		});
 		pager.render();
 	});
-	})();  */
+	})(); 
 </script>
 </head>
 <body>
@@ -35,8 +35,8 @@
 							<!--白色背景-->
 							<!--查询条件-->
 							<div class="form-label">
-								<form id="queryRouteForm">
-									
+								<form id="queryForm">
+									<input name="command.routeGroupId" type="hidden" value="12345"/>
 									<ul>
 										<li class="col-md-6">
 											<p class="word">配货组ID:</p>
@@ -121,46 +121,6 @@
 
 										</thead>
 										<tbody id="table_info_id_pay_id">
-											<tr>
-												<td>1</td>
-												<td>1</td>
-												<td>1</td>
-												<td>
-													<a>删除</a>
-												</td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>1</td>
-												<td>1</td>
-												<td>
-													<a>删除</a>
-												</td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>1</td>
-												<td>1</td>
-												<td>
-													<a>删除</a>
-												</td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>1</td>
-												<td>1</td>
-												<td>
-													<a>删除</a>
-												</td>
-											</tr>
-											<tr>
-												<td>1</td>
-												<td>1</td>
-												<td>1</td>
-												<td>
-													<a>删除</a>
-												</td>
-											</tr>
 											
 										</tbody>
 									</table>
@@ -170,16 +130,6 @@
 								<!--分页-->
 								<div class="paging">
 									<ul id="pagination">
-									</ul>
-									<ul class="pagination">
-										<li class="disabled"><a href="#"><i
-												class="fa fa-chevron-left"></i></a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
 									</ul>
 
 								</div>
@@ -194,6 +144,21 @@
 
 	</div>
 </body>
-
+<script id="pageSearchTmpl" type="text/x-jsrender">
+					  	{{for}}
+							<tr>
+								<td>{{:routeId}}</td>
+								<td>{{:routeName}}</td>
+								<td>
+									{{for area}}
+										{{:provinceName}} 
+									{{/for}}
+								</td>
+								<td>
+									<a>删除</a>
+								</td>
+							</tr>
+						{{/for}}
+					  </script>
 </html>
 
