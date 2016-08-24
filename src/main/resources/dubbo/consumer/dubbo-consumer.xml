@@ -68,5 +68,7 @@
 	
 	<dubbo:reference id="routeSupplyAddsLogManageSV"
 		interface="com.ai.slp.route.api.routesupplyaddslog.interfaces.IRouteSupplyAddsLogManageSV" />
+	<dubbo:reference id="routeItemManageSV"
+		interface="com.ai.slp.route.api.routeitemmanage.interfaces.IRouteItemManageSV" />
 	
 </beans>
