@@ -23,6 +23,7 @@
 						<ul class="submenu">
 							<li menuAttr="menu"><a href="${_base}/jsp/route_manage/add.jsp" target="mainFrame">新建仓库</a></li>
 							<li menuAttr="menu"><a href="${_base}/jsp/route_manage/list.jsp" target="mainFrame">仓库列表</a></li>
+							<li menuAttr="menu"><a href="${_base}/jsp/route_supply_adds_log/list.jsp" target="mainFrame">仓储量更改记录列表</a></li>
 							<!-- <li menuAttr="menu"><a href="#" class="dropdown-toggle">服务器对接管理3<i
 									class="fa fa-chevron-circle-right drop-icon"></i></a>
 								<ul class="submenu three-list">
