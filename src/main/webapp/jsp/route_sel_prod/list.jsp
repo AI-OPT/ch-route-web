@@ -35,7 +35,10 @@
 							<!--白色背景-->
 							<!--查询条件-->
 							<div class="form-label">
-								<form id="queryRouteForm">
+								<form id="queryForm">
+									<input type="hidden" name="command.tenantId" value="SLP">
+									<input type="hidden" name="command.supplierId" value="-1">
+									<input type="hidden" name="command.productCatId" value="">
 									<ul>
 										<li class="col-md-6">
 											<p class="word">仓库ID</p>
@@ -98,7 +101,7 @@
 
 										</thead>
 										<tbody id="table_info_id_pay_id">
-											<tr>
+											<!-- <tr>
 												<td><input type="checkbox" id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="1"/></td>
 												<td>商品ID</td>
 												<td>商品名称</td>
@@ -129,7 +132,7 @@
 												<td>关键属性1</td>
 												<td>关键属性2</td>
 												<td>供货数量</td>
-											</tr>
+											</tr> -->
 										</tbody>
 									</table>
 									<div id="showMessageDiv"></div>
@@ -139,7 +142,7 @@
 								<div class="paging">
 									<ul id="pagination">
 									</ul>
-									<ul class="pagination">
+									<!-- <ul class="pagination">
 										<li class="disabled"><a href="#"><i
 												class="fa fa-chevron-left"></i></a></li>
 										<li class="active"><a href="#">1</a></li>
@@ -149,7 +152,7 @@
 										<li><a href="#">5</a></li>
 										<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
 									</ul>
-
+ -->
 								</div>
 								<!--分页结束-->
 							</div>
@@ -162,6 +165,29 @@
 
 	</div>
 </body>
-
+<script id="pageSearchTmpl" type="text/x-jsrender">
+					  	{{for}}
+							<tr>
+												<td><input type="checkbox" id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="{{:productId}}"/></td>
+												<td>{{:productId}}</td>
+												<td>{{:productName}}</td>
+												<td>
+												{{for attrOne}}
+													
+														{{:attrValue}} 
+													
+												{{/for}}
+												</td>
+												<td>
+													{{for attrTwo}}
+													
+														{{:attrValue}} 
+													
+													{{/for}}
+												</td>
+												<td>--</td>
+											</tr>
+						{{/for}}
+					  </script>
 </html>
 

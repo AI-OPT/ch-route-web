@@ -94,6 +94,8 @@ dependencies {
 	compile 'com.ai.slp.route:routeprodsupplymanage:1.0-SNAPSHOT'
 	compile 'com.ai.slp.route:routesupplyaddslog:1.0.1-SNAPSHOT'
 	compile 'com.ai.slp.route:routeitemmanage:1.0.1-SNAPSHOT'
+	//商品接口
+	compile 'com.ai.slp.product:normproduct:1.1.0-SNAPSHOT'
 	
     testCompile(
             "org.springframework:spring-test:4.1.7.RELEASE",

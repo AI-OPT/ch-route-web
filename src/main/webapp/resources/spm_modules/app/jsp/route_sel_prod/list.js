@@ -36,6 +36,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     	setup: function () {
     		ListPager.superclass.setup.call(this);
     		this._getTableObj();
+    		this._queryPageSearch();
     	},
     	_getTableObj:function(){
     		//JSON.stringify(ids);
@@ -142,6 +143,31 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 	        	}
 	            
     		});
+    	},
+    	_queryPageSearch:function(){
+    		var data = $("#queryForm").serialize();
+    		//alert('queryParam：'+data);
+    		//
+    		$("#pagination").runnerPagination({
+				url: _base+"/routeprodsupplymanage/queryNormProductAndKeyAttr?"+data,
+				method: "POST",
+				dataType: "json",
+				processing: true,
+				renderId:"table_info_id_pay_id",
+				messageId:"showMessageDiv",
+				data : {},
+				pageSize: 10,
+				visiblePages:5,
+				message: "正在为您查询数据..",
+				render: function (data) {
+					
+					var template = $.templates("#pageSearchTmpl");
+					var htmlOut = template.render(data);
+					//alert(data.result);
+					$("#table_info_id_pay_id").html(htmlOut);
+					
+				}
+			});
     	}
     	
     });

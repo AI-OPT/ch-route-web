@@ -1,0 +1,45 @@
+package com.ai.ch.route.web.bean;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductInfo {
+
+	private String productId;
+	private String productName;
+	private List<AttrInfo> attrOne = new ArrayList<AttrInfo>();
+	private List<AttrInfo> attrTwo = new ArrayList<AttrInfo>();
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public List<AttrInfo> getAttrOne() {
+		return attrOne;
+	}
+
+	public void setAttrOne(List<AttrInfo> attrOne) {
+		this.attrOne = attrOne;
+	}
+
+	public List<AttrInfo> getAttrTwo() {
+		return attrTwo;
+	}
+
+	public void setAttrTwo(List<AttrInfo> attrTwo) {
+		this.attrTwo = attrTwo;
+	}
+
+}
