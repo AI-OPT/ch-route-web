@@ -9,6 +9,8 @@
 <title>仓库选择商品列表</title>
 <%@include file="/inc/inc.jsp"%>
 <script type="text/javascript">
+	var routeId = "${param.routeId}";
+	var tenantId = "changhong";
 	var pager;
 	(function() {
 		seajs.use('app/jsp/route_sel_prod/list', function(ListPager) {
@@ -36,18 +38,18 @@
 							<!--查询条件-->
 							<div class="form-label">
 								<form id="queryForm">
-									<input type="hidden" name="command.tenantId" value="SLP">
+									<input type="hidden" name="command.tenantId" value="changhong">
 									<input type="hidden" name="command.supplierId" value="-1">
 									<input type="hidden" name="command.productCatId" value="">
 									<ul>
 										<li class="col-md-6">
 											<p class="word">仓库ID</p>
-											<p>123456</p>
+											<p>${param.routeId}</p>
 
 										</li>
 										<li class="col-md-6">
 											<p class="word">仓库名称</p>
-											<p>北京第一仓库</p>
+											<p>${param.routeName}</p>
 
 										</li>
 									</ul>
@@ -80,7 +82,7 @@
 								<p class="left ml-30">
 									<input type="button"
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
-										value="确  认" onclick="pager._getTableObj();">
+										value="确  认" onclick="pager._addRouteProdSupplyList();">
 									
 								</p>
 							</div>

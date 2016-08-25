@@ -103,7 +103,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     		//alert('queryParam：'+data);
     		//
     		$("#pagination").runnerPagination({
-				url: _base+"/routemanage/queryPageSearch?command.tenantId=CH&"+data,
+				url: _base+"/routemanage/queryPageSearch?command.tenantId=changhong&"+data,
 				method: "POST",
 				dataType: "json",
 				processing: true,

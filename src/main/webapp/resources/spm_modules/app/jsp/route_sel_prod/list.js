@@ -63,7 +63,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 	            	if($(this).index() == 0){
 	            		var val = $(this).children(":first").val();
 	            		//alert('checkedbox val:'+val);
-	            		prodInfo.chkId = val;
+	            		//prodInfo.chkId = val;
 	            	}
 	            	if($(this).index() == 1){
 	            		prodInfo.prodId = $(this).text();
@@ -74,6 +74,8 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 	            	if($(this).index() == 5){
 	            		prodInfo.amount = $(this).children(":first").val();
 	            	}
+	            	prodInfo.routeId = routeId;
+	            	prodInfo.tenantId = tenantId;
 	            	//
 //	            	alert("当前td的序号："+$(this).index());
 //	                html += $(this).text() + ',';  
@@ -84,7 +86,8 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 	            
 	        });
 	        
-	        alert(JSON.stringify(prodArray));
+	        //alert(JSON.stringify(prodArray));
+	        return JSON.stringify(prodArray);
     	},
     	_chkSel:function(){
     		var _this = this;
@@ -98,7 +101,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     		//
     		_this._inputText();
     		//
-    		_this._getTableObj();
+    		//_this._getTableObj();
     		
     	},
     	_chkSelOnclick:function(obj){
@@ -112,7 +115,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     		//
     		_this._inputText();
     		//
-    		_this._getTableObj();
+    		//_this._getTableObj();
     	},
     	//转变为文本框
     	_inputText:function(){
@@ -135,7 +138,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 		        	$(this).find('td').each(function () {
 		            	
 		            	if($(this).index() == 5){
-		            		var inputHtml = "<input type='text' class='int-text int-medium' />";
+		            		var inputHtml = "<input type='text' class='int-text int-medium' value='1'/>";
 		            		$(this).html(inputHtml);
 		            	}
 		            	//
@@ -166,6 +169,26 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 					//alert(data.result);
 					$("#table_info_id_pay_id").html(htmlOut);
 					
+				}
+			});
+    	},
+    	_addRouteProdSupplyList:function(){
+    		var _this = this;
+    		var jsonProdList = _this._getTableObj();
+    		//alert("jsonProdList:"+jsonProdList);
+    		ajaxController.ajax({
+				type: "POST",
+				dataType: "text",
+				processing: true,
+				message: "请等待...",
+				contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+				url: _base+"/routeprodsupplymanage/addRouteProdSupplyList?command.jsonProdList="+jsonProdList,
+				data:"",
+				success: function(data){
+					
+					if(data == 'true'){
+						alert('操作成功');
+					}
 				}
 			});
     	}

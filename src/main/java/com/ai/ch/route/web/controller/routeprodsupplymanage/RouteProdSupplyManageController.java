@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ai.ch.route.web.bean.AttrInfo;
 import com.ai.ch.route.web.bean.ProductInfo;
+import com.ai.ch.route.web.bean.SelProdInfo;
 import com.ai.ch.route.web.utils.RequestParameterUtils;
 import com.ai.opt.base.vo.PageInfo;
 import com.ai.opt.base.vo.PageInfoResponse;
@@ -26,6 +27,8 @@ import com.ai.slp.product.api.normproduct.param.AttrValInfo;
 import com.ai.slp.product.api.normproduct.param.NormProdAndKeyAttrRes;
 import com.ai.slp.product.api.normproduct.param.NormProdRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.interfaces.IRouteProdSupplyManageSV;
+import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyAddListRequest;
+import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyAddRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchResponse;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchVo;
@@ -152,6 +155,23 @@ public class RouteProdSupplyManageController {
 		log.info("response normProd:" + JSON.toJSONString(response));
 
 		return responseData;
+	}
+	
+	@RequestMapping(value = "/addRouteProdSupplyList", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String addRouteProdSupplyList(HttpServletRequest request){
+		//
+		String flag = "true";
+		SelProdInfo selProdInfo = RequestParameterUtils.request2Bean(request, SelProdInfo.class);
+		List<RouteProdSupplyAddRequest> list = JSON.parseArray(selProdInfo.getJsonProdList(), RouteProdSupplyAddRequest.class);
+		
+		RouteProdSupplyAddListRequest requestVo = new RouteProdSupplyAddListRequest();
+		//
+		requestVo.setRouteProdSupplyAddRequestList(list);
+		//
+		DubboConsumerFactory.getService(IRouteProdSupplyManageSV.class).addRouteProdSupplyList(requestVo);
+		
+		return flag;
 	}
 
 }
