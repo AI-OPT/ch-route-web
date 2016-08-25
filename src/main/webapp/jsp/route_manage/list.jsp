@@ -262,7 +262,7 @@
 							<td>{{:routeId}}</td>
 							<td>{{:routeName}}</td>
 							<td>{{:provName}}|{{:cityName}}|{{:countyName}}</td>
-							<td><a href="#">查看商品列表</a></td>
+							<td><a href="${_base}/jsp/route_prod_supply_manage/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">查看商品列表</a></td>
 							<td><a href="#" data-toggle="modal"
 												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
 								<a href="#" onclick="pager._editState('CH','{{:routeId}}','5');" data-toggle="modal" data-target="#stopSureModal">暂停</a>

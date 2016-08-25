@@ -37,14 +37,15 @@
 							<div class="form-label">
 								<form id="queryForm">
 								<ul>
+									<input type="hidden" name="command.routeId" value="${param.routeId }" />
 									<li class="col-md-6">
 										<p class="word">仓库ID:</p>
-										<p>38374912000</p>
+										<p>${param.routeId }</p>
 
 									</li>
 									<li class="col-md-6">
 										<p class="word">仓库名称:</p>
-										<p>大汉三通移动流量仓库</p>
+										<p>${param.routeName}</p>
 
 									</li>
 								</ul>

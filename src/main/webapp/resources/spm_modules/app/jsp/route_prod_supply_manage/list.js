@@ -74,7 +74,7 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     		//alert('queryParam：'+data);
     		//
     		$("#pagination").runnerPagination({
-				url: _base+"/routeprodsupplymanage/queryPageSearch?command.tenantId=SLP&"+data,
+				url: _base+"/routeprodsupplymanage/queryPageSearch?command.tenantId=CH&"+data,
 				method: "POST",
 				dataType: "json",
 				processing: true,

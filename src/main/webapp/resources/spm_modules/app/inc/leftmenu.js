@@ -14,9 +14,52 @@ define('app/inc/leftmenu',function (require, exports, module) {
     	//重写父类
     	setup: function () {
     		LeftMenuPager.superclass.setup.call(this);
+    		this._onActive();
+    		this._onActiveThree();
     		
     	},
-    	
+    	_onActive:function(){
+    		var _this = this;
+    		
+			$("li [menuAttr='menu']").each(function(){
+    			//
+                $(this).click(function(i){
+                		
+                		//执行二级清空
+	                	$("li [menuAttr='menu']").each(function(){
+	                		$(this).removeClass("list-active");
+	                	});
+                		
+                		$(this).addClass("list-active");
+                		//
+                		//_this._noActiveThree();
+                		
+                	
+                });
+
+    		});
+    			
+    			
+    	},
+    	_onActiveThree:function(){
+    		$("li [menuAttr='threemenu']").each(function(){
+    			//
+                $(this).click(function(i){
+	                	$("li [menuAttr='threemenu']").each(function(){
+	                		$(this).removeClass("three-list-active");
+	                	});
+                		
+                		$(this).addClass("three-list-active");
+                	
+                });
+
+    		});
+    	},
+    	_noActiveThree:function(){
+    		$("li [menuAttr='threemenu']").each(function(){
+        		$(this).removeClass("three-list-active");
+        	});
+    	},
     	//当activemenu属性的值发生变化时候触发
     	_onRenderActivemenu: function(activemenu) {
     		if(activemenu==undefined || activemenu==""){

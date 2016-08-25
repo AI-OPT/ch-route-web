@@ -25,7 +25,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	},
     	Statics: {
     		DEFAULT_PAGE_SIZE: 10,
-    		USER_LEFT_MNU_ID: "left_mnu_account_balance"
+    		USER_LEFT_MNU_ID: "route_list_left_menu"
     	},
     	//事件代理
     	events: {
@@ -35,6 +35,8 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	//重写父类
     	setup: function () {
     		ListPager.superclass.setup.call(this);
+    		//alert($('#'+ListPager.USER_LEFT_MNU_ID, window.parent.document).html());
+    		//$('#'+ListPager.USER_LEFT_MNU_ID, window.parent.document).addClass("list-active");
     		this._queryPageSearch();
     	},
     	_reset:function(){

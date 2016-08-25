@@ -25,7 +25,7 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     	},
     	Statics: {
     		DEFAULT_PAGE_SIZE: 10,
-    		USER_LEFT_MNU_ID: "left_mnu_account_balance"
+    		USER_LEFT_MNU_ID: "route_add_left_menu"
     	},
     	//事件代理
     	events: {
@@ -36,6 +36,7 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     	//重写父类
     	setup: function () {
     		AddPager.superclass.setup.call(this);
+    		activeUserLeftMenu(AddPager.USER_LEFT_MNU_ID);
     		this._getProvinceList();
     	},
     	_addRoute:function(){
