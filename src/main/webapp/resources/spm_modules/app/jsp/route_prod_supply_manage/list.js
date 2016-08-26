@@ -39,11 +39,23 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     		this._queryPageSearch();
     	},
     	_openUpdateUsableNumForm:function(supplyId,supplyName,usableNum){
+    		var _this = this;
+    		//
     		$('#updateUsableNumForm_supplyId').val(supplyId);
     		$('#updateUsableNumForm_supplyName').val(supplyName);
     		$('#updateUsableNumForm_usableNum').val('');
     		//
     		$('#amountModal').modal('show');
+    		$('#updateUsableNumForm_usableNum').bind('input propertychange', function() {
+    			//alert($(this).val());
+    			var flag = _this._numberValidate($(this).val());
+    			//alert(flag);
+    			//
+    			if(flag == false){
+    				$(this).val("1");
+    				alert('请输入正整数,如果您输入其他字符，默认为1');
+    			}
+    		});
     	},
     	_updateUsableNum:function(){
     		$('#amountModal').modal('hide');
@@ -54,6 +66,14 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     			alert("请输入仓储量");
     			return;
     		}
+    		//
+    		var flag = _this._numberValidate(usableNum);
+    		if(flag == false){
+    			$('#updateUsableNumForm_usableNum').val("1");
+				alert('请输入正整数,如果您输入其他字符，默认为1');
+				return;
+    		}
+    		//
     		ajaxController.ajax({
 					type: "POST",
 					dataType: "text",
@@ -97,7 +117,17 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 					
 				}
 			});
+    	},
+    	_numberValidate:function(str){
+    		var t = str;
+    		var z= /^[0-9]*$/;
+    		if(z.test(t)){
+    		   return true;
+    		}else{
+    		   return false;
+    		};
     	}
+    	
       	
     	
     });
