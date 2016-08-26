@@ -21,6 +21,7 @@ import com.ai.ch.route.web.utils.RequestParameterUtils;
 import com.ai.opt.base.vo.PageInfo;
 import com.ai.opt.base.vo.PageInfoResponse;
 import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
+import com.ai.opt.sdk.util.CollectionUtil;
 import com.ai.opt.sdk.web.model.ResponseData;
 import com.ai.slp.product.api.normproduct.interfaces.INormProductSV;
 import com.ai.slp.product.api.normproduct.param.AttrValInfo;
@@ -32,7 +33,10 @@ import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyAddReques
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchResponse;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchVo;
+import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyRouteIdRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyUpdateUsableNumRequest;
+import com.ai.slp.route.api.routeprodsupplymanage.param.StandedProdIdListResponse;
+import com.ai.slp.route.api.routeprodsupplymanage.param.StandedProdIdVo;
 import com.alibaba.fastjson.JSON;
 
 @RequestMapping(value = "/routeprodsupplymanage")
@@ -89,6 +93,14 @@ public class RouteProdSupplyManageController {
 		//
 
 		NormProdRequest requestVo = RequestParameterUtils.request2Bean(request, NormProdRequest.class);
+		log.info("NormProdRequest:"+JSON.toJSONString(requestVo));
+		
+		//find route_prod_supply db info by routeId and tenantId
+		RouteProdSupplyRouteIdRequest routeProdSupplyRouteIdRequest = RequestParameterUtils.request2Bean(request, RouteProdSupplyRouteIdRequest.class);
+		log.info("routeProdSupplyRouteIdRequest:"+JSON.toJSONString(routeProdSupplyRouteIdRequest));
+		StandedProdIdListResponse standedProdIdListResponse = DubboConsumerFactory.getService(IRouteProdSupplyManageSV.class).queryStandedProdIdList(routeProdSupplyRouteIdRequest);
+		
+		//
 		requestVo.setPageNo(Integer.parseInt(strPageNo));
 		requestVo.setPageSize(Integer.parseInt(strPageSize));
 
@@ -108,6 +120,13 @@ public class RouteProdSupplyManageController {
 		for (NormProdAndKeyAttrRes normProdAndKeyAttrRes : response.getResult()) {
 			productInfo = new ProductInfo();
 			//
+			if(null != standedProdIdListResponse && !CollectionUtil.isEmpty(standedProdIdListResponse.getList())){
+				for(StandedProdIdVo standedProdIdVo : standedProdIdListResponse.getList()){
+					if(normProdAndKeyAttrRes.getProductId().equals(standedProdIdVo.getStandedProdId())){
+						productInfo.setDisabled("disabled");
+					}
+				}
+			}
 			productInfo.setProductId(normProdAndKeyAttrRes.getProductId());
 			productInfo.setProductName(normProdAndKeyAttrRes.getProductName());
 			//

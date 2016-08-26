@@ -5,10 +5,19 @@ import java.util.List;
 
 public class ProductInfo {
 
+	private String disabled;
 	private String productId;
 	private String productName;
 	private List<AttrInfo> attrOne = new ArrayList<AttrInfo>();
 	private List<AttrInfo> attrTwo = new ArrayList<AttrInfo>();
+
+	public String getDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(String disabled) {
+		this.disabled = disabled;
+	}
 
 	public String getProductId() {
 		return productId;

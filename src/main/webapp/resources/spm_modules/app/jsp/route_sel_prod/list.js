@@ -87,12 +87,19 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 	        });
 	        
 	        //alert(JSON.stringify(prodArray));
-	        return JSON.stringify(prodArray);
+	        return prodArray;
     	},
     	_chkSel:function(){
     		var _this = this;
     		if($('#chkSel').prop('checked')){
-    			$("input:checkbox[name='chk']").prop('checked',true);
+    			$("input:checkbox[name='chk']").each(function(){
+    				var disabledVal = $(this).prop('disabled');
+    				//alert("disabledVal:"+disabledVal);
+    				if(disabledVal == false){
+    					$(this).prop('checked',true);
+    				}
+    			});
+    			//$("input:checkbox[name='chk']").prop('checked',true);
     			
     		}else{
     			$("input:checkbox[name='chk']").prop('checked',false);
@@ -174,7 +181,15 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     	},
     	_addRouteProdSupplyList:function(){
     		var _this = this;
-    		var jsonProdList = _this._getTableObj();
+    		var prodArray = new Array();
+    		//
+    		prodArray = _this._getTableObj();
+    		if(prodArray.length == 0){
+    			alert('请选择要添加的数据');
+    			return;
+    		}
+    		//
+    		var jsonProdList = JSON.stringify(prodArray);//_this._getTableObj();
     		//alert("jsonProdList:"+jsonProdList);
     		ajaxController.ajax({
 				type: "POST",
@@ -188,6 +203,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 					
 					if(data == 'true'){
 						alert('操作成功');
+						_this._queryPageSearch();
 					}
 				}
 			});

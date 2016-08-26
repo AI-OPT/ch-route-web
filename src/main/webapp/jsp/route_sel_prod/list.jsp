@@ -39,6 +39,7 @@
 							<div class="form-label">
 								<form id="queryForm">
 									<input type="hidden" name="command.tenantId" value="changhong">
+									<input type="hidden" name="command.routeId" value="${param.routeId }">
 									<input type="hidden" name="command.supplierId" value="-1">
 									<input type="hidden" name="command.productCatId" value="">
 									<ul>
@@ -170,7 +171,7 @@
 <script id="pageSearchTmpl" type="text/x-jsrender">
 					  	{{for}}
 							<tr>
-												<td><input type="checkbox" id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="{{:productId}}"/></td>
+												<td><input type="checkbox" {{if disabled == 'disabled'}} disabled="disabled" {{/if}} id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="{{:productId}}"/></td>
 												<td>{{:productId}}</td>
 												<td>{{:productName}}</td>
 												<td>
