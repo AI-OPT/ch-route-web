@@ -71,4 +71,7 @@
 	<dubbo:reference id="routeItemManageSV"
 		interface="com.ai.slp.route.api.routeitemmanage.interfaces.IRouteItemManageSV" />
 	
+	<dubbo:reference id="normProductSV"
+		interface="com.ai.slp.product.api.normproduct.interfaces.INormProductSV" />
+	
 </beans>
