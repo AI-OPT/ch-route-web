@@ -36,7 +36,6 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     	//重写父类
     	setup: function () {
     		AddPager.superclass.setup.call(this);
-    		activeUserLeftMenu(AddPager.USER_LEFT_MNU_ID);
     		this._getProvinceList();
     	},
     	_addRoute:function(){
