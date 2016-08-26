@@ -98,7 +98,7 @@
 												<th>仓库名称</th>
 												<th>所在地区</th>
 												<th>仓库下商品</th>
-												<th>选择商品</th>
+												<!-- <th>选择商品</th> -->
 												<th>操作</th>
 
 											</tr>
@@ -264,8 +264,8 @@
 							<td>{{:routeName}}</td>
 							<td>{{:provName}}|{{:cityName}}|{{:countyName}}</td>
 							<td><a href="${_base}/jsp/route_prod_supply_manage/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">查看商品列表</a></td>
-							<td><a href="${_base}/jsp/route_sel_prod/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">选择商品</a></td>
-							<td><a href="#" data-toggle="modal"
+							<!--<td><a href="${_base}/jsp/route_sel_prod/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">选择商品</a></td>
+							--><td><a href="#" data-toggle="modal"
 												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
 								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','5');" data-toggle="modal" data-target="#stopSureModal">暂停</a>
 								 
