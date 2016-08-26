@@ -37,6 +37,7 @@
 							<div class="form-label">
 								<form id="queryForm">
 								<ul>
+									<input type="hidden" name="command.tenantId" value="changhong" />
 									<input type="hidden" name="command.routeId" value="${param.routeId }" />
 									<li class="col-md-6">
 										<p class="word">仓库ID:</p>
