@@ -119,14 +119,38 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     		}else{
     			$(obj).prop('checked',false);
     		}
-    		//
-    		_this._inputText();
+    		_this._singleInputText(obj);
+    		//_this._inputText();
     		//
     		//_this._getTableObj();
     	},
+    	_singleInputText:function(obj){
+    		//
+    		var _this = this;
+    		//
+    		var chkVal = $(obj).val();
+    		//
+    		if(obj.checked){
+	    		var inputHtml = "<input type='text' class='int-text int-medium' value='1'/>";
+	    		$('#'+chkVal).html(inputHtml);
+	    		$('#'+chkVal).children(":first").bind('input propertychange', function() {
+	    			//alert($(this).val());
+	    			var flag = _this._numberValidate($(this).val());
+	    			//alert(flag);
+	    			//
+	    			if(flag == false){
+	    				$(this).val("1");
+	    				alert('请输入正整数,如果您输入其他字符，默认为1');
+	    			}
+	    		});
+    		}else{
+    			$('#'+chkVal).html("--");
+    		}
+    	},
     	//转变为文本框
     	_inputText:function(){
-    		
+    		var _this = this;
+    		//
     		$('#table_info_id_pay_id').find('tr').each(function () {
 	        	//默认无文本框模式
     			$(this).find('td').each(function () {
@@ -147,6 +171,17 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 		            	if($(this).index() == 5){
 		            		var inputHtml = "<input type='text' class='int-text int-medium' value='1'/>";
 		            		$(this).html(inputHtml);
+		            		//$('#productName').bind('input propertychange', function() {searchProductClassbyName();}); 
+		            		$(this).children(":first").bind('input propertychange', function() {
+		            			//alert($(this).val());
+		            			var flag = _this._numberValidate($(this).val());
+		            			//alert(flag);
+		            			//
+		            			if(flag == false){
+		            				$(this).val("1");
+		            				alert('请输入正整数,如果您输入其他字符，默认为1');
+		            			}
+		            		});
 		            	}
 		            	//
 		            });
@@ -207,6 +242,15 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 					}
 				}
 			});
+    	},
+    	_numberValidate:function(str){
+    		var t = str;
+    		var z= /^[0-9]*$/;
+    		if(z.test(t)){
+    		   return true;
+    		}else{
+    		   return false;
+    		};
     	}
     	
     });

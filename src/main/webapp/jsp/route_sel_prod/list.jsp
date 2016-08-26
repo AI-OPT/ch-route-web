@@ -188,7 +188,7 @@
 													
 													{{/for}}
 												</td>
-												<td>--</td>
+												<td id="{{:productId}}">--</td>
 											</tr>
 						{{/for}}
 					  </script>
