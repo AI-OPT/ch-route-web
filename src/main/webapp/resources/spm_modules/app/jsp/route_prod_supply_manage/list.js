@@ -12,6 +12,7 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     
     require("opt-paging/aiopt.pagination");
     require("twbs-pagination/jquery.twbsPagination.min");
+    require("bootstrap/js/modal");
     var SendMessageUtil = require("app/util/sendMessage");
     
     //实例化AJAX控制处理对象
@@ -42,9 +43,11 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     		$('#updateUsableNumForm_supplyName').val(supplyName);
     		$('#updateUsableNumForm_usableNum').val('');
     		//
-    		
+    		$('#amountModal').modal('show');
     	},
     	_updateUsableNum:function(){
+    		$('#amountModal').modal('hide');
+    		var _this = this;
     		var data = $("#updateUsableNumForm").serialize();
     		var usableNum = $('#updateUsableNumForm_usableNum').val();
     		if(usableNum == ''){
@@ -62,7 +65,8 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 					success: function(data){
 						if(data == 'true'){
 							alert('操作成功');
-							location.href=_base+"/jsp/route_prod_supply_manage/list.jsp";
+							//location.href=_base+"/jsp/route_prod_supply_manage/list.jsp";
+							_this._queryPageSearch();
 						}
 						
 					}

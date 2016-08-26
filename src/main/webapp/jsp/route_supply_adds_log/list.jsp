@@ -36,6 +36,7 @@
 							<!--查询条件-->
 							<div class="form-label">
 								<form id="queryForm">
+								<input type="hidden" name="command.tenantId" value="changhong" />
 								<ul>
 									<li class="col-md-6">
 										<p class="word">商品编码:</p>

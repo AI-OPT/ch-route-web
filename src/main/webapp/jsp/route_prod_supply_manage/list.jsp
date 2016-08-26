@@ -194,8 +194,7 @@
 							<td>{{:supplyName}}</td>
 							<td>{{:usableNum}}</td>
 							<td>{{:totalNum}}</td>
-							<td><a href="#" data-toggle="modal"
-													data-target="#amountModal" onclick="pager._openUpdateUsableNumForm('{{:supplyId}}','{{:supplyName}}');">增加仓储量</a></td>
+							<td><a href="#" onclick="pager._openUpdateUsableNumForm('{{:supplyId}}','{{:supplyName}}');">增加仓储量</a></td>
 							<td><a href="${_base}/jsp/route_supply_adds_log/list.jsp?supplyId={{:supplyId}}">仓储量变更记录</a></td>
 						</tr>
 						{{/for}}

@@ -42,7 +42,7 @@ define('app/jsp/route_supply_adds_log/list', function (require, exports, module)
     		//alert('queryParam：'+data);
     		//
     		$("#pagination").runnerPagination({
-				url: _base+"/routesupplyaddslog/queryPageSearch?command.tenantId=SLP&"+data,
+				url: _base+"/routesupplyaddslog/queryPageSearch?"+data,
 				method: "POST",
 				dataType: "json",
 				processing: true,
