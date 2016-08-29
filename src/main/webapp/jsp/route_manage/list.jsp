@@ -247,6 +247,40 @@
 		<!-- 模态框（Modal） 结束-->
 		
 		<!-- 模态框（Modal） 开始 -->
+		<div class="modal fade" id="freeSureModal" tabindex="-1" role="dialog"
+			aria-labelledby="freeSureModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width: 400px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">提示信息</h4>
+					</div>
+					<div class="modal-body">
+						<form id="updateRouteStateForm">
+							<input type="hidden" id="updateRouteStateForm_tenantId" name="command.tenantId" value="CH"/>
+							<input type="hidden" id="updateRouteStateForm_routeId" name="command.routeId" value=""/>
+							<input type="hidden" id="updateRouteStateForm_state" name="command.state" value=""/>
+						</form>
+						您确定要废弃当前仓库吗？
+					</div>
+					<div class="modal-footer">
+						<button type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">关闭</button>
+						<button onclick="pager._updateRouteState();" type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10" 
+							data-dismiss="modal">
+							确认</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+		<!-- 模态框（Modal） 结束-->
+		
+		<!-- 模态框（Modal） 开始 -->
 		<div class="modal fade" id="validateModal" tabindex="-1" role="dialog"
 			aria-labelledby="validateModalLabel" aria-hidden="true">
 			<div class="modal-dialog" style="width: 400px;">
@@ -284,7 +318,9 @@
 							{{if state == '5'}}
 								手动暂停
 							{{/if}}
-							
+							{{if state == '6'}}
+								已废弃
+							{{/if}}
 							</td>											
 							<td>{{:routeId}}</td>
 							<td>{{:routeName}}</td>
@@ -295,7 +331,7 @@
 												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
 								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','5');" data-toggle="modal" data-target="#stopSureModal">暂停</a>
 								 
-								<a href="#">废弃</a></td>
+								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','6');" data-toggle="modal" data-target="#freeSureModal">废弃</a></td>
 						</tr>
 						{{/for}}
 					  </script>
