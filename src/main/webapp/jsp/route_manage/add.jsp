@@ -51,7 +51,7 @@
 														<input type="hidden" name="command.tenantId" value="changhong" />
 														<p class="word">仓库名称</p>
 														<p>
-															<input name="command.routeName" class="int-text int-medium " type="text" />
+															<input id="routeName" name="command.routeName" class="int-text int-medium " type="text" />
 														</p>
 													</li>
 													<li class="col-md-12">
@@ -72,7 +72,7 @@
 
 														<p class="word">详细地址</p>
 														<p>
-															<input name="command.address" class="int-text int-medium " type="text" />
+															<input id="address" name="command.address" class="int-text int-medium " type="text" />
 														</p>
 													</li>
 												</ul>
@@ -165,6 +165,33 @@
 			<!-- /.modal -->
 		</div>
 		<!-- 模态框（Modal） 结束-->
+		
+		<!-- 模态框（Modal） 开始 -->
+		<div class="modal fade" id="validateModal" tabindex="-1" role="dialog"
+			aria-labelledby="validateModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width: 400px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">提示信息</h4>
+					</div>
+					<div class="modal-body">
+						<div id="validateMsgId"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">关闭</button>
+						
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+		<!-- 模态框（Modal） 结束-->
+		
 	</div>
 </body>
 </html>

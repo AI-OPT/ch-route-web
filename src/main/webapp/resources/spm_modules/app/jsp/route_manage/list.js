@@ -12,6 +12,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     
     require("opt-paging/aiopt.pagination");
     require("twbs-pagination/jquery.twbsPagination.min");
+    require("bootstrap/js/modal");
     var SendMessageUtil = require("app/util/sendMessage");
     
     //实例化AJAX控制处理对象
@@ -65,10 +66,60 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     		this._getProvinceList(provCode);
     		 
     	},
+    	_validateDialog:function(msg){
+    		$('#validateModal').modal('show');
+    		$('#validateMsgId').html(msg);
+    	},
+    	_addRouteFormValidate:function(){
+    		var _this = this;
+    		//
+    		var routeName = $('#updateRouteFormId input[id=routeName]').val();
+    		var provinceCode = $('#updateRouteFormId select[id=provinceCode]').val();
+    		var cityCode = $('#updateRouteFormId select[id=cityCode]').val();
+    		var countyCode = $('#updateRouteFormId select[id=countyCode]').val();
+    		var address = $('#updateRouteFormId input[id=address]').val();
+    		//
+    		if(routeName == ''){
+    			_this._validateDialog('仓库名称不能为空');
+    			return false;
+    		}
+    		if(routeName.length > 45){
+    			_this._validateDialog('仓库名称的长度不能超过45个字符');
+    			return false;
+    		}
+    		if(provinceCode == ''){
+    			_this._validateDialog('请选择一级地区');
+    			return false;
+    		}
+    		if(cityCode == ''){
+    			_this._validateDialog('请选择二级地区');
+    			return false;
+    		}
+    		if(countyCode == ''){
+    			_this._validateDialog('请选择三级地区');
+    			return false;
+    		}
+    		if(address == ''){
+    			_this._validateDialog('请填写详细地址');
+    			return false;
+    		}
+    		if(address.length > 50){
+    			_this._validateDialog('详细地址不能超过50个字符');
+    			return false;
+    		}
+    		return true;
+    		
+    	},
     	_update:function(){
+    		var _this = this;
+    		//
+    		var flag = _this._addRouteFormValidate();
+    		if(flag == false){
+    			return;
+    		}
     		//
     		var data = $("#updateRouteFormId").serialize();
-    		var routeId = $('#updateRouteFormId :input[id=routeId]').val();
+    		var routeId = $('#updateRouteFormId input[id=routeId]').val();
     		//
     		var operMethod = '';
     		var msg = '';
@@ -90,8 +141,9 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 					data:"",
 					success: function(data){
 						if(data == 'true'){
+							$('#editModal').modal('hide');
 							alert(msg+'成功');
-							location.href=_base+"/jsp/route_manage/list.jsp";
+							_this._queryPageSearch();
 						}
 						
 					}

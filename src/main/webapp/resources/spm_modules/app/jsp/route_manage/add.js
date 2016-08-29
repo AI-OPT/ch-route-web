@@ -12,6 +12,7 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     
     require("opt-paging/aiopt.pagination");
     require("twbs-pagination/jquery.twbsPagination.min");
+    require("bootstrap/js/modal");
     var SendMessageUtil = require("app/util/sendMessage");
     
     //实例化AJAX控制处理对象
@@ -38,7 +39,58 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     		AddPager.superclass.setup.call(this);
     		this._getProvinceList();
     	},
+    	_validateDialog:function(msg){
+    		$('#validateModal').modal('show');
+    		$('#validateMsgId').html(msg);
+    	},
+    	_addRouteFormValidate:function(){
+    		var _this = this;
+    		//
+    		var routeName = $('#routeName').val();
+    		var provinceCode = $('#provinceCode').val();
+    		var cityCode = $('#cityCode').val();
+    		var countyCode = $('#countyCode').val();
+    		var address = $('#address').val();
+    		//
+    		if(routeName == ''){
+    			_this._validateDialog('仓库名称不能为空');
+    			return false;
+    		}
+    		if(routeName.length > 45){
+    			_this._validateDialog('仓库名称的长度不能超过45个字符');
+    			return false;
+    		}
+    		if(provinceCode == ''){
+    			_this._validateDialog('请选择一级地区');
+    			return false;
+    		}
+    		if(cityCode == ''){
+    			_this._validateDialog('请选择二级地区');
+    			return false;
+    		}
+    		if(countyCode == ''){
+    			_this._validateDialog('请选择三级地区');
+    			return false;
+    		}
+    		if(address == ''){
+    			_this._validateDialog('请填写详细地址');
+    			return false;
+    		}
+    		if(address.length > 50){
+    			_this._validateDialog('详细地址不能超过50个字符');
+    			return false;
+    		}
+    		return true;
+    		
+    	},
     	_addRoute:function(){
+    		var _this = this;
+    		//
+    		var flag = _this._addRouteFormValidate();
+    		if(flag == false){
+    			return;
+    		}
+    		//
     		var data = $("#addRouteForm").serialize();
     		//alert(data);
     		ajaxController.ajax({
