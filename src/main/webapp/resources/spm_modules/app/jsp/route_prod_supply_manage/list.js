@@ -86,15 +86,19 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 						if(data == 'true'){
 							alert('操作成功');
 							//location.href=_base+"/jsp/route_prod_supply_manage/list.jsp";
-							_this._queryPageSearch();
+							var currentPageNo = $('#currentPageNo').val();
+							_this._queryPageSearch(currentPageNo);
 						}
 						
 					}
 				}
 			);
     	},
-    	_queryPageSearch:function(){
+    	_queryPageSearch:function(currentPageNo){
     		var data = $("#queryForm").serialize();
+    		if(currentPageNo != undefined){
+    			data+=data+"&pageNo="+currentPageNo;
+    		}
     		//alert('queryParam：'+data);
     		//
     		$("#pagination").runnerPagination({
@@ -104,7 +108,7 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 				processing: true,
 				renderId:"table_info_id_pay_id",
 				messageId:"showMessageDiv",
-				data : {},
+				data:{},
 				pageSize: 10,
 				visiblePages:5,
 				message: "正在为您查询数据..",
@@ -114,6 +118,10 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 					var htmlOut = template.render(data);
 					//alert(data.result);
 					$("#table_info_id_pay_id").html(htmlOut);
+					
+				},
+				callback: function(data){
+					$('#currentPageNo').val(data.pageNo);
 					
 				}
 			});
