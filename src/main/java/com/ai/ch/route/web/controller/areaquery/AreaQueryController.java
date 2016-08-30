@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
-import com.ai.slp.common.api.area.interfaces.IGnAreaQuerySV;
-import com.ai.slp.common.api.area.param.GnAreaVo;
+import com.ai.platform.common.api.area.interfaces.IGnAreaQuerySV;
+import com.ai.platform.common.api.area.param.GnAreaVo;
 import com.alibaba.fastjson.JSON;
 
 @RequestMapping(value="/areaquery")

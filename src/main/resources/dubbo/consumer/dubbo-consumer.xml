@@ -45,11 +45,11 @@
 	
 	<!-- 地区查询 -->
 	<dubbo:reference id="iGnAreaQuerySV"
-		interface="com.ai.slp.common.api.area.interfaces.IGnAreaQuerySV" />
+		interface="com.ai.platform.common.api.area.interfaces.IGnAreaQuerySV" />
 	
 	<!-- 缓存
 	<dubbo:reference id="iCacheSV"
-		interface="com.ai.slp.common.api.cache.interfaces.ICacheSV" />
+		interface="com.ai.platform.common.api.cache.interfaces.ICacheSV" />
 	 -->
 	<!-- 商品类目
 	<dubbo:reference id="iProductCatSV"
@@ -57,7 +57,7 @@
 	 -->
 	<!-- 行业类型
 	<dubbo:reference id="iIndustrySV"
-		interface="com.ai.slp.common.api.industry.interfaces.IIndustrySV" />
+		interface="com.ai.platform.common.api.industry.interfaces.IIndustrySV" />
 	 -->
 	<!-- 路由管理 -->
 	<dubbo:reference id="routeManageSV"
