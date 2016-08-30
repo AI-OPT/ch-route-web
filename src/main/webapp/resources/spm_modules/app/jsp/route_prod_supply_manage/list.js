@@ -96,7 +96,8 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     	},
     	_queryPageSearch:function(currentPageNo){
     		var data = $("#queryForm").serialize();
-    		if(currentPageNo != undefined){
+    		
+    		if(currentPageNo != undefined && typeof currentPageNo != 'object'){
     			data+=data+"&pageNo="+currentPageNo;
     		}
     		//alert('queryParam：'+data);
