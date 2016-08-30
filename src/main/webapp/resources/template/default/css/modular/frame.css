@@ -133,7 +133,7 @@ th.visible-xxs, td.visible-xxs {
 }
 }
 #theme-wrapper {
-	box-shadow: 0 0 53px 0 rgba(0,0,0,0.55);
+	/*box-shadow: 0 0 53px 0 rgba(0,0,0,0.55);*/
 	max-width: 1920px;
 }
 #page-wrapper {
@@ -145,12 +145,12 @@ th.visible-xxs, td.visible-xxs {
 	width: 100%;
 }
 #content-wrapper {
-	background: #e7ebee;
-	height: 100%;
+	height:100%;
+	background: #f1f3f7;
 	margin-top: 0;
 	margin-bottom: 0;
 	position: relative;
-	min-height:1000px;
+	min-height:650px;
 	padding: 15px 15px 35px 15px;
 	margin-left: 220px;
 }
@@ -739,6 +739,7 @@ color:#344644;
 	position: absolute;
 	background: #2c3e50;
 	width: 220px;
+	height: 100%;
 }
 
 @media (max-width: 991px) {
@@ -975,6 +976,7 @@ color:#344644;
 	margin-right: -15px;
 	position: absolute;
 	width: 100%;
+	bottom:0;
 }
 
 @media (max-width: 767px) {
@@ -7022,7 +7024,7 @@ svg {
 #elem{width:65%;height:56px;overflow:hidden; float:left;}
 
 /**查询条件**/
-.form-label{width:100%;display:inline-block;padding:0px 0  10px 0px;}
+.form-label{width:100%;display:inline-block;padding:0px 0  0px 0px;}
 .form-label ul{width:100%;display:inline-block;margin-bottom:0;}
 .form-label ul li{height:auto;font-size:14px;float:left;line-height:30px;margin-top: 10px; }
 .form-label ul li p{float:left;margin-right:10px;position:relative;margin-bottom:0px;}
