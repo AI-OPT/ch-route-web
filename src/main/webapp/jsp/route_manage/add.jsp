@@ -115,13 +115,14 @@
 					</div>
 					<div class="modal-body">你是否确认保存信息？</div>
 					<div class="modal-footer">
-						<button type="button"
-							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-							data-dismiss="modal">关闭</button>
 						<button id="addRouteButtonId" type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
 							data-dismiss="modal">
 							确认</button>
+						<button type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">取消</button>
+						
 					</div>
 				</div>
 				<!-- /.modal-content -->

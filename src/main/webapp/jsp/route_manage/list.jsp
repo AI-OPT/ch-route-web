@@ -198,12 +198,13 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button"
-							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-							data-dismiss="modal">关闭</button>
 						<button onclick="pager._update();" type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-							>确认</button>
+							>保存</button>
+						<button type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">取消</button>
+						
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -231,13 +232,14 @@
 						您确定要暂停当前仓库吗？
 					</div>
 					<div class="modal-footer">
-						<button type="button"
-							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-							data-dismiss="modal">关闭</button>
 						<button onclick="pager._updateRouteState();" type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10" 
 							data-dismiss="modal">
 							确认</button>
+						<button type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">取消</button>
+						
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -265,13 +267,14 @@
 						您确定要废弃当前仓库吗？
 					</div>
 					<div class="modal-footer">
-						<button type="button"
-							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-							data-dismiss="modal">关闭</button>
 						<button onclick="pager._updateRouteState();" type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10" 
 							data-dismiss="modal">
 							确认</button>
+						<button type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">取消</button>
+						
 					</div>
 				</div>
 				<!-- /.modal-content -->

@@ -144,12 +144,13 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button"
-							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-							data-dismiss="modal">关闭</button>
 						<button onclick="javascript:alert('保存成功');" type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10">
 							确认</button>
+						<button type="button"
+							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+							data-dismiss="modal">取消</button>
+						
 					</div>
 				</div>
 				<!-- /.modal-content -->
