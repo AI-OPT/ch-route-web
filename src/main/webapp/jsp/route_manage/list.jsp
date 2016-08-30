@@ -326,7 +326,7 @@
 							{{/if}}
 							</td>											
 							<td>{{:routeId}}</td>
-							<td title="{{:routeName}}">{{:~subStr(5,routeName)}}</td>
+							<td title="{{:routeName}}">{{:~subStr(10,routeName)}}</td>
 							<td title="{{:provName}}|{{:cityName}}|{{:countyName}}|{{:address}}">{{:~subStr(10,provName+'|'+cityName+'|'+countyName+'|'+address)}}</td>
 							<td><a href="${_base}/jsp/route_prod_supply_manage/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">查看商品列表</a></td>
 							<td><a href="${_base}/jsp/route_sel_prod/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">选择商品</a></td>
