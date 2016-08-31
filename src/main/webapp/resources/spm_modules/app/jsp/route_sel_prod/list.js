@@ -131,7 +131,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     		var chkVal = $(obj).val();
     		//
     		if(obj.checked){
-	    		var inputHtml = "<input type='text' class='int-text int-medium' value='1'/>";
+	    		var inputHtml = "<input maxlength='8' type='text' class='int-text int-medium' value='1'/>";
 	    		$('#'+chkVal).html(inputHtml);
 	    		$('#'+chkVal).children(":first").bind('input propertychange', function() {
 	    			//alert($(this).val());
@@ -169,7 +169,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 		        	$(this).find('td').each(function () {
 		            	
 		            	if($(this).index() == 5){
-		            		var inputHtml = "<input type='text' class='int-text int-medium' value='1'/>";
+		            		var inputHtml = "<input maxlength='8' type='text' class='int-text int-medium' value='1'/>";
 		            		$(this).html(inputHtml);
 		            		//$('#productName').bind('input propertychange', function() {searchProductClassbyName();}); 
 		            		$(this).children(":first").bind('input propertychange', function() {
