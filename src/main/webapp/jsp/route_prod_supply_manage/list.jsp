@@ -165,7 +165,7 @@
 								<div class="panel-body">
 									<input id="updateUsableNumForm_supplyId" name="command.supplyId" type="hidden"/>
 									<input id="updateUsableNumForm_supplyName" name="command.supplyName" type="hidden"/>
-									<input id="updateUsableNumForm_usableNum" name="command.usableNum" class="int-text int-medium " type="text" />
+									<input id="updateUsableNumForm_usableNum" name="command.usableNum" maxlength="8" class="int-text int-medium " type="text" />
 								</div>
 							</div>
 							</form>
