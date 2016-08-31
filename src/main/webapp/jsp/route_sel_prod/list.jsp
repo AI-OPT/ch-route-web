@@ -38,6 +38,14 @@
 							<!--查询条件-->
 							<div class="form-label">
 								<form id="queryForm">
+									<ul>
+										<li class="col-md-6">
+											<a href="${_base}/jsp/route_manage/list.jsp"><input type="button"
+													class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+													value="返  回">
+											</a>
+										</li>
+									</ul>
 									<input type="hidden" name="command.tenantId" value="changhong">
 									<input type="hidden" name="command.routeId" value="${param.routeId }">
 									<input type="hidden" name="command.supplierId" value="-1">
