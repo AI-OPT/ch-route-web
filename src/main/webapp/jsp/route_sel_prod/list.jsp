@@ -41,7 +41,7 @@
 									<ul>
 										<li class="col-md-6">
 											<a href="${_base}/jsp/route_manage/list.jsp"><input type="button"
-													class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+													class="biu-btn  btn-primary btn-blue btn-medium ml-5"
 													value="返  回">
 											</a>
 										</li>
