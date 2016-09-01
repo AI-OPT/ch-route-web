@@ -8,8 +8,16 @@ public class ProductInfo {
 	private String disabled;
 	private String productId;
 	private String productName;
+	private String productCatId;
 	private List<AttrInfo> attrOne = new ArrayList<AttrInfo>();
 	private List<AttrInfo> attrTwo = new ArrayList<AttrInfo>();
+	public String getProductCatId() {
+		return productCatId;
+	}
+
+	public void setProductCatId(String productCatId) {
+		this.productCatId = productCatId;
+	}
 
 	public String getDisabled() {
 		return disabled;

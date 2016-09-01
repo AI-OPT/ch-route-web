@@ -179,7 +179,7 @@
 <script id="pageSearchTmpl" type="text/x-jsrender">
 					  	{{for}}
 							<tr {{if disabled == 'disabled'}} style="background:#f5f5f5;" {{/if}}>
-												<td><input type="checkbox" {{if disabled == 'disabled'}} disabled="disabled" {{/if}} id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="{{:productId}}"/></td>
+												<td title="{{:productCatId}}"><input type="checkbox" {{if disabled == 'disabled'}} disabled="disabled" {{/if}} id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="{{:productId}}"/></td>
 												<td>{{:productId}}</td>
 												<td>{{:productName}}</td>
 												<td>

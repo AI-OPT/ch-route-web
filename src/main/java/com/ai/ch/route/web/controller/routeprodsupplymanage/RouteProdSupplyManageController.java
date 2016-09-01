@@ -107,7 +107,7 @@ public class RouteProdSupplyManageController {
 
 		PageInfoResponse<NormProdAndKeyAttrRes> response = DubboConsumerFactory.getService(INormProductSV.class)
 				.queryNormProductAndKeyAttr(requestVo);
-
+		log.info("response:"+JSON.toJSONString(response));
 		PageInfo<ProductInfo> pageInfo = new PageInfo<ProductInfo>();
 		//
 		pageInfo.setCount(response.getCount());
@@ -119,6 +119,7 @@ public class RouteProdSupplyManageController {
 		//
 		ProductInfo productInfo = null;
 		for (NormProdAndKeyAttrRes normProdAndKeyAttrRes : response.getResult()) {
+			//
 			productInfo = new ProductInfo();
 			//
 			if(null != standedProdIdListResponse && !CollectionUtil.isEmpty(standedProdIdListResponse.getList())){
@@ -163,6 +164,7 @@ public class RouteProdSupplyManageController {
 			//
 			productInfo.setAttrOne(attrOne);
 			productInfo.setAttrTwo(attrTwo);
+			productInfo.setProductCatId(normProdAndKeyAttrRes.getProductCatId());
 			//
 			productInfoList.add(productInfo);
 		}

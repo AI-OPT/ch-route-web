@@ -62,6 +62,8 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 	            	//
 	            	if($(this).index() == 0){
 	            		var val = $(this).children(":first").val();
+	            		//alert($(this).attr("title"));
+	            		prodInfo.prodCatId = $(this).prop("title");
 	            		//alert('checkedbox val:'+val);
 	            		//prodInfo.chkId = val;
 	            	}
