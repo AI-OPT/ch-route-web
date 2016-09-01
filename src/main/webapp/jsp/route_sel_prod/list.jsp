@@ -178,7 +178,7 @@
 </body>
 <script id="pageSearchTmpl" type="text/x-jsrender">
 					  	{{for}}
-							<tr>
+							<tr {{if disabled == 'disabled'}} style="background:#AAAAAA;" {{/if}}>
 												<td><input type="checkbox" {{if disabled == 'disabled'}} disabled="disabled" {{/if}} id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="{{:productId}}"/></td>
 												<td>{{:productId}}</td>
 												<td>{{:productName}}</td>
