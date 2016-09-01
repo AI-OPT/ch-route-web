@@ -284,7 +284,20 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 				}
 			);
     	},
-    	_editState:function(tenantId,routeId,state){
+    	_editState:function(tenantId,routeId,state,oldState){
+    		//只有正常状态的仓库才能被暂停
+    		if(state == '5' && oldState != '2'){
+    			alert('只有当前状态为[正常]的仓库才能被暂停');
+    			return;
+    		}
+    		if(oldState == '2' && state == '5'){
+    			$('#stopSureModal').modal('show');
+    			$('#stateMsgId').html("<font color=red>暂停</font>");
+    		}
+    		if(oldState == '5' && state == '2'){
+    			$('#stopSureModal').modal('show');
+    			$('#stateMsgId').html("<font color=blue>启用</font>");
+    		}
     		$('#updateRouteStateForm_tenantId').val(tenantId);
     		$('#updateRouteStateForm_routeId').val(routeId);
     		$('#updateRouteStateForm_state').val(state);

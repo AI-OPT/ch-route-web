@@ -229,7 +229,7 @@
 							<input type="hidden" id="updateRouteStateForm_routeId" name="command.routeId" value=""/>
 							<input type="hidden" id="updateRouteStateForm_state" name="command.state" value=""/>
 						</form>
-						您确定要暂停当前仓库吗？
+						您确定要<span id="stateMsgId"></span>当前仓库吗？
 					</div>
 					<div class="modal-footer">
 						<button onclick="pager._updateRouteState();" type="button"
@@ -264,7 +264,9 @@
 							<input type="hidden" id="updateRouteStateForm_routeId" name="command.routeId" value=""/>
 							<input type="hidden" id="updateRouteStateForm_state" name="command.state" value=""/>
 						</form>
-						您确定要废弃当前仓库吗？
+						
+							您确定要废弃当前仓库吗？
+						
 					</div>
 					<div class="modal-footer">
 						<button onclick="pager._updateRouteState();" type="button"
@@ -319,10 +321,10 @@
 								新增
 							{{/if}}
 							{{if state == '2'}}
-								正常
+								<font color=blue>正常</font>
 							{{/if}}
 							{{if state == '5'}}
-								手动暂停
+								<font color=red>手动暂停</font>
 							{{/if}}
 							{{if state == '6'}}
 								已废弃
@@ -335,9 +337,13 @@
 							<td><a href="${_base}/jsp/route_sel_prod/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">选择商品</a></td>
 							<td><a href="#" data-toggle="modal"
 												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
-								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','5');" data-toggle="modal" data-target="#stopSureModal">暂停</a>
-								 
-								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','6');" data-toggle="modal" data-target="#freeSureModal">废弃</a></td>
+								{{if state != '5'}}
+								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','5','{{:state}}');"><font color=red>暂停</font></a>
+								{{/if}}
+								{{if state == '5'}}
+								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','2','{{:state}}');"><font color=blue>启用</font></a>
+								{{/if}} 
+								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','6','{{:state}}');" data-toggle="modal" data-target="#freeSureModal">废弃</a></td>
 						</tr>
 						{{/for}}
 					  </script>
