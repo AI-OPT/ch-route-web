@@ -126,6 +126,7 @@
 											<tr>
 												<th>序号</th>
 												<th>商品ID</th>
+												<th>供应品ID</th>
 												<th>商品名称</th>
 												<th>剩余供货量</th>
 												<th>累计供货量</th>
@@ -201,6 +202,7 @@
 					  	{{for}}
 						<tr>
 							<td>{{:index}}</td>
+							<td>{{:standedProdId}}</td>
 							<td>{{:supplyId}}</td>
 							<td>{{:supplyName}}</td>
 							<td>{{:usableNum}}</td>
