@@ -65,7 +65,8 @@
 									<li class="col-md-6">
 										<p class="word">商品ID:</p>
 										<p>
-											<input name="command.supplyId" class="int-text int-medium " type="text" />
+											<!-- <input name="command.supplyId" class="int-text int-medium " type="text" /> -->
+											<input name="command.standedProdId" class="int-text int-medium " type="text" />
 										</p>
 
 									</li>
