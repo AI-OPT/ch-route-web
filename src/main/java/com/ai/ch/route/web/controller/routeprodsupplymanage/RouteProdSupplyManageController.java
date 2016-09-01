@@ -35,6 +35,7 @@ import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearc
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchVo;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyRouteIdRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyUpdateUsableNumRequest;
+import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyUpdateUsableNumResponse;
 import com.ai.slp.route.api.routeprodsupplymanage.param.StandedProdIdListResponse;
 import com.ai.slp.route.api.routeprodsupplymanage.param.StandedProdIdVo;
 import com.alibaba.fastjson.JSON;
@@ -71,16 +72,16 @@ public class RouteProdSupplyManageController {
 		return responseData;
 	}
 
-	@RequestMapping(value = "/updateUsableNum", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	@RequestMapping(value = "/updateUsableNum", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String updateUsableNum(HttpServletRequest request) {
-		String flag = "true";
+	public RouteProdSupplyUpdateUsableNumResponse updateUsableNum(HttpServletRequest request) {
 		//
 		RouteProdSupplyUpdateUsableNumRequest requestVo = RequestParameterUtils.request2Bean(request,
 				RouteProdSupplyUpdateUsableNumRequest.class);
-		DubboConsumerFactory.getService(IRouteProdSupplyManageSV.class).updateUsableNum(requestVo);
+		RouteProdSupplyUpdateUsableNumResponse response = DubboConsumerFactory.getService(IRouteProdSupplyManageSV.class).updateUsableNum(requestVo);
 		//
-		return flag;
+		log.info("response:"+JSON.toJSONString(response));
+		return response;
 	}
 
 	@RequestMapping(value = "/queryNormProductAndKeyAttr", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

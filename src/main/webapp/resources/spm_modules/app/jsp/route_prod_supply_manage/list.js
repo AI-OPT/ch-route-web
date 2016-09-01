@@ -76,18 +76,21 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     		//
     		ajaxController.ajax({
 					type: "POST",
-					dataType: "text",
+					dataType: "json",
 					processing: true,
 					message: "请等待...",
 					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
 					url: _base+"/routeprodsupplymanage/updateUsableNum?"+data,
 					data:"",
 					success: function(data){
-						if(data == 'true'){
+						var responseHeader = data.responseHeader;
+						if(responseHeader.resultCode == '000000'){
 							alert('操作成功');
 							//location.href=_base+"/jsp/route_prod_supply_manage/list.jsp";
 							var currentPageNo = $('#currentPageNo').val();
 							_this._queryPageSearch(currentPageNo);
+						}else{
+							alert(responseHeader.resultMessage);
 						}
 						
 					}
