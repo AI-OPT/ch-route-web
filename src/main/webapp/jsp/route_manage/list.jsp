@@ -38,7 +38,7 @@
 								<form id="queryRouteForm">
 									<ul>
 										<li class="col-md-6">
-											<p class="word">仓库名称</p>
+											<p class="word">仓库名称：</p>
 											<p>
 												<input name="command.routeName" class="int-text int-medium "
 													type="text" />
