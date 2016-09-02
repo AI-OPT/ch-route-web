@@ -30,7 +30,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     	//事件代理
     	events: {
     		//查询
-            "click #queryRouteButtonId":"_queryPageSearch"
+            "click #queryButtonId":"_queryPageSearch"
         },
     	//重写父类
     	setup: function () {

@@ -52,14 +52,36 @@
 									<input type="hidden" name="command.productCatId" value="">
 									<ul>
 										<li class="col-md-6">
-											<p class="word">仓库ID</p>
+											<p class="word">仓库ID:</p>
 											<p>${param.routeId}</p>
 
 										</li>
 										<li class="col-md-6">
-											<p class="word">仓库名称</p>
+											<p class="word">仓库名称:</p>
 											<p>${param.routeName}</p>
 
+										</li>
+									</ul>
+									<ul>
+										<li class="col-md-6">
+											<p class="word">商品ID:</p>
+											<p>
+												<input name="command.standedProdId" class="int-text int-medium "
+													type="text" />
+											</p>
+
+										</li>
+										<li class="col-md-6">
+											<p class="word">商品名称:</p>
+											<p>
+												<input name="command.standedProductName" class="int-text int-medium "
+													type="text" />
+											</p>
+											<p>
+												<input id="queryButtonId" type="button"
+													class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+													value="搜  索">
+											</p>
 										</li>
 									</ul>
 								</form>
