@@ -165,7 +165,7 @@
 						<tr>
 							<td>{{:index}}</td>
 							<td>{{:supplyId}}</td>
-							<td>{{:supplyName}}</td>
+							<td title="{{:supplyName}}">{{:~subStr(10,supplyName)}}</td>
 							<td>{{:beforeUsableNum}}</td>
 							<td>{{:supplyNum}}</td>
 							<td>{{:operId}}</td>
