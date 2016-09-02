@@ -9,15 +9,15 @@
 <title>配货组列表</title>
 <%@include file="/inc/inc.jsp"%>
 <script type="text/javascript">
-	/* var pager;
+	var pager;
 	(function() {
-	seajs.use('app/jsp/route_sel_prod/list', function(ListPager) {
+	seajs.use('app/jsp/route_group/list', function(ListPager) {
 		pager = new ListPager({
 			element : document.body
 		});
 		pager.render();
 	});
-	})();  */
+	})();
 </script>
 </head>
 <body>
@@ -35,12 +35,14 @@
 							<!--白色背景-->
 							<!--查询条件-->
 							<div class="form-label">
-								<form id="queryRouteForm">
+								<form id="queryForm">
+									<input type="hidden" name="command.tenantId" value="changhong">
+									<input type="hidden" name="command.supplierId" value="-1">
 									<ul>
 										<li class="col-md-6">
 											<p class="word">商品名称</p>
 											<p>
-												<input name="command.routeName" class="int-text int-medium "
+												<input name="command.standedProdName" class="int-text int-medium "
 													type="text" />
 											</p>
 
@@ -48,18 +50,7 @@
 										<li class="col-md-6">
 											<p class="word">商品ID</p>
 											<p>
-												<input name="command.routeName" class="int-text int-medium "
-													type="text" />
-											</p>
-
-										</li>
-
-									</ul>
-									<ul>
-										<li class="col-md-6">
-											<p class="word">配货组名称</p>
-											<p>
-												<input name="command.routeName" class="int-text int-medium "
+												<input name="command.standedProdId" class="int-text int-medium "
 													type="text" />
 											</p>
 
@@ -67,17 +58,17 @@
 										<li class="col-md-6">
 											<p class="word">配货组ID</p>
 											<p>
-												<input name="command.routeName" class="int-text int-medium "
+												<input name="command.routeGroupId" class="int-text int-medium "
 													type="text" />
 											</p>
 											<p>
-												<input id="queryRouteButtonId" type="button"
+												<input id="queryButtonId" type="button"
 													class="biu-btn  btn-primary btn-blue btn-medium ml-10"
 													value="搜  索">
 											</p>
 										</li>
-
 									</ul>
+									
 								</form>
 							</div>
 							<!--查询结束-->
@@ -113,14 +104,13 @@
 												<th>商品ID</th>
 												<th>商品名称</th>
 												<th>配货组ID</th>
-												<th>配货组名称</th>
 												<th>操作</th>
 
 											</tr>
 
 										</thead>
 										<tbody id="table_info_id_pay_id">
-											<tr>
+											<!-- <tr>
 												<td>1</td>
 												<td>1</td>
 												<td>1</td>
@@ -179,7 +169,7 @@
 													<a>分配仓库配货</a>
 													<a>删除</a>
 												</td>
-											</tr>
+											</tr> -->
 											
 										</tbody>
 									</table>
@@ -190,7 +180,7 @@
 								<div class="paging">
 									<ul id="pagination">
 									</ul>
-									<ul class="pagination">
+									<!-- <ul class="pagination">
 										<li class="disabled"><a href="#"><i
 												class="fa fa-chevron-left"></i></a></li>
 										<li class="active"><a href="#">1</a></li>
@@ -199,7 +189,7 @@
 										<li><a href="#">4</a></li>
 										<li><a href="#">5</a></li>
 										<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-									</ul>
+									</ul> -->
 
 								</div>
 								<!--分页结束-->
@@ -213,6 +203,21 @@
 
 	</div>
 </body>
-
+<script id="pageSearchTmpl" type="text/x-jsrender">
+					  	
+						<tr>
+							<td>{{:#index+1}}</td>
+												<td>{{:standedProdId}}</td>
+												<td>{{:~subStr(10,standedProdName)}}</td>
+												<td>{{:routeGroupId}}</td>
+												
+												<td>
+													<a>查看</a>
+													<a>分配仓库配货</a>
+													<a>删除</a>
+												</td>
+						</tr>
+						
+					  </script>
 </html>
 

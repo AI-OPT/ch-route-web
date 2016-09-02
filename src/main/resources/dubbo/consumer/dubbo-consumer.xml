@@ -73,5 +73,7 @@
 	
 	<dubbo:reference id="normProductSV"
 		interface="com.ai.slp.product.api.normproduct.interfaces.INormProductSV" />
-	
+	<!-- com.ai.slp.product.api.product.interfaces.IProductServerSV#queryProductAndRouteGroup -->
+	<dubbo:reference id="productServerSV"
+		interface="com.ai.slp.product.api.product.interfaces.IProductServerSV" />
 </beans>
