@@ -182,6 +182,9 @@
 												<td title="{{:productCatId}}"><input type="checkbox" {{if disabled == 'disabled'}} disabled="disabled" {{/if}} id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="{{:productId}}"/></td>
 												<td>{{:productId}}</td>
 												<td title="{{:productName}}">{{:~subStr(10,productName)}}</td>
+												<td title="{{:attrOneStr}}">{{:~subStr(10,attrOneStr)}}</td>
+												<td title="{{:attrTwoStr}}">{{:~subStr(10,attrTwoStr)}}</td>
+												<!--
 												<td>
 												{{for attrOne}}
 													
@@ -196,6 +199,7 @@
 													
 													{{/for}}
 												</td>
+												-->
 												<td id="{{:productId}}">--</td>
 											</tr>
 						{{/for}}

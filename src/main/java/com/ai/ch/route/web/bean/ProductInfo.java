@@ -11,6 +11,24 @@ public class ProductInfo {
 	private String productCatId;
 	private List<AttrInfo> attrOne = new ArrayList<AttrInfo>();
 	private List<AttrInfo> attrTwo = new ArrayList<AttrInfo>();
+	private String attrOneStr;
+	private String attrTwoStr;
+	public String getAttrOneStr() {
+		return attrOneStr;
+	}
+
+	public void setAttrOneStr(String attrOneStr) {
+		this.attrOneStr = attrOneStr;
+	}
+
+	public String getAttrTwoStr() {
+		return attrTwoStr;
+	}
+
+	public void setAttrTwoStr(String attrTwoStr) {
+		this.attrTwoStr = attrTwoStr;
+	}
+
 	public String getProductCatId() {
 		return productCatId;
 	}

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -133,6 +134,7 @@ public class RouteProdSupplyManageController {
 			productInfo.setProductName(normProdAndKeyAttrRes.getProductName());
 			//
 			Map<Long, List<AttrValInfo>> hashMap = normProdAndKeyAttrRes.getKeyAttrMap();
+			
 			//
 			Iterator iter = hashMap.entrySet().iterator();
 			//
@@ -143,6 +145,11 @@ public class RouteProdSupplyManageController {
 			AttrInfo attrInfo = null;
 			while (iter.hasNext()) {
 				i++;
+				//
+				if(i >= 3){
+					break;
+				}
+				//
 				Map.Entry entry = (Map.Entry) iter.next();
 				// Object key = entry.getKey();
 				// Object val = entry.getValue();
@@ -159,9 +166,35 @@ public class RouteProdSupplyManageController {
 						attrTwo.add(attrInfo);
 					}
 				}
-
+				
 			}
 			//
+			String attrOneStr = null;
+			String attrTwoStr = null;
+			
+			if(attrOne.size() > 0){
+				String[] arr1 = new String[attrOne.size()];
+				int attrOneIndex = 0;
+				for(AttrInfo attrOneVo : attrOne){
+					attrOneIndex ++;
+					arr1[attrOneIndex - 1] = attrOneVo.getAttrValue();
+				}
+				//
+				attrOneStr = StringUtils.arrayToDelimitedString(arr1, "、");
+			}
+			if(attrTwo.size() > 0){
+				String[] arr2 = new String[attrTwo.size()];
+				int attrTwoIndex = 0;
+				for(AttrInfo attrTwoVo : attrTwo){
+					attrTwoIndex ++;
+					arr2[attrTwoIndex - 1] = attrTwoVo.getAttrValue();
+				}
+				//
+				attrTwoStr = StringUtils.arrayToDelimitedString(arr2, "、");
+			}
+			//
+			productInfo.setAttrOneStr(attrOneStr);
+			productInfo.setAttrTwoStr(attrTwoStr);
 			productInfo.setAttrOne(attrOne);
 			productInfo.setAttrTwo(attrTwo);
 			productInfo.setProductCatId(normProdAndKeyAttrRes.getProductCatId());
