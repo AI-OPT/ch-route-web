@@ -181,7 +181,7 @@
 							<tr {{if disabled == 'disabled'}} style="background:#f5f5f5;" {{/if}}>
 												<td title="{{:productCatId}}"><input type="checkbox" {{if disabled == 'disabled'}} disabled="disabled" {{/if}} id="chk" name="chk" onclick="pager._chkSelOnclick(this)" value="{{:productId}}"/></td>
 												<td>{{:productId}}</td>
-												<td>{{:productName}}</td>
+												<td title="{{:productName}}">{{:~subStr(10,productName)}}</td>
 												<td>
 												{{for attrOne}}
 													

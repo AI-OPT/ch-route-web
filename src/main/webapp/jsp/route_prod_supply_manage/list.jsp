@@ -205,7 +205,7 @@
 							<td>{{:index}}</td>
 							<td>{{:standedProdId}}</td>
 							<td>{{:supplyId}}</td>
-							<td>{{:supplyName}}</td>
+							<td title="{{:supplyName}}">{{:~subStr(10,supplyName)}}</td>
 							<td>{{:usableNum}}</td>
 							<td>{{:totalNum}}</td>
 							<td><a href="#" onclick="pager._openUpdateUsableNumForm('{{:supplyId}}','{{:supplyName}}');">增加仓储量</a></td>
