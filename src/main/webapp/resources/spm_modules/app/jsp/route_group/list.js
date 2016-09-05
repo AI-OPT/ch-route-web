@@ -48,7 +48,7 @@ define('app/jsp/route_group/list', function (require, exports, module) {
 				processing: true,
 				renderId:"table_info_id_pay_id",
 				messageId:"showMessageDiv",
-				data : {},
+				data : "",
 				pageSize: 10,
 				visiblePages:5,
 				message: "正在为您查询数据..",
@@ -61,6 +61,32 @@ define('app/jsp/route_group/list', function (require, exports, module) {
 					
 				}
 			});
+    	},
+    	_insertRouteGroup:function(tenantId,standedProdId,standedProdName,routeGroupId){
+    		//
+    		var data = "command.tenantId="+tenantId+"&command.standedProdName="+standedProdName+"&command.standedProdId="+standedProdId+"&command.routeGroupId="+routeGroupId;
+    		var _this = this;
+    		//
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/routeGroupManage/insertRouteGroup?"+data,
+					data:"",
+					success: function(data){
+						var responseHeader = data.responseHeader;
+						if(responseHeader.resultCode == '000000'){
+							alert('操作成功');
+							_this._queryPageSearch();
+						}else{
+							alert(responseHeader.resultMessage);
+						}
+						
+					}
+				}
+			);
     	}
       	
     	

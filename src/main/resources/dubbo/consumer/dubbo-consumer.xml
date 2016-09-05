@@ -76,4 +76,9 @@
 	<!-- com.ai.slp.product.api.product.interfaces.IProductServerSV#queryProductAndRouteGroup -->
 	<dubbo:reference id="productServerSV"
 		interface="com.ai.slp.product.api.product.interfaces.IProductServerSV" />
+		
+	<!-- 配货组服务 -->
+	<dubbo:reference id="routeGroupManageSV"
+		interface="com.ai.slp.route.api.routegroupmanage.interfaces.IRouteGroupManageSV" />
+		
 </beans>

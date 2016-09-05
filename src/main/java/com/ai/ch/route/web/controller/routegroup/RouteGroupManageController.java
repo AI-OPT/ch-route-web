@@ -18,6 +18,9 @@ import com.ai.opt.sdk.web.model.ResponseData;
 import com.ai.slp.product.api.product.interfaces.IProductServerSV;
 import com.ai.slp.product.api.product.param.ProductRouteGroupInfo;
 import com.ai.slp.product.api.product.param.RouteGroupQuery;
+import com.ai.slp.route.api.routegroupmanage.interfaces.IRouteGroupManageSV;
+import com.ai.slp.route.api.routegroupmanage.param.RouteGroupAddRequest;
+import com.ai.slp.route.api.routegroupmanage.param.RouteGroupAddResponse;
 import com.alibaba.fastjson.JSON;
 
 @RequestMapping(value="/routeGroupManage")
@@ -39,12 +42,29 @@ public class RouteGroupManageController {
 		//
 		PageInfoResponse<ProductRouteGroupInfo> response = DubboConsumerFactory.getService(IProductServerSV.class).queryProductAndRouteGroup(requestVo);
 		//
+		log.info("pageNo:"+requestVo.getPageNo());
+		log.info("pageSize:"+requestVo.getPageSize());
+		log.info("list size:"+response.getResult().size());
+		//
 		ResponseData<PageInfoResponse<ProductRouteGroupInfo>> responseData;
 		responseData = new ResponseData<PageInfoResponse<ProductRouteGroupInfo>>(ResponseData.AJAX_STATUS_SUCCESS,
 				"success", response);
 		log.info("responseData :" + JSON.toJSONString(response));
 		return responseData;
 
+	}
+	//
+	@RequestMapping(value="/insertRouteGroup",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public RouteGroupAddResponse insertRouteGroup(HttpServletRequest request){
+		RouteGroupAddRequest requestVo = RequestParameterUtils.request2Bean(request, RouteGroupAddRequest.class);
+		//
+		requestVo.setOperId(1l);
+		//
+		log.info("request:"+JSON.toJSONString(requestVo));
+		RouteGroupAddResponse response = DubboConsumerFactory.getService(IRouteGroupManageSV.class).insertRouteGroup(requestVo);
+		//
+		return response;
 	}
 
 }
