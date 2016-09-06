@@ -36,6 +36,7 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     	//重写父类
     	setup: function () {
     		ListPager.superclass.setup.call(this);
+    		this._queryProductCatList();
     		this._queryPageSearch();
     	},
     	_openUpdateUsableNumForm:function(supplyId,supplyName,usableNum){
@@ -98,6 +99,7 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 			);
     	},
     	_queryPageSearch:function(currentPageNo){
+    		$('#productCatId').val('');
     		var data = $("#queryForm").serialize();
     		
     		if(currentPageNo != undefined && typeof currentPageNo != 'object'){
@@ -138,6 +140,74 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     		}else{
     		   return false;
     		};
+    	},
+    	_queryProductCatList:function(){
+    		var data = $("#queryForm").serialize();
+    		//alert("_queryProductCatList data:"+data);
+    		//
+    		ajaxController.ajax({
+				type: "POST",
+				dataType: "json",
+				processing: true,
+				message: "请等待...",
+				contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+				url: _base+"/routeprodsupplymanage/queryProductCatList?"+data,
+				data:"",
+				success: function(data){
+						var responseHeader = data.responseHeader;
+						if(responseHeader.resultCode == '000000'){
+							//
+							var template = $.templates("#productCatListTmpl");
+							var htmlOut = template.render(data.voList);
+							$("#productCatListId").html(htmlOut);
+							//
+						}else{
+							alert(responseHeader.resultMessage);
+						}
+					
+					}
+				}
+    		);
+    	},
+    	_productCatFunc:function(obj){
+    		var _this = this;
+    		//
+    		$('#productCatId').val($(obj).prop("id"));
+    		//
+    		_this._queryPageSearchCat();
+    	},
+    	_queryPageSearchCat:function(currentPageNo){
+    		var data = $("#queryForm").serialize();
+    		
+    		if(currentPageNo != undefined && typeof currentPageNo != 'object'){
+    			data+=data+"&pageNo="+currentPageNo;
+    		}
+    		//alert('queryParam：'+data);
+    		//
+    		$("#pagination").runnerPagination({
+				url: _base+"/routeprodsupplymanage/queryPageSearch?"+data,
+				method: "POST",
+				dataType: "json",
+				processing: true,
+				renderId:"table_info_id_pay_id",
+				messageId:"showMessageDiv",
+				data:{},
+				pageSize: 10,
+				visiblePages:5,
+				message: "正在为您查询数据..",
+				render: function (data) {
+					
+					var template = $.templates("#pageSearchTmpl");
+					var htmlOut = template.render(data);
+					//alert(data.result);
+					$("#table_info_id_pay_id").html(htmlOut);
+					
+				},
+				callback: function(data){
+					$('#currentPageNo').val(data.pageNo);
+					
+				}
+			});
     	}
     	
       	

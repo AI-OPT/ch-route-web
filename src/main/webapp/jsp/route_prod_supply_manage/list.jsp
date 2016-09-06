@@ -49,6 +49,7 @@
 									<input type="hidden" id="currentPageNo" value="" />
 									<input type="hidden" name="command.tenantId" value="changhong" />
 									<input type="hidden" name="command.routeId" value="${param.routeId }" />
+									<input type="hidden" id="productCatId" name="command.productCatId" value="" />
 									<li class="col-md-6">
 										<p class="word">仓库ID:</p>
 										<p>${param.routeId }</p>
@@ -106,17 +107,21 @@
 							<div class="row">
 								<!--删格化-->
 								<p class="left ml-30">
-									<input type="button"
+									<!-- <input type="button"
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
 										value="类目1"> <input type="button"
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
 										value="类目2"> <input type="button"
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
-										value="类目3">
-
-									<!-- <input type="button"
-									class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
-									value="删  除"> -->
+										value="类目3"> -->
+								<div id="productCatListId"></div>
+					 <script id="productCatListTmpl" type="text/x-jsrender">
+					  	{{for}}
+							<input id="{{:productCatId}}" type="button"
+										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
+										value="{{:productCatName}}" onclick="pager._productCatFunc(this);">
+						{{/for}}
+					  </script>
 								</p>
 							</div>
 							<div class="main-box-body clearfix">

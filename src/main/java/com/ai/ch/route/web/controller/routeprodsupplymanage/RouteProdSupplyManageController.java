@@ -29,6 +29,7 @@ import com.ai.slp.product.api.normproduct.param.AttrValInfo;
 import com.ai.slp.product.api.normproduct.param.NormProdAndKeyAttrRes;
 import com.ai.slp.product.api.normproduct.param.NormProdRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.interfaces.IRouteProdSupplyManageSV;
+import com.ai.slp.route.api.routeprodsupplymanage.param.ProductCatIdListResponse;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyAddListRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyAddRequest;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyPageSearchRequest;
@@ -228,5 +229,14 @@ public class RouteProdSupplyManageController {
 		
 		return flag;
 	}
-
+	@RequestMapping(value = "/queryProductCatList", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public ProductCatIdListResponse queryProductCatList(HttpServletRequest request){
+		//
+		RouteProdSupplyRouteIdRequest requestVo = RequestParameterUtils.request2Bean(request, RouteProdSupplyRouteIdRequest.class);
+		//
+		ProductCatIdListResponse response = DubboConsumerFactory.getService(IRouteProdSupplyManageSV.class).queryProductCatList(requestVo);
+		
+		return response;
+	}
 }
