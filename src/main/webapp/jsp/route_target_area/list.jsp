@@ -36,7 +36,7 @@
 							<!--查询条件-->
 							<div class="form-label">
 								<form id="queryForm">
-									<input name="command.routeGroupId" type="hidden" value="12345"/>
+									<input name="command.routeGroupId" type="hidden" value="${param.routeGroupId }"/>
 									<ul>
 										<li class="col-md-6">
 											<p class="word">商品ID:</p>

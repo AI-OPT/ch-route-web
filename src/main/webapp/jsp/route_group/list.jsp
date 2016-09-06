@@ -207,13 +207,13 @@
 					  	
 						<tr>
 							<td>{{:#index+1}}</td>
-												<td>{{:standedProdId}} {{:productId}}</td>
-												<td>{{:~subStr(10,standedProdName)}}</td>
+												<td>{{:standedProdId}} <!--{{:productId}}--></td>
+												<td title="{{:standedProdName}}">{{:~subStr(10,standedProdName)}}</td>
 												<td>{{:routeGroupId}}</td>
 												
 												<td>
-													<a>查看</a>
-													<a onclick="pager._insertRouteGroup('changhong','{{:standedProdId}}','{{:standedProdName}}','{{:routeGroupId}}')">分配仓库配货</a>
+													<a href="${_base}/jsp/route_item/list.jsp?routeGroupId={{:routeGroupId}}">查看</a>
+													<a href="javascript:void(0);" onclick="pager._insertRouteGroup('changhong','{{:standedProdId}}','{{:standedProdName}}','{{:routeGroupId}}','{{:productId}}')">分配仓库配货</a>
 													<a>删除</a>
 												</td>
 						</tr>

@@ -62,9 +62,13 @@ define('app/jsp/route_group/list', function (require, exports, module) {
 				}
 			});
     	},
-    	_insertRouteGroup:function(tenantId,standedProdId,standedProdName,routeGroupId){
+    	_insertRouteGroup:function(tenantId,standedProdId,standedProdName,routeGroupId,productId){
     		//
-    		var data = "command.tenantId="+tenantId+"&command.standedProdName="+standedProdName+"&command.standedProdId="+standedProdId+"&command.routeGroupId="+routeGroupId;
+    		//alert('standedProdId:'+standedProdId+" length:"+standedProdId.length);
+    		var data = "command.tenantId="+tenantId+"&command.standedProdName="+standedProdName+"&command.standedProdId="+standedProdId+"&command.routeGroupId="+routeGroupId+"&command.productId="+productId;
+    		var dataJson = {"tenantId":tenantId,"standedProdName":standedProdName,"standedProdId":standedProdId,"routeGroupId":routeGroupId,"productId":productId};
+    		//alert(JSON.stringify(dataJson));
+    		//alert(data);
     		var _this = this;
     		//
     		ajaxController.ajax({
@@ -74,12 +78,13 @@ define('app/jsp/route_group/list', function (require, exports, module) {
 					message: "请等待...",
 					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
 					url: _base+"/routeGroupManage/insertRouteGroup?"+data,
-					data:"",
+					data:dataJson,
 					success: function(data){
 						var responseHeader = data.responseHeader;
 						if(responseHeader.resultCode == '000000'){
-							alert('操作成功');
-							_this._queryPageSearch();
+							/*alert('操作成功');
+							_this._queryPageSearch();*/
+							location.href= _base+"/jsp/route_target_area/list.jsp?routeGroupId="+data.routeGroupId;
 						}else{
 							alert(responseHeader.resultMessage);
 						}

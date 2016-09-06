@@ -42,7 +42,7 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
     		//alert('queryParam：'+data);
     		//
     		$("#pagination").runnerPagination({
-				url: _base+"/routeitemmanage/queryPageSearch?command.tenantId=CH&"+data,
+				url: _base+"/routeitemmanage/queryPageSearch?"+data,
 				method: "POST",
 				dataType: "json",
 				processing: true,

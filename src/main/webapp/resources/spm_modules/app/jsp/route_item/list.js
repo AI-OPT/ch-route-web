@@ -39,10 +39,10 @@ define('app/jsp/route_item/list', function (require, exports, module) {
     	},
     	_queryPageSearch:function(){
     		var data = $("#queryForm").serialize();
-    		alert('queryParam：'+data);
+    		//alert('queryParam：'+data);
     		//
     		$("#pagination").runnerPagination({
-				url: _base+"/routeitemmanage/queryPageSearch?command.tenantId=CH&"+data,
+				url: _base+"/routeitemmanage/queryPageSearch?"+data,
 				method: "POST",
 				dataType: "json",
 				processing: true,
