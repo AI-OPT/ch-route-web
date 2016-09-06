@@ -212,7 +212,7 @@
 												<td>{{:routeGroupId}}</td>
 												
 												<td>
-													<a href="${_base}/jsp/route_item/list.jsp?routeGroupId={{:routeGroupId}}">查看</a>
+													<a href="${_base}/jsp/route_item/list.jsp?routeGroupId={{:routeGroupId}}&standedProdId={{:standedProdId}}&standedProdName={{:standedProdName}}&routeGroupName={{:standedProdName}}-配货组">查看</a>
 													<a href="javascript:void(0);" onclick="pager._insertRouteGroup('changhong','{{:standedProdId}}','{{:standedProdName}}','{{:routeGroupId}}','{{:productId}}')">分配仓库配货</a>
 													<a>删除</a>
 												</td>

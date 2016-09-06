@@ -41,14 +41,14 @@
 										<li class="col-md-6">
 											<p class="word">配货组ID:</p>
 											<p>
-												11111
+												${param.routeGroupId }
 											</p>
 											
 										</li>
 										<li class="col-md-6">
 											<p class="word">配货组名称:</p>
 											<p>
-												北京第一配货组
+												${param.routeGroupName }
 											</p>
 
 										</li>
@@ -58,14 +58,14 @@
 										<li class="col-md-6">
 											<p class="word">关联商品ID:</p>
 											<p>
-												11111
+												${param.standedProdId }
 											</p>
 											
 										</li>
 										<li class="col-md-6">
 											<p class="word">商品名称:</p>
 											<p>
-												手机
+												${param.standedProdName }
 											</p>
 
 										</li>

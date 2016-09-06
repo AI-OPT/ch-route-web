@@ -40,12 +40,12 @@
 									<ul>
 										<li class="col-md-6">
 											<p class="word">商品ID:</p>
-											<p>11111</p>
+											<p>${param.standedProdId }</p>
 
 										</li>
 										<li class="col-md-6">
 											<p class="word">商品名称:</p>
-											<p>手机</p>
+											<p>${param.standedProdName }</p>
 
 										</li>
 
