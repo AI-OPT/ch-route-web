@@ -37,6 +37,14 @@
 							<div class="form-label">
 								<form id="queryForm">
 									<input name="command.routeGroupId" type="hidden" value="${param.routeGroupId }"/>
+									
+									<!-- 查询销售商品可配货区域所用参数 -->
+									<input name="command.tenantId" type="hidden" value="changhong"/>
+									<input name="command.supplierId" type="hidden" value="-1"/>
+									<input name="command.productId" type="hidden" value="${param.productId }"/>
+									
+									<!-- 传递routeItemId -->
+									<input name="routeItemId" type="hidden" value=""/>
 									<ul>
 										<li class="col-md-6">
 											<p class="word">商品ID:</p>
@@ -126,43 +134,17 @@
 					<div class="modal-body" style="min-height: 220px;">
 						<div class="form-label">
 							<div class="panel panel-info">
-								<div class="panel-heading">
+								<!-- <div class="panel-heading">
 									<h3 class="panel-title">选择区域</h3>
-								</div>
+								</div> -->
 								<div class="panel-body">
-									<form id="updateRouteFormId">
-										<ul>
-											<li class="col-md-12">
-												<p>
-													<input type="checkbox" />北京
-												</p>
-											</li>
-											<li class="col-md-12">
-												<p>
-													<input type="checkbox" />北京
-												</p>
-												<p>
-													<input type="checkbox" />北京
-												</p>
-												<p>
-													<input type="checkbox" />北京
-												</p>
-												<p>
-													<input type="checkbox" />北京
-												</p>
-											</li>
-											<li class="col-md-12">
-												<p>
-													<input type="checkbox" />北京
-												</p>
-											</li>
-											<li class="col-md-12">
-												<p>
-													<input type="checkbox" />北京
-												</p>
-											</li>
+									<form id="targetAreaForm">
+											<input type="hidden" name="tenantId" value="" />
+											<input type="hidden" name="routeItemId" value="" />
 											
-										</ul>
+											<table id="targetAreaId" class="table table-hover table-border table-bordered">
+											</table>
+											
 									</form>
 								</div>
 							</div>
@@ -170,9 +152,9 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button onclick="pager._update();" type="button"
+						<button type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-							data-dismiss="modal">确认</button>
+							data-dismiss="modal" onclick="pager._addTargetAreaToList();">确认</button>
 						<button type="button"
 							class="biu-btn  btn-primary btn-blue btn-medium ml-10"
 							data-dismiss="modal">取消</button>
@@ -194,10 +176,9 @@
 									</p>
 									<p>{{:routeName}}</p>
 									<p> {{for area}}
-											{{:provinceName}} [<a onclick="#">删除</a>]  
+											{{:provinceName}} [<a href="javascript:void(0);" onclick="javascript:alert('{{:routeAreaId}}');">删除</a>]  
 										{{/for}}
-										<a href="#" data-toggle="modal"
-												data-target="#editModal">编辑</a></p>
+										<a href="#" onclick="pager._editTargetArea('changhong','{{:routeItemId}}');">编辑</a></p>
 								</li>
 
 							</ul>

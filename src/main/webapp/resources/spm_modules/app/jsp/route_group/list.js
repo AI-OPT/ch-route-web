@@ -84,7 +84,7 @@ define('app/jsp/route_group/list', function (require, exports, module) {
 						if(responseHeader.resultCode == '000000'){
 							/*alert('操作成功');
 							_this._queryPageSearch();*/
-							location.href= _base+"/jsp/route_target_area/list.jsp?routeGroupId="+data.routeGroupId+"&standedProdId="+standedProdId+"&standedProdName="+standedProdName;
+							location.href= _base+"/jsp/route_target_area/list.jsp?routeGroupId="+data.routeGroupId+"&standedProdId="+standedProdId+"&standedProdName="+standedProdName+"&productId="+productId;
 						}else{
 							alert(responseHeader.resultMessage);
 						}

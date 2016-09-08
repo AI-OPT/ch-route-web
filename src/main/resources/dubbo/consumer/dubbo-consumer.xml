@@ -80,5 +80,10 @@
 	<!-- 配货组服务 -->
 	<dubbo:reference id="routeGroupManageSV"
 		interface="com.ai.slp.route.api.routegroupmanage.interfaces.IRouteGroupManageSV" />
-		
+	<!-- 根据销售商品id查询商品的销售地域  -->
+	<dubbo:reference id="productSV"
+		interface="com.ai.slp.product.api.product.interfaces.IProductSV" />
+	<!-- 配货仓库销售地域 -->
+	<dubbo:reference id="routeTargetAreaSV"
+		interface="com.ai.slp.route.api.routetargetarea.interfaces.IRouteTargetAreaSV" />		
 </beans>

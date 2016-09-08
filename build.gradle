@@ -100,6 +100,9 @@ dependencies {
 	compile 'com.ai.slp.product:product:1.1.0-SNAPSHOT'
 	//设置配货组
 	compile 'com.ai.slp.route:routegroupmanage:1.0-SNAPSHOT'
+	//设置配货区域
+	compile 'com.ai.slp.route:routetargetarea:1.0-SNAPSHOT'
+	
 	
     testCompile(
             "org.springframework:spring-test:4.1.7.RELEASE",

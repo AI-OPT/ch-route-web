@@ -12,6 +12,8 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
     
     require("opt-paging/aiopt.pagination");
     require("twbs-pagination/jquery.twbsPagination.min");
+    require("bootstrap/js/modal");
+    
     var SendMessageUtil = require("app/util/sendMessage");
     
     //实例化AJAX控制处理对象
@@ -61,6 +63,81 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
 					
 				}
 			});
+    	},
+    	_queryAreaInfosOfProduct:function(){
+    		var data = $("#queryForm").serialize();
+    		//alert(data);
+    		//
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/routetargetarea/queryAreaInfosOfProduct?"+data,
+					data:"",
+					success: function(data){
+						//alert(JSON.stringify(data));
+						var htmlOut = "";
+						for(var i=0;i<data.length;i++){
+							//alert(data.result[i].areaName);
+							if(i % 5 == 0){
+									htmlOut += "<tr>";
+							}
+							var checkedAttr = '';
+							if(data[i].checked == 'checked'){
+								checkedAttr = "checked = checked";
+							}
+							htmlOut+='<td style="text-align:left;"><div style="padding-left:10px;"><input type="checkbox" '+checkedAttr+' name="provCodes" value="'+data[i].areaCode+'" />'+data[i].areaName+'</div></td>'
+							/*if(i%4 == 0 && i > 0){
+								htmlOut += "</tr>";
+							}*/
+						}
+						
+//						var template = $.templates("#targetAreaTmpl");
+//						var htmlOut = template.render(data.result);
+						
+						$("#targetAreaId").html(htmlOut);
+						//alert($('#targetAreaId').html());
+					}
+				}
+			);
+    	},
+    	_editTargetArea:function(tenantId,routeItemId){
+    		var _this = this;
+    		//
+    		$('#targetAreaForm input[name=tenantId]').val(tenantId);
+    		$('#targetAreaForm input[name=routeItemId]').val(routeItemId);
+    		//
+    		$('#queryForm input[name=routeItemId]').val(routeItemId);
+    		
+    		$('#editModal').modal('show');
+    		//
+    		_this._queryAreaInfosOfProduct();
+    	},
+    	_addTargetAreaToList:function(){
+    		var _this = this;
+    		var data = $("#targetAreaForm").serialize();
+    		//alert(data);
+    		//
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/routetargetarea/addTargetAreaToList?"+data,
+					data:"",
+					success: function(data){
+						if(data.responseHeader.resultCode == '000000'){
+							alert('分配区域成功');
+							_this._queryPageSearch();
+						}else{
+							alert('分配区域失败');
+						}
+					}
+				}
+			);
     	}
       	
       	
