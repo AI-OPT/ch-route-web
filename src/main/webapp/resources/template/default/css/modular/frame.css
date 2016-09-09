@@ -7024,7 +7024,7 @@ svg {
 #elem{width:65%;height:56px;overflow:hidden; float:left;}
 
 /**查询条件**/
-.form-label{width:100%;display:inline-block;padding:0px 0  0px 0px;}
+.form-label{width:100%;display:inline-block;padding:0px 0  10px 0px;}
 .form-label ul{width:100%;display:inline-block;margin-bottom:0;}
 .form-label ul li{height:auto;font-size:14px;float:left;line-height:30px;margin-top: 10px; }
 .form-label ul li p{float:left;margin-right:10px;position:relative;margin-bottom:0px;}
@@ -7053,7 +7053,7 @@ svg {
 .form-label ul li .choice{ padding:0 2px; border:1px solid #e4e4e4; height:30px; float:left;}
 .form-label ul li .choice a{ color:#999; float:left;}
 .form-label ul li .choice .close1{ margin-left:10px; font-size:12px; line-height:30px;color:#999;}
-
+.form-label ul .wide-field{width:60%;}
 
 
 /**tree**/
