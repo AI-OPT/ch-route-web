@@ -29,6 +29,8 @@ import com.ai.slp.route.api.routetargetarea.interfaces.IRouteTargetAreaSV;
 import com.ai.slp.route.api.routetargetarea.param.AreaAddListRequest;
 import com.ai.slp.route.api.routetargetarea.param.AreaAddListResponse;
 import com.ai.slp.route.api.routetargetarea.param.AreaAddVo;
+import com.ai.slp.route.api.routetargetarea.param.AreaDeleteByRouteAreaIdRequest;
+import com.ai.slp.route.api.routetargetarea.param.AreaDeleteByRouteAreaIdResponse;
 import com.ai.slp.route.api.routetargetarea.param.AreaDeleteByRouteItemIdRequest;
 import com.ai.slp.route.api.routetargetarea.param.AreaQueryByRouteItemIdListRequest;
 import com.ai.slp.route.api.routetargetarea.param.AreaQueryByRouteItemIdRequest;
@@ -235,5 +237,15 @@ public class RouteTargetAreaController {
 		//
 		DubboConsumerFactory.getService(IRouteTargetAreaSV.class).deleteByRouteItemId(request);
 		//
+	}
+	@RequestMapping(value="/deleteAreaByRouteAreaId",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public AreaDeleteByRouteAreaIdResponse deleteAreaByRouteAreaId(HttpServletRequest request){
+		AreaDeleteByRouteAreaIdRequest requestVo = RequestParameterUtils.request2Bean(request, AreaDeleteByRouteAreaIdRequest.class);
+		//
+		AreaDeleteByRouteAreaIdResponse response = DubboConsumerFactory.getService(IRouteTargetAreaSV.class).deleteByRouteAreaId(requestVo);
+		//
+		log.info("response:"+JSON.toJSONString(response));
+		return response;
 	}
 }

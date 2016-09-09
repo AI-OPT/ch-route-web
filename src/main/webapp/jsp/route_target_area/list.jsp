@@ -176,7 +176,7 @@
 									</p>
 									<p>{{:routeName}}</p>
 									<p> {{for area}}
-											{{:provinceName}} [<a href="javascript:void(0);" onclick="javascript:alert('{{:routeAreaId}}');">删除</a>]  
+											{{:provinceName}} [<a href="javascript:void(0);" onclick="pager._deleteAreaByRouteAreaId('changhong','{{:routeAreaId}}');">删除</a>]  
 										{{/for}}
 										<a href="#" onclick="pager._editTargetArea('changhong','{{:routeItemId}}');">编辑</a></p>
 								</li>
