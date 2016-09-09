@@ -61,6 +61,29 @@ define('app/jsp/route_item/list', function (require, exports, module) {
 					
 				}
 			});
+    	},
+    	_deleteByRouteItemId:function(routeItemId){
+    		var _this = this;
+    		//
+    		var data = "&command.routeItemId="+routeItemId;
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/routeitemmanage/deleteByRouteItemId?"+data,
+					data:"",
+					success: function(data){
+						if(data.responseHeader.resultCode == '000000'){
+							alert('删除成功');
+							_this._queryPageSearch();
+						}else{
+							alert('删除失败');
+						}
+					}
+				}
+			);
     	}
       	
       	

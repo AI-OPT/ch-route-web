@@ -155,7 +155,7 @@
 									{{/for}}
 								</td>
 								<td>
-									<a>删除</a>
+									<a href="javascript:void(0);" onclick="pager._deleteByRouteItemId('{{:routeItemId}}')">删除</a>
 								</td>
 							</tr>
 						{{/for}}

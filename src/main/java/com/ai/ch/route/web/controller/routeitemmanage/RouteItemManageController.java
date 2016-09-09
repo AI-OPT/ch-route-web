@@ -15,6 +15,8 @@ import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
 import com.ai.opt.sdk.web.model.ResponseData;
 import com.ai.slp.route.api.routeitemmanage.interfaces.IRouteItemManageSV;
 import com.ai.slp.route.api.routeitemmanage.param.RouteGroupIdRequest;
+import com.ai.slp.route.api.routeitemmanage.param.RouteItemDeleteByRouteItemIdRequest;
+import com.ai.slp.route.api.routeitemmanage.param.RouteItemDeleteByRouteItemIdResponse;
 import com.ai.slp.route.api.routeitemmanage.param.RouteItemPageSearchResponse;
 import com.ai.slp.route.api.routeitemmanage.param.RouteItemResponse;
 import com.ai.slp.route.api.routemanage.param.RoutePageSearchVo;
@@ -52,5 +54,14 @@ public class RouteItemManageController {
 		log.info(" ResponseData json:" + JSON.toJSONString(responseData));
 		//
 		return responseData;
+	}
+	@RequestMapping(value = "/deleteByRouteItemId", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public RouteItemDeleteByRouteItemIdResponse deleteByRouteItemId(HttpServletRequest request) {
+		RouteItemDeleteByRouteItemIdRequest requestVo = RequestParameterUtils.request2Bean(request, RouteItemDeleteByRouteItemIdRequest.class);
+		
+		RouteItemDeleteByRouteItemIdResponse response = DubboConsumerFactory.getService(IRouteItemManageSV.class).deleteByRouteItemId(requestVo);
+		//
+		return response;
 	}
 }
