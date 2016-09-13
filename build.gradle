@@ -90,7 +90,7 @@ dependencies {
     compile 'com.ai.platform.common:servicenum:1.0.1-SNAPSHOT'
     compile 'com.ai.slp.product:webfront:1.1-SNAPSHOT'
     //路由管理
-    compile 'com.ai.slp.route:routemanage:1.0.1-SNAPSHOT'
+    compile 'com.ai.slp.route:routemanage:1.0.2-SNAPSHOT'
 	compile 'com.ai.slp.route:routeprodsupplymanage:1.0-SNAPSHOT'
 	compile 'com.ai.slp.route:routesupplyaddslog:1.0.1-SNAPSHOT'
 	compile 'com.ai.slp.route:routeitemmanage:1.0.1-SNAPSHOT'
