@@ -146,11 +146,7 @@
 					</div>
 					<div class="modal-body" style="min-height: 220px;">
 						<div class="form-label">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									<h3 class="panel-title">仓库信息</h3>
-								</div>
-								<div class="panel-body">
+							
 									<form id="updateRouteFormId">
 										<ul>
 											<li class="col-md-12"><input type="hidden" id="tenantId"
@@ -192,8 +188,7 @@
 											</li>
 										</ul>
 									</form>
-								</div>
-							</div>
+								
 
 						</div>
 					</div>

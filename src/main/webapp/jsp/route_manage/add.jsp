@@ -36,17 +36,7 @@
 							<!--查询条件-->
 							<div class="form-label">
 								<form id="addRouteForm">
-								<div class="panel panel-primary">
-									<div class="panel-heading">
-										<h3 class="panel-title">仓库管理>>新建仓库</h3>
-									</div>
-									<div class="panel-body">
-										<div class="panel panel-info">
-											<div class="panel-heading">
-												<h3 class="panel-title">仓库信息</h3>
-											</div>
-											<div class="panel-body">
-												<ul>
+								<ul>
 													<li class="col-md-12">
 														<input type="hidden" name="command.tenantId" value="changhong" />
 														<p class="word">仓库名称</p>
@@ -76,12 +66,7 @@
 														</p>
 													</li>
 												</ul>
-											</div>
-										</div>
-
-
-										<div style="margin: 0 auto; width: 200px; margin-top: -35px;">
-											<ul>
+								<ul>
 												<li class="width-xlag">
 													<p class="word">&nbsp;</p>
 													<p>
@@ -91,9 +76,7 @@
 													</p>
 												</li>
 											</ul>
-										</div>
-									</div>
-								</div>
+								
 								</form>
 							</div>
 							<!--查询结束-->
