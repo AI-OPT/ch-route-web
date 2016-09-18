@@ -38,14 +38,14 @@
 							<!--查询条件-->
 							<div class="form-label">
 								<form id="queryForm">
-									<ul>
+									<%-- <ul>
 										<li class="col-md-6">
 											<a href="${_base}/jsp/route_manage/list.jsp"><input type="button"
 													class="biu-btn  btn-primary btn-blue btn-medium ml-5"
 													value="返  回">
 											</a>
 										</li>
-									</ul>
+									</ul> --%>
 									<input type="hidden" name="command.tenantId" value="changhong">
 									<input type="hidden" name="command.routeId" value="${param.routeId }">
 									<input type="hidden" name="command.supplierId" value="-1">
@@ -108,15 +108,7 @@
 								<h2 class="pull-left"></h2>
 							</header>
 							<!--标题结束-->
-							<div class="row">
-								<!--删格化-->
-								<p class="left ml-30">
-									<input type="button"
-										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
-										value="确  认" onclick="pager._addRouteProdSupplyList();">
-									
-								</p>
-							</div>
+							
 							<div class="main-box-body clearfix">
 								<!--table表格-->
 								<div class="table-responsive clearfix">
@@ -188,6 +180,20 @@
  -->
 								</div>
 								<!--分页结束-->
+								
+								<div class="row">
+									<!--删格化-->
+									<p  class="center">
+										<input type="button"
+											class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
+											value="确  认" onclick="pager._addRouteProdSupplyList();">
+										<input type="button" onclick="javascript:location.href='${_base}/jsp/route_manage/list.jsp'"
+													class="biu-btn  btn-primary btn-blue btn-auto ml-5"
+													value="返  回">
+										
+									</p>
+								</div>
+							
 							</div>
 						</div>
 					</div>

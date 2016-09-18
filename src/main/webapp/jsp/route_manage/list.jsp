@@ -71,12 +71,12 @@
 							<!--白色背景-->
 							<!--标题-->
 							<header class="main-box-header clearfix">
-								<h2 class="pull-left">查询结果</h2>
-							</header>
+                            	<h5 class="pull-left">查询结果</h5>
+                            </header>
 							<!--标题结束-->
 							<div class="row">
 								<!--删格化-->
-								<p class="left ml-30">
+								<p class="right pr-30">
 									<input type="button" data-toggle="modal"
 										data-target="#editModal"
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"

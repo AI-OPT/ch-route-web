@@ -36,15 +36,7 @@
 							<!--查询条件-->
 							<div class="form-label">
 								<form id="queryForm">
-								<ul>
-									
-									<li class="col-md-6">
-										<a href="${_base}/jsp/route_manage/list.jsp"><input type="button"
-												class="biu-btn  btn-primary btn-blue btn-medium ml-5"
-												value="返  回">
-										</a>
-									</li>
-								</ul>
+								
 								<ul>
 									<input type="hidden" id="currentPageNo" value="" />
 									<input type="hidden" name="command.tenantId" value="changhong" />
@@ -153,11 +145,18 @@
 									</ul>
 								</div>
 								<!--分页结束-->
+								<p class="center">
+									<a href="${_base}/jsp/route_manage/list.jsp"><input type="button"
+												class="biu-btn  btn-primary btn-blue btn-auto ml-5"
+												value="返  回">
+									</a>
+		                        </p>
 							</div>
 						</div>
 					</div>
 				</div>
-
+				
+				
 			</div>
 		</div>
 

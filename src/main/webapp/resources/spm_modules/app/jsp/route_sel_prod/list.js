@@ -207,7 +207,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 				visiblePages:5,
 				message: "正在为您查询数据..",
 				render: function (data) {
-					
+					$('#chkSel').prop('checked',false);
 					var template = $.templates("#pageSearchTmpl");
 					var htmlOut = template.render(data);
 					//alert(data.result);

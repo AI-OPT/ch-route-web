@@ -112,6 +112,12 @@
 									</ul>
 								</div>
 								<!--分页结束-->
+								<p class="center">
+									<input type="button" onclick="javascript:window.history.go(-1);"
+												class="biu-btn  btn-primary btn-blue btn-auto ml-5"
+												value="返  回">
+									
+		                        </p>
 							</div>
 						</div>
 					</div>
