@@ -52,9 +52,12 @@
 <link rel="stylesheet" type="text/css" href="${uedroot}/css/modular/global.css"/>
 <link rel="stylesheet" type="text/css" href="${uedroot}/css/modular/validate.css"/>
 <link rel="stylesheet" type="text/css" href="${uedroot}/css/ztree/zTreeStyle.css"/>
+<link rel="stylesheet" type="text/css" href="${_base}/resources/spm_modules/optDialog/css/ui-dialog.css"/>
+
 <script src="${uedroot}/scripts/plugin/jquery-1.9.1.js"></script>
 <script src="${uedroot}/scripts/plugin/bootstrap.js"></script>
 <script src="${uedroot}/scripts/modular/p-skin-changer.js"></script>  
 <script src="${uedroot}/scripts/plugin/jquery.nanoscroller.min.js"></script>
 <script src="${uedroot}/scripts/modular/skin.js"></script>  
+
 
