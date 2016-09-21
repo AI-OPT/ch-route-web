@@ -159,7 +159,8 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 							//
 							var template = $.templates("#productCatListTmpl");
 							var htmlOut = template.render(data.voList);
-							$("#productCatListId").html(htmlOut);
+							var optionHtml = '<option value="">--请选择--</option>';
+							$("#productCatListId").html(optionHtml+htmlOut);
 							//
 						}else{
 							alert(responseHeader.resultMessage);

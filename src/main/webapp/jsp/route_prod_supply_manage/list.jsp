@@ -41,7 +41,7 @@
 									<input type="hidden" id="currentPageNo" value="" />
 									<input type="hidden" name="command.tenantId" value="changhong" />
 									<input type="hidden" name="command.routeId" value="${param.routeId }" />
-									<input type="hidden" id="productCatId" name="command.productCatId" value="" />
+									<!-- <input type="hidden" id="productCatId" name="command.productCatId" value="" /> -->
 									<li class="col-md-6">
 										<p class="word">仓库ID:</p>
 										<p>${param.routeId }</p>
@@ -67,6 +67,17 @@
 										<p class="word">商品名称:</p>
 										<p>
 											<input name="command.supplyName" class="int-text int-medium " type="text" />
+										</p>
+										
+									</li>
+								</ul>
+								<ul>
+									<li class="col-md-6">
+										<p class="word">商品类目:</p>
+										<p>
+											<select class="int-text int-medium " id="productCatListId" name="command.productCatId">
+												
+											</select>
 										</p>
 										<p>
 											<input id="queryButtonId" type="button"
@@ -106,12 +117,10 @@
 										value="类目2"> <input type="button"
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
 										value="类目3"> -->
-								<div id="productCatListId"></div>
+								<!-- <div id="productCatListId"></div> -->
 					 <script id="productCatListTmpl" type="text/x-jsrender">
 					  	{{for}}
-							<input id="{{:productCatId}}" type="button"
-										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
-										value="{{:productCatName}}" onclick="pager._productCatFunc(this);">
+							<option value="{{:productCatId}}">{{:productCatName}}</option>
 						{{/for}}
 					  </script>
 								</p>
