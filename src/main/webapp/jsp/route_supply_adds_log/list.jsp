@@ -77,8 +77,8 @@
 						<div class="main-box clearfix">
 							<!--白色背景-->
 							<header class="main-box-header clearfix">
-								<h2 class="pull-left">查询结果</h2>
-							</header>
+                            	<h5 class="pull-left">查询结果</h5>
+                            </header>
 							<!--标题结束-->
 							<div class="row">
 								
