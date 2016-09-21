@@ -316,10 +316,10 @@
 								新增
 							{{/if}}
 							{{if state == '2'}}
-								<font color=blue>正常</font>
+								正常
 							{{/if}}
 							{{if state == '5'}}
-								<font color=red>手动暂停</font>
+								手动暂停
 							{{/if}}
 							{{if state == '6'}}
 								已废弃
@@ -333,10 +333,10 @@
 							<td><a href="#" data-toggle="modal"
 												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
 								{{if state != '5'}}
-								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','5','{{:state}}');"><font color=red>暂停</font></a>
+								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','5','{{:state}}');">暂停</a>
 								{{/if}}
 								{{if state == '5'}}
-								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','2','{{:state}}');"><font color=blue>启用</font></a>
+								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','2','{{:state}}');">启用</a>
 								{{/if}} 
 								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','6','{{:state}}');" data-toggle="modal" data-target="#freeSureModal">废弃</a></td>
 						</tr>
