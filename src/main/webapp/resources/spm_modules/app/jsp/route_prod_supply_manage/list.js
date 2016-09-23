@@ -128,12 +128,31 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 					success: function(data){
 						var responseHeader = data.responseHeader;
 						if(responseHeader.resultCode == '000000'){
-							alert('操作成功');
+							//alert('操作成功');
+							var d = Dialog({
+								content:"操作成功",
+								icon:'success',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
+							
 							//location.href=_base+"/jsp/route_prod_supply_manage/list.jsp";
 							var currentPageNo = $('#currentPageNo').val();
 							_this._queryPageSearch(currentPageNo);
 						}else{
-							alert(responseHeader.resultMessage);
+							//alert(responseHeader.resultMessage);
+							var d = Dialog({
+								content:responseHeader.resultMessage,
+								icon:'fail',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
 						}
 						
 					}
@@ -205,7 +224,16 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
 							$("#productCatListId").html(optionHtml+htmlOut);
 							//
 						}else{
-							alert(responseHeader.resultMessage);
+							//alert(responseHeader.resultMessage);
+							var d = Dialog({
+								content:responseHeader.resultMessage,
+								icon:'fail',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
 						}
 					
 					}

@@ -2,7 +2,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     'use strict';
     var $=require('jquery'),
     Widget = require('arale-widget/1.2.0/widget'),
-    Dialog = require("artDialog/src/dialog"),
+    Dialog = require("optDialog/src/dialog"),
     Paging = require('paging/0.0.1/paging-debug'),
     AjaxController = require('opt-ajax/1.0.0/index');
     require("jsviews/jsrender.min");
@@ -142,7 +142,16 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 					success: function(data){
 						if(data == 'true'){
 							$('#editModal').modal('hide');
-							alert(msg+'成功');
+							//alert(msg+'成功');
+							var d = Dialog({
+								content:msg+"成功",
+								icon:'success',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
 							_this._queryPageSearch();
 						}
 						
@@ -287,7 +296,17 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	_editState:function(tenantId,routeId,state,oldState){
     		//只有正常状态的仓库才能被暂停
     		if(state == '5' && oldState != '2'){
-    			alert('只有当前状态为[正常]的仓库才能被暂停');
+    			//alert('只有当前状态为[正常]的仓库才能被暂停');
+    			var d = Dialog({
+					content:"只有当前状态为[正常]的仓库才能被暂停",
+					icon:'fail',
+					okValue: '确 定',
+					ok:function(){
+						this.close();
+					}
+				});
+				d.show();
+				//
     			return;
     		}
     		if(oldState == '2' && state == '5'){
@@ -315,7 +334,17 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 				url: _base+"/routemanage/updateRouteState?"+data,
 				data:"",
 				success: function(data){
-					alert("操作成功");
+					//alert("操作成功");
+					var d = Dialog({
+						content:"操作成功",
+						icon:'success',
+						okValue: '确 定',
+						ok:function(){
+							this.close();
+						}
+					});
+					d.show();
+					//
 					location.href=_base+"/jsp/route_manage/list.jsp";
 				}
 			}

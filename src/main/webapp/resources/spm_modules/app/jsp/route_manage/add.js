@@ -103,7 +103,16 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
 					data:"",
 					success: function(data){
 						if(data == 'true'){
-							alert('保存成功');
+							//alert('保存成功');
+							var d = Dialog({
+								content:"保存成功",
+								icon:'success',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
 						}
 						
 					}

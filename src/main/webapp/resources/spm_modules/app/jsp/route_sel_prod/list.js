@@ -2,7 +2,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     'use strict';
     var $=require('jquery'),
     Widget = require('arale-widget/1.2.0/widget'),
-    Dialog = require("artDialog/src/dialog"),
+    Dialog = require("optDialog/src/dialog"),
     Paging = require('paging/0.0.1/paging-debug'),
     AjaxController = require('opt-ajax/1.0.0/index');
     require("jsviews/jsrender.min");
@@ -142,7 +142,16 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 	    			//
 	    			if(flag == false){
 	    				$(this).val("1");
-	    				alert('请输入正整数,如果您输入其他字符，默认为1');
+	    				//alert('请输入正整数,如果您输入其他字符，默认为1');
+	    				var d = Dialog({
+							content:'请输入正整数,如果您输入其他字符，默认为1',
+							icon:'warning',
+							okValue: '确 定',
+							ok:function(){
+								this.close();
+							}
+						});
+						d.show();
 	    			}
 	    		});
     		}else{
@@ -181,7 +190,16 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 		            			//
 		            			if(flag == false){
 		            				$(this).val("1");
-		            				alert('请输入正整数,如果您输入其他字符，默认为1');
+		            				//alert('请输入正整数,如果您输入其他字符，默认为1');
+		            				var d = Dialog({
+		    							content:'请输入正整数,如果您输入其他字符，默认为1',
+		    							icon:'warning',
+		    							okValue: '确 定',
+		    							ok:function(){
+		    								this.close();
+		    							}
+		    						});
+		    						d.show();
 		            			}
 		            		});
 		            	}
@@ -222,7 +240,17 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     		//
     		prodArray = _this._getTableObj();
     		if(prodArray.length == 0){
-    			alert('请选择要添加的数据');
+    			//alert('请选择要添加的数据');
+    			var d = Dialog({
+					content:'请选择要添加的数据',
+					icon:'warning',
+					okValue: '确 定',
+					ok:function(){
+						this.close();
+					}
+				});
+				d.show();
+				//
     			return;
     		}
     		//
@@ -239,7 +267,17 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 				success: function(data){
 					
 					if(data == 'true'){
-						alert('操作成功');
+						//alert('操作成功');
+						var d = Dialog({
+							content:'操作成功',
+							icon:'success',
+							okValue: '确 定',
+							ok:function(){
+								this.close();
+							}
+						});
+						d.show();
+						//
 						_this._queryPageSearch();
 					}
 				}

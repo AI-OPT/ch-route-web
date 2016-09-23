@@ -2,7 +2,7 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
     'use strict';
     var $=require('jquery'),
     Widget = require('arale-widget/1.2.0/widget'),
-    Dialog = require("artDialog/src/dialog"),
+    Dialog = require("optDialog/src/dialog"),
     Paging = require('paging/0.0.1/paging-debug'),
     AjaxController = require('opt-ajax/1.0.0/index');
     require("jsviews/jsrender.min");
@@ -130,10 +130,29 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
 					data:"",
 					success: function(data){
 						if(data.responseHeader.resultCode == '000000'){
-							alert('分配区域成功');
+							//alert('分配区域成功');
+							var d = Dialog({
+								content:'分配区域成功',
+								icon:'success',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
+							//
 							_this._queryPageSearch();
 						}else{
-							alert('分配区域失败');
+							//alert('分配区域失败');
+							var d = Dialog({
+								content:'分配区域失败',
+								icon:'fail',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
 						}
 					}
 				}
@@ -153,10 +172,29 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
 					data:"",
 					success: function(data){
 						if(data.responseHeader.resultCode == '000000'){
-							alert('删除区域成功');
+							//alert('删除区域成功');
+							var d = Dialog({
+								content:'删除区域成功',
+								icon:'success',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
+							//
 							_this._queryPageSearch();
 						}else{
-							alert('删除区域失败');
+							//alert('删除区域失败');
+							var d = Dialog({
+								content:'删除区域失败',
+								icon:'fail',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
 						}
 					}
 				}
