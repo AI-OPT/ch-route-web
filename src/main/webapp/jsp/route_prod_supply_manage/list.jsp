@@ -182,16 +182,16 @@
 					<div class="modal-body" style="min-height: 120px;">
 						<div class="form-label">
 							<form id="updateUsableNumForm">
-							<div class="panel panel-info">
-								<div class="panel-heading">
+							<!-- <div class="panel panel-info"> -->
+								<!-- <div class="panel-heading">
 									<h3 class="panel-title">仓储量</h3>
-								</div>
+								</div> -->
 								<div class="panel-body">
 									<input id="updateUsableNumForm_supplyId" name="command.supplyId" type="hidden"/>
 									<input id="updateUsableNumForm_supplyName" name="command.supplyName" type="hidden"/>
-									<input id="updateUsableNumForm_usableNum" name="command.usableNum" maxlength="8" class="int-text int-medium " type="text" />
+									<input id="updateUsableNumForm_usableNum" name="command.usableNum" required maxlength="8" class="int-text int-medium " type="text" />
 								</div>
-							</div>
+							<!-- </div> -->
 							</form>
 						</div>
 					</div>

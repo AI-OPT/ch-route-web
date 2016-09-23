@@ -13,6 +13,10 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     require("opt-paging/aiopt.pagination");
     require("twbs-pagination/jquery.twbsPagination.min");
     require("bootstrap/js/modal");
+    
+	require("jquery-validation/1.15.1/jquery.validate");
+	require("app/util/aiopt-validate-ext");
+	
     var SendMessageUtil = require("app/util/sendMessage");
     
     //实例化AJAX控制处理对象
@@ -39,41 +43,79 @@ define('app/jsp/route_prod_supply_manage/list', function (require, exports, modu
     		this._queryProductCatList();
     		this._queryPageSearch();
     	},
+    	//增加仓储量form校验
+    	_updateUsableNumFormValidate:function(){
+    		//
+    		var updateUsableNumFormValidator=$("#updateUsableNumForm").validate({
+    			rules: {
+    				"command.usableNum": {
+    					required: true,
+    					digits:true,
+    					min:1,
+    					max:99999999
+    				}
+    			},
+    			messages: {
+    				"command.usableNum": {
+    					required: "请输入仓储量",
+    					digits: "只能输入数字",
+    					min:"最小值为{0}",
+    					max:"最大值为{0}"
+    				}
+    			}
+    		});
+    		
+    		return updateUsableNumFormValidator;
+    	},
     	_openUpdateUsableNumForm:function(supplyId,supplyName,usableNum){
+    		$("#updateUsableNumForm")[0].reset();
     		var _this = this;
+    		
+    		var formValidator=_this._updateUsableNumFormValidate();
+			$(":input").bind("focusout",function(){
+				formValidator.element(this);
+			});
+			
     		//
     		$('#updateUsableNumForm_supplyId').val(supplyId);
     		$('#updateUsableNumForm_supplyName').val(supplyName);
     		$('#updateUsableNumForm_usableNum').val('');
     		//
     		$('#amountModal').modal('show');
-    		$('#updateUsableNumForm_usableNum').bind('input propertychange', function() {
-    			//alert($(this).val());
-    			var flag = _this._numberValidate($(this).val());
-    			//alert(flag);
-    			//
-    			if(flag == false){
-    				$(this).val("1");
-    				alert('请输入正整数,如果您输入其他字符，默认为1');
-    			}
-    		});
+//    		$('#updateUsableNumForm_usableNum').bind('input propertychange', function() {
+//    			//alert($(this).val());
+//    			var flag = _this._numberValidate($(this).val());
+//    			//alert(flag);
+//    			//
+//    			if(flag == false){
+//    				$(this).val("1");
+//    				alert('请输入正整数,如果您输入其他字符，默认为1');
+//    			}
+//    		});
     	},
     	_updateUsableNum:function(){
-    		$('#amountModal').modal('hide');
+    		//$('#amountModal').modal('hide');
     		var _this = this;
     		var data = $("#updateUsableNumForm").serialize();
-    		var usableNum = $('#updateUsableNumForm_usableNum').val();
-    		if(usableNum == ''){
-    			alert("请输入仓储量");
-    			return;
-    		}
-    		//
-    		var flag = _this._numberValidate(usableNum);
-    		if(flag == false){
-    			$('#updateUsableNumForm_usableNum').val("1");
-				alert('请输入正整数,如果您输入其他字符，默认为1');
+//    		var usableNum = $('#updateUsableNumForm_usableNum').val();
+//    		if(usableNum == ''){
+//    			alert("请输入仓储量");
+//    			return;
+//    		}
+    		var formValidator=_this._updateUsableNumFormValidate();
+			formValidator.form();
+			if(!$("#updateUsableNumForm").valid()){
+				
 				return;
-    		}
+			}
+			$('#amountModal').modal('hide');//关闭窗口
+    		//
+//    		var flag = _this._numberValidate(usableNum);
+//    		if(flag == false){
+//    			$('#updateUsableNumForm_usableNum').val("1");
+//				alert('请输入正整数,如果您输入其他字符，默认为1');
+//				return;
+//    		}
     		//
     		ajaxController.ajax({
 					type: "POST",
