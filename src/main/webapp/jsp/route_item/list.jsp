@@ -134,6 +134,15 @@
 
 								</div>
 								<!--分页结束-->
+								<div class="row">
+									<!--删格化-->
+									<p  class="center">
+										<input type="button" onclick="javascript:location.href='${_base}/jsp/route_group/list.jsp'"
+													class="biu-btn  btn-primary btn-blue btn-auto ml-5"
+													value="返  回">
+										
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
