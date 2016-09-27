@@ -30,6 +30,7 @@ public class MapBeanUtils {
 					}
 				}
 			} catch (Exception e) {
+				throw new BusinessException("","bean2map 转换异常");
 			}
 		}
 		return result;
@@ -97,11 +98,14 @@ public class MapBeanUtils {
             bean = beanClass.newInstance();  
             BeanUtils.populate(bean, map);  
         } catch (InstantiationException e) {  
-            //e.printStackTrace();  
+            //e.printStackTrace(); 
+        	throw new BusinessException("",e.getMessage());
         } catch (IllegalAccessException e) {  
             //e.printStackTrace();  
+        	throw new BusinessException("",e.getMessage());
         } catch (InvocationTargetException e) {  
-            //e.printStackTrace();  
+            //e.printStackTrace();
+        	throw new BusinessException("",e.getMessage());
         }  
         return bean;  
     }  
