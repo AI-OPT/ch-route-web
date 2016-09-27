@@ -56,23 +56,23 @@ public class MapBeanUtils {
 					Method getter=javabean.getClass().getMethod(getterName);
 					String methodType=getter.getReturnType().getName();
 					Object[] cache = new Object[1];
-					if(methodType.equalsIgnoreCase("long")) {
+					if("long".equalsIgnoreCase(methodType)) {
 						cache[0] = new Long(value);
-					} else if(methodType.equalsIgnoreCase("int")||methodType.equalsIgnoreCase("java.lang.Integer")) {
+					} else if("int".equalsIgnoreCase(methodType)|| "java.lang.Integer".equalsIgnoreCase(methodType)) {
 						cache[0] = new Integer(value);
-					} else if(methodType.equalsIgnoreCase("short")) {
+					} else if("short".equalsIgnoreCase(methodType)) {
 						cache[0] = new Short(value);
-					} else if(methodType.equalsIgnoreCase("float")) {
+					} else if("float".equalsIgnoreCase(methodType)) {
 						cache[0] = new Float(value);
-					} else if(methodType.equalsIgnoreCase("double")) {
+					} else if("double".equalsIgnoreCase(methodType)) {
 						cache[0] = new Double(value);
-					} else if(methodType.equalsIgnoreCase("boolean")) {
+					} else if("boolean".equalsIgnoreCase(methodType)) {
 						cache[0] = new Boolean(value);
-					} else if(methodType.equalsIgnoreCase("java.lang.String")) {
+					} else if("java.lang.String".equalsIgnoreCase(methodType)) {
 						cache[0] = value;
-					} else if(methodType.equalsIgnoreCase("java.io.InputStream")) {
+					} else if("java.io.InputStream".equalsIgnoreCase(methodType)) {
 						
-					} else if(methodType.equalsIgnoreCase("char")) {
+					} else if("char".equalsIgnoreCase(methodType)) {
 						cache[0] = (Character.valueOf(value.charAt(0)));
 					}
 					method.invoke(javabean, cache);
