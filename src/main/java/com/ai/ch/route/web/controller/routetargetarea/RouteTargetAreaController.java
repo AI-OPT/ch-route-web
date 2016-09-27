@@ -142,7 +142,7 @@ public class RouteTargetAreaController {
 		if(!CollectionUtil.isEmpty(prodTargetAreaInfoList)){
 			for(int i=0;i< prodTargetAreaInfoList.size();i++){
 				boolean flag = this.routeItemIdInTargetArea(prodTargetAreaInfoList.get(i).getAreaCode(), areaQueryByRouteItemIdResponse);
-				if(flag == true){
+				if(flag){
 					response.getResult().remove(i);
 				}
 			}
@@ -165,7 +165,7 @@ public class RouteTargetAreaController {
 			targetAreaInfo.setAreaCode(response.getResult().get(i).getAreaCode());
 			targetAreaInfo.setAreaName(response.getResult().get(i).getAreaName());
 			boolean flag = this.routeItemIdInTargetArea(response.getResult().get(i).getAreaCode(), areaQueryByRouteItemIdResponseSigle);
-			if(flag == true){
+			if(flag){
 				targetAreaInfo.setChecked("checked");
 			}
 			//
