@@ -94,11 +94,11 @@ public class MapBeanUtils {
             bean = beanClass.newInstance();  
             BeanUtils.populate(bean, map);  
         } catch (InstantiationException e) {  
-            e.printStackTrace();  
+            //e.printStackTrace();  
         } catch (IllegalAccessException e) {  
-            e.printStackTrace();  
+            //e.printStackTrace();  
         } catch (InvocationTargetException e) {  
-            e.printStackTrace();  
+            //e.printStackTrace();  
         }  
         return bean;  
     }  
