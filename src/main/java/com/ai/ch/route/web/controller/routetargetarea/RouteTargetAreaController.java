@@ -124,9 +124,14 @@ public class RouteTargetAreaController {
 		areaQueryByRouteItemIdListRequest.setTenantId(tenantId);
 		//
 		List<String> routeItemIdStrList = new ArrayList<String>();
-		for(RouteItemVo routeItemVo : routeItemListResponse.getVoList()){
-			routeItemIdStrList.add(routeItemVo.getRouteItemId());
+		//
+		List<RouteItemVo> routeItemVoList = routeItemListResponse.getVoList();
+		if(!CollectionUtil.isEmpty(routeItemVoList)){
+			for(RouteItemVo routeItemVo : routeItemVoList){
+				routeItemIdStrList.add(routeItemVo.getRouteItemId());
+			}
 		}
+		
 		//
 		areaQueryByRouteItemIdListRequest.setRouteItemIdList(routeItemIdStrList);
 		//
