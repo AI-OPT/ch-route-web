@@ -10,6 +10,8 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.ai.opt.base.exception.BusinessException;
+
 public class MapBeanUtils {
 	public static Logger log = LogManager.getLogger(MapBeanUtils.class);
 			
@@ -78,6 +80,7 @@ public class MapBeanUtils {
 					method.invoke(javabean, cache);
 				}
 			} catch (Exception e) {
+				throw new BusinessException("","map2bean 转换异常");
 			}
 		}
 	}
