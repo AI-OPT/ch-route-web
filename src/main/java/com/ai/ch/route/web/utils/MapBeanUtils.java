@@ -99,13 +99,13 @@ public class MapBeanUtils {
             BeanUtils.populate(bean, map);  
         } catch (InstantiationException e) {  
             //e.printStackTrace(); 
-        	throw new BusinessException("",e.getMessage());
+        	log.log(log.getLevel(), e);
         } catch (IllegalAccessException e) {  
             //e.printStackTrace();  
-        	throw new BusinessException("",e.getMessage());
+        	log.log(log.getLevel(), e);
         } catch (InvocationTargetException e) {  
             //e.printStackTrace();
-        	throw new BusinessException("",e.getMessage());
+        	log.log(log.getLevel(), e);
         }  
         return bean;  
     }  
