@@ -180,9 +180,9 @@
 					  	{{for}}
 							<ul>
 								<li class="col-md-20">
-									<!--<p class="word">
-										<input type="radio"  />
-									</p>-->
+									<p class="word">
+									<!--	<input type="radio"  />-->
+									</p>
 									<p>{{:routeName}}</p>
 									<p> {{for area}}
 											{{:provinceName}} [<a href="javascript:void(0);" onclick="pager._deleteAreaByRouteAreaId('changhong','{{:routeAreaId}}');">删除</a>]  
