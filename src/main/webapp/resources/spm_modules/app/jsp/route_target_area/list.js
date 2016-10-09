@@ -103,6 +103,38 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
 				}
 			);
     	},
+    	_queryAreaInfosOfProductMeg:function(){
+    		var data = $("#queryForm").serialize();
+    		//
+    		ajaxController.ajax({
+					type: "POST",
+					dataType: "json",
+					processing: true,
+					message: "请等待...",
+					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
+					url: _base+"/routetargetarea/queryAreaInfosOfProduct?"+data,
+					data:"",
+					success: function(data){
+						if(data.length == 0){
+							var d = Dialog({
+								content:'可销售地域未配置或者已经配置完毕，请配置相关地域信息',
+								icon:'fail',
+								okValue: '确 定',
+								ok:function(){
+									this.close();
+								}
+							});
+							d.show();
+							//
+						}
+						if(data.length > 0 ){
+
+				    		$('#editModal').modal('show');
+						}
+					}
+				}
+			);
+    	},
     	_editTargetArea:function(tenantId,routeItemId){
     		var _this = this;
     		//
@@ -111,7 +143,8 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
     		//
     		$('#queryForm input[name=routeItemId]').val(routeItemId);
     		
-    		$('#editModal').modal('show');
+    		_this._queryAreaInfosOfProductMeg();
+    		
     		//
     		_this._queryAreaInfosOfProduct();
     	},
