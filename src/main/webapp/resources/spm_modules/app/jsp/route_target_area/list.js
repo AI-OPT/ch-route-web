@@ -117,7 +117,7 @@ define('app/jsp/route_target_area/list', function (require, exports, module) {
 					success: function(data){
 						if(data.length == 0){
 							var d = Dialog({
-								content:'可销售地域未配置或者已经配置完毕，请配置相关地域信息',
+								content:'可销售地域未配置或者已经全部分配给其它仓库，请配置相关地域信息',
 								icon:'fail',
 								okValue: '确 定',
 								ok:function(){
