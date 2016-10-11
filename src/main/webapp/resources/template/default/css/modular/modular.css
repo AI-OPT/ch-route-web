@@ -116,13 +116,13 @@
 .relation-table-div ul li  p{float:left;margin-right:10px}
 
 /**选项卡**/
-.order-list-table{ width:100%;display:inline-block;border-bottom:1px solid #e4e4e4;padding-bottom:px;margin-top:25px;}
+.order-list-table{ width:100%;display:inline-block;padding-bottom:10px;border-bottom:1px solid #e4e4e4;padding-bottom:px;margin-top:25px;}
 .order-list-table ul{ width:100%; float:left;}
 .order-list-table ul li{ float:left;border-right:1px solid #ccc;padding:0 10px 0 10px;}
 .order-list-table ul li a{ font-size:14px; color:#333;padding:0 10px 0 10px;}
 .order-list-table ul li a:hover,.order-list-table ul p a:hover{ color:#1598f5;}
 .order-list-table ul li .current{color:#1598f5;border-bottom:2px solid #1598f5;padding-bottom:11px;}
-.order-list-table ul li .current a{ }
+.order-list-table ul li .current a{}
 
 /**table td三行样式**/
 .table  tr .new-td{ border:none;border-bottom: 1px solid #ddd;height:40px;margin:0;padding: 0;}
@@ -262,4 +262,17 @@
 .workbench ul .c-img5 a{width:113px;height:113px;float:left;border: 1px solid #00a0e9;border-radius:50%;background-image:url(../../images/work-icon5.png);background-repeat: no-repeat;background-position: center;}
 .workbench ul .c-img5 a:hover{background-color:#00a0e9;background-image:url(../../images/work-icon5a.png);background-repeat: no-repeat;}
 
-
+/**多订单td高度**/
+.table tr td .table tr .td-height-40{height:40px;}
+.table tr td .table tr .td-height-80{height:80px;}
+.table tr td .table tr .td-height-120{height:120px;}
+.table tr td .table tr .td-height-160{height:120px;}
+.table tr td .table tr .td-height-200{height:200px;}
+.table tr td .table tr .td-height-240{height:240px;}
+.table tr td .table tr .td-height-280{height:280px;}
+.table tr td .table tr .td-height-320{height:320px;}
+.table tr td .table tr .td-height-360{height:360px;}
+.table tr td .table tr .td-height-400{height:400px;}
+.table tr td .table tr .td-height-440{height:440px;}
+.table tr td .table tr .td-height-480{height:480px;}
+.table tr td .table tr .td-height-520{height:520px;}
