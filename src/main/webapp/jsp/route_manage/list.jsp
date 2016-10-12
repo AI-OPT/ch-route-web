@@ -137,7 +137,7 @@
 		<!-- 模态框（Modal） 开始 -->
 		<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
 			aria-labelledby="editModalLabel" aria-hidden="true">
-			<div class="modal-dialog" style="width: 900px;">
+			<div class="modal-dialog" style="width: 600px;">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
@@ -168,11 +168,23 @@
 														onchange="pager._getCityListByProviceCode(this.value)"
 														class="int-text int-medium ">
 														<option value="">--请选择--</option>
-													</select> <select id="cityCode" name="command.cityCode"
+													</select> 
+												</p>
+											</li>
+											<li class="col-md-12">
+												<p class="word">&nbsp;</p>
+												<p>
+													<select id="cityCode" name="command.cityCode"
 														onchange="pager._getCountyListByCityCode(this.value)"
 														class="int-text int-medium ">
 														<option value="">--请选择--</option>
-													</select> <select id="countyCode" name="command.countyCode"
+													</select>
+												</p>
+											</li>
+											<li class="col-md-12">
+												<p class="word">&nbsp;</p>
+												<p>
+													<select id="countyCode" name="command.countyCode"
 														class="int-text int-medium ">
 														<option value="">--请选择--</option>
 													</select>

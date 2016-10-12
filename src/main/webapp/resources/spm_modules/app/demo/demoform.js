@@ -39,6 +39,9 @@ define('app/demo/demoform', function (require, exports, module) {
 			$(":input").bind("focusout",function(){
 				formValidator.element(this);
 			});
+			$(":select").bind("focusout",function(){
+				formValidator.element(this);
+			});
     	},
     	_initValidate:function(){
     		
@@ -48,7 +51,8 @@ define('app/demo/demoform', function (require, exports, module) {
     				productCatName: {
     					required:true,
     					maxlength:10,
-    					minlength:3
+    					minlength:3,
+    					commonText:true
     					},
     				firstLetter: {
     					required:true,
@@ -88,6 +92,9 @@ define('app/demo/demoform', function (require, exports, module) {
     				idno:{
     					required: true,
     					idcard: true
+    				},
+    				selOne:{
+    					required: true
     				}
     			},
     			messages: {
@@ -99,7 +106,8 @@ define('app/demo/demoform', function (require, exports, module) {
     				firstLetter: {
     					required:"请输入类目名称首字母",
     					maxWords:"单词格式超了",
-    					minlength:"最小长度为{0}"
+    					minlength:"最小长度为{0}",
+    					regexp: "日期格式不对111"
     						
     				}
     				,
@@ -127,6 +135,9 @@ define('app/demo/demoform', function (require, exports, module) {
     				},
     				idno:{
     					required: "请输入身份证号码"
+    				},
+    				selOne:{
+    					required: "ssssss"
     				}
     			}
     		});

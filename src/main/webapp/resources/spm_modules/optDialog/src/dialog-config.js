@@ -19,7 +19,7 @@ define({
     backdropOpacity: 0.7,
 
     // 消息内容
-    content: '<span class="ui-dialog-loading">Loading..</span>',
+    content: '',
     
     // 标题
     title: '',
@@ -29,6 +29,9 @@ define({
     
     // 图标
     icon: '',
+    
+    //右上角关闭图标是否显示标识
+    closeIconShow: false,
     
     // 自定义按钮
     button: null,
@@ -69,20 +72,42 @@ define({
     // 模板（使用 table 解决 IE7 宽度自适应的 BUG）
     // js 使用 i="***" 属性识别结构，其余的均可自定义
     innerHTML:
-        '<div i="dialog" class="ui-eject-big">'
-        +	'<div class="ui-eject-samll">'
-        +		'<div i="header" class="ui-eject-samll-title">'
+//    	'<div i="dialog" class="eject-big">'
+//        +	'<div class="prompt-samll">'
+//        +		'<div i="header" class="eject-medium-title">'
+//		+			'<p i="title"></p>'
+//		+			'<p i="close" class="img"><i class="fa fa-times"></i></p>'
+//		+		'</div>'
+//		+		'<div i="body" class="prompt-samll-confirm">'
+//		+			'<ul>'
+//		+				'<li><div i="icon" src=""></div></li>'	
+//		+				'<li><div i="content" class="word"></div></li>'		
+//		+			'</ul>'
+//		+		'</div>'	
+//		+		'<div i="footer" class="prompt-samll-confirm">'
+//		+			'<ul>'
+//		+				'<li i="button"></li>'		
+//		+			'</ul>'
+//		+		'</div>'
+//		+	'</div>'	
+//		+	'<div class="ui-eject-mask"></div>'	
+//		+'</div>'
+        '<div i="dialog" class="eject-big">'
+        +	'<div i="showView" class="prompt-samll">'
+        +		'<div i="header" class="eject-medium-title">'
 		+			'<p i="title"></p>'
-		+			'<p i="close" class="img"><A href="#"></A></p>'
+		+			'<p i="close" class="img"><i class="fa fa-times"></i></p>'
 		+		'</div>'
-		+		'<div i="body" class="ui-eject-medium-list">'
-		+			'<div class="ui-eject-medium-complete">'
-		+				'<div i="icon" src=""></div>'
-		+				'<p i="content" class="word"></p>'
-		+			'</div>'
-		+		'</div>'	
-		+		'<div i="footer" class="ui-eject-samll-confirm">'
-		+			'<ul>'
+		+		'<div class="prompt-samll-confirm">'
+		+			'<ul i="body">'
+		+				'<li><div i="icon" src=""></div></li>'
+		+				'<li i="content" class="word"></li>'
+		+			'</ul>'
+		+		'</div>'
+		+		'<div i="innerHtml">'
+		+		'</div>'
+		+		'<div class="prompt-samll-confirm" style="margin-top:0px">'
+		+			'<ul i="footer">'
 		+				'<li i="button"></li>'		
 		+			'</ul>'
 		+		'</div>'

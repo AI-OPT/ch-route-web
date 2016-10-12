@@ -29,6 +29,12 @@
                                         <p class="word"><span>*</span>类目名称</p>
                                         <p><input name="productCatName" type="text" class="int-text int-medium"
                                                   required maxlength="20">
+                                           <select name="selOne">
+                                           	<option value="">ss</option>
+                                           </select>
+                                           <select name="selTwo">
+                                           	<option value="">ss</option>
+                                           </select>
                                         </p>
                                     </li>
                                 </ul>

@@ -154,8 +154,6 @@ artDialog.create = function (options) {
 
     // 关闭按钮
     this._$('close')
-    .css('display', this.cancel === false ? 'none' : '')
-    .attr('title', this.cancelValue)
     .on('click', function (event) {
         that._trigger('cancel');
         event.preventDefault();
@@ -234,7 +232,7 @@ $.extend(prototype, {
      * @name artDialog.prototype.show
      * @param   {HTMLElement Object, Event Object}  指定位置（可选）
      */
-    
+	
     /**
      * 显示对话框（模态）
      * @name artDialog.prototype.showModal
@@ -286,7 +284,9 @@ $.extend(prototype, {
      * @name artDialog.prototype.onshow
      * @event
      */
-
+	onshow:function(){
+		this._$("showView").css("display","block");
+	},
     /**
      * 关闭事件，在 close() 执行
      * @name artDialog.prototype.onclose
@@ -324,6 +324,19 @@ $.extend(prototype, {
      */
 	
 	/**
+	 * 关闭图标是否显示
+	 * @param {boolean} 
+	 */
+	closeIconShow:function(value){
+		var $close = this._$('close');
+		if(value){
+			$close.css("display","block");
+		}else{
+			$close.css("display","none");
+		}
+	},
+	
+	/**
 	 * 图标
 	 * @param {String} 图标类型
 	 */
@@ -339,6 +352,8 @@ $.extend(prototype, {
 			$icon.attr("class","dialog-icon-success");	
 		}else if(value == "warning"){
 			$icon.attr("class","dialog-icon-warning");		
+		}else if(value == "loading"){
+			$icon.attr("class","dialog-icon-loading");		
 		}
 	},
 
@@ -366,6 +381,29 @@ $.extend(prototype, {
         return this.reset();
     },
     
+    /**
+     * 设置自定义HTML
+     * @param    {String, HTMLElement}   内容
+     */
+    innerHtml: function (html) {
+    
+        var $innerHtml = this._$('innerHtml');
+
+        // HTMLElement
+        if (typeof html === 'object') {
+            html = $(html);
+            $innerHtml.empty('').append(html.show());
+            this.addEventListener('beforeremove', function () {
+                $('innerHtml').append(html.hide());
+            });
+        // String
+        } else {
+        	$innerHtml.html(html);
+        }
+                
+        return this.reset();
+    },
+    
     
     /**
      * 设置标题
@@ -373,21 +411,30 @@ $.extend(prototype, {
      */
     title: function (text) {
         this._$('title').text(text);
-        this._$('header')[text ? 'show' : 'hide']();
+        this._$('title')[text ? 'show' : 'hide']();
         return this;
     },
 
 
     /** 设置宽度 */
     width: function (value) {
-        this._$('content').css('width', value);
+        this._$('showView').css('width', value);
+        var widthVal;
+        var index = value.indexOf('px');
+        if(index > -1){
+        	value = value.substr(0,index);
+        	widthVal = parseInt(value);
+        }else{
+        	widthVal = parseInt(value);
+        }
+        this._$('showView').css('margin-left',-(widthVal/2));
         return this.reset();
     },
 
 
     /** 设置高度 */
     height: function (value) {
-        this._$('content').css('height', value);
+        this._$('showView').css('height', value);
         return this.reset();
     },
 
@@ -428,7 +475,7 @@ $.extend(prototype, {
                 + ' i-id="' + id + '"'
                 + style
                 + (val.disabled ? ' disabled' : '')
-                + ' class="slp-btn ui-eject-small-btn"'
+                + ' class="biu-btn btn-primary btn-small ml-15 mt-20 radius"'
                 + 'value="'+ val.value + '"'
                 + '/>';
 

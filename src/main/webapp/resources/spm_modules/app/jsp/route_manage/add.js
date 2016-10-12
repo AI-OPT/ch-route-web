@@ -9,6 +9,8 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     require("jsviews/jsviews.min");
     require("bootstrap-paginator/bootstrap-paginator.min");
     require("app/util/jsviews-ext");
+    require("app/util/aiopt-validate-ext");
+    require("jquery-validation/1.15.1/jquery.validate");
     
     require("opt-paging/aiopt.pagination");
     require("twbs-pagination/jquery.twbsPagination.min");
@@ -32,12 +34,18 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     	events: {
     		//查询
             //"click #BTN_SEARCH":"_search",
-            "click #addRouteButtonId":"_addRoute"
+            "click #addRouteId":"_addRoute"
         },
     	//重写父类
     	setup: function () {
     		AddPager.superclass.setup.call(this);
     		this._getProvinceList();
+    		var formValidator=this._addFormValidate();
+			$(":input").bind("focusout",function(){
+				formValidator.element(this);
+			});
+			
+    		
     	},
     	_validateDialog:function(msg){
     		$('#validateModal').modal('show');
@@ -83,13 +91,77 @@ define('app/jsp/route_manage/add', function (require, exports, module) {
     		return true;
     		
     	},
+    	_addFormValidate:function(){
+//    		var routeName = $('#routeName').val();
+//    		var provinceCode = $('#provinceCode').val();
+//    		var cityCode = $('#cityCode').val();
+//    		var countyCode = $('#countyCode').val();
+//    		var address = $('#address').val();
+    		//
+    		var formValidator=$("#addRouteForm").validate({
+    			rules: {
+    				"command.routeName": {
+    					required:true,
+    					maxlength:45,
+    					minlength:1,
+    					commonText:true
+    				},
+    				"command.provCode": {
+    					required:true
+    				},
+    				"command.cityCode": {
+    					required:true
+    				},
+    				"command.countyCode": {
+    					required:true
+    				},
+    				"command.address": {
+    					required:true,
+    					maxlength:50,
+    					minlength:1,
+    					commonText:true
+    				}
+    				
+    			},
+    			messages: {
+    				"command.routeName": {
+    					required:"请输入仓库名称",
+    					maxlength:"最大长度不能超过{0}",
+    					minlength:"最小长度不能小于{0}",
+    					commonText:"只允许输入中文、英文、_+()"
+    				},
+    				"command.provCode": {
+    					required:"请选择一级地区"
+    				},
+    				"command.cityCode": {
+    					required:"请选择二级地区"
+    				},
+    				"command.countyCode": {
+    					required:"请选择三级地区"
+    				},
+    				"command.address": {
+    					required:"请输入地址信息",
+    					maxlength:"最大长度不能超过{0}",
+    					minlength:"最小长度不能小于{0}",
+    					commonText:"只允许输入中文、英文、_+()"
+    				}
+    			}
+    		});
+    		
+    		return formValidator;
+    	},
     	_addRoute:function(){
     		var _this = this;
     		//
-    		var flag = _this._addRouteFormValidate();
+    		/*var flag = _this._addRouteFormValidate();
     		if(flag == false){
     			return;
-    		}
+    		}*/
+    		var formValidator=_this._addFormValidate();
+			formValidator.form();
+			if(!$("#addRouteForm").valid()){
+				return;
+			}
     		//
     		var data = $("#addRouteForm").serialize();
     		//alert(data);

@@ -70,9 +70,9 @@
 												<li class="width-xlag">
 													<p class="word">&nbsp;</p>
 													<p>
-														<input type="button"
+														<input type="button" id="addRouteId"
 															class="biu-btn  btn-primary btn-blue btn-medium ml-10"
-															value="保  存" data-toggle="modal" data-target="#saveModal">
+															value="保  存" onclick="pager._addRoute();">
 													</p>
 												</li>
 											</ul>
