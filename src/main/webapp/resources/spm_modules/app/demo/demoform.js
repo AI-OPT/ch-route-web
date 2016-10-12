@@ -99,8 +99,7 @@ define('app/demo/demoform', function (require, exports, module) {
     				firstLetter: {
     					required:"请输入类目名称首字母",
     					maxWords:"单词格式超了",
-    					minlength:"最小长度为{0}",
-    					regexp: "日期格式不对111"
+    					minlength:"最小长度为{0}"
     						
     				}
     				,
