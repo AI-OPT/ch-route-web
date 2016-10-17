@@ -105,7 +105,10 @@
 						<!--删格化-->
 						<div class="main-box clearfix">
 							<!--白色背景-->
-
+							<!--标题-->
+							<header class="main-box-header clearfix">
+                            	<h2 class="pull-left">查询结果</h2>
+                            </header>
 							<!--标题结束-->
 							<div class="row">
 								<!--删格化-->
