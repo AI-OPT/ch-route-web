@@ -77,8 +77,7 @@
 							<div class="row">
 								<!--删格化-->
 								<p class="right pr-30">
-									<input type="button" data-toggle="modal"
-										data-target="#editModal"
+									<input type="button"
 										class="biu-btn  btn-primary btn-blue btn-auto  ml-5"
 										value="新  增" onclick="pager._reset();">
 									<!-- <input type="button"
@@ -342,8 +341,7 @@
 							<td title="{{:provName}}|{{:cityName}}|{{:countyName}}|{{:address}}">{{:~subStr(10,provName+'|'+cityName+'|'+countyName+'|'+address)}}</td>
 							<td><a href="${_base}/jsp/route_prod_supply_manage/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">查看商品列表</a></td>
 							<td><a href="${_base}/jsp/route_sel_prod/list.jsp?routeId={{:routeId}}&routeName={{:routeName}}">选择商品</a></td>
-							<td><a href="#" data-toggle="modal"
-												data-target="#editModal" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
+							<td><a href="#" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
 								{{if state != '5'}}
 								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','5','{{:state}}');">暂停</a>
 								{{/if}}

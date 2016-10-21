@@ -48,6 +48,8 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	_reset:function(){
     		$('#updateRouteFormId')[0].reset();
     		//
+    		$('#editModal').modal('show');
+    		//
     		$('#provinceCode_old').val('');
     		$('#cityCode_old').val('');
     		$('#countyCode_old').val('');
@@ -60,6 +62,9 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     		this._getProvinceList('');
     	},
     	_edit:function(routeId,routeName,provCode,cityCode,countyCode,address){
+    		//
+    		$('#editModal').modal('show');
+    		//
     		$('#updateRouteFormId :input[id=routeId]').val(routeId);
     		$('#updateRouteFormId :input[id=routeName]').val(routeName);
     		$('#updateRouteFormId :input[id=address]').val(address);
@@ -418,6 +423,11 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 				}
 			}
 		);
+    	},
+    	_productList:function(routeId,routeName){
+    		var urlHref = _base+"/jsp/route_prod_supply_manage/list.jsp?routeId="+routeId+"&routeName="+routeName;
+    		alert(encodeURI(urlHref));
+    		location.href = encodeURI(urlHref);
     	}
       	
       	
