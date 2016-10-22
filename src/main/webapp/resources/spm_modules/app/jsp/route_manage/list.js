@@ -46,9 +46,10 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 			});
     	},
     	_reset:function(){
-    		$('#updateRouteFormId')[0].reset();
     		//
     		$('#editModal').modal('show');
+    		$('#updateRouteFormId')[0].reset();
+    		
     		//
     		$('#provinceCode_old').val('');
     		$('#cityCode_old').val('');
