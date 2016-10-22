@@ -24,6 +24,7 @@ import com.ai.opt.base.vo.PageInfoResponse;
 import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
 import com.ai.opt.sdk.util.CollectionUtil;
 import com.ai.opt.sdk.web.model.ResponseData;
+import com.ai.opt.sso.client.filter.SSOClientConstants;
 import com.ai.slp.product.api.normproduct.interfaces.INormProductSV;
 import com.ai.slp.product.api.normproduct.param.AttrValInfo;
 import com.ai.slp.product.api.normproduct.param.NormProdAndKeyAttrRes;
@@ -216,14 +217,23 @@ public class RouteProdSupplyManageController {
 	@RequestMapping(value = "/addRouteProdSupplyList", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String addRouteProdSupplyList(HttpServletRequest request){
+		com.ai.ch.route.web.model.sso.client.GeneralSSOClientUser user = (com.ai.ch.route.web.model.sso.client.GeneralSSOClientUser) request.getSession().getAttribute(SSOClientConstants.USER_SESSION_KEY);
+		String userId = user.getUserId();
+		log.info("login userId:"+userId);
 		//
 		String flag = "true";
 		SelProdInfo selProdInfo = RequestParameterUtils.request2Bean(request, SelProdInfo.class);
 		List<RouteProdSupplyAddRequest> list = JSON.parseArray(selProdInfo.getJsonProdList(), RouteProdSupplyAddRequest.class);
-		
+		//
+		List<RouteProdSupplyAddRequest> newList = new ArrayList<RouteProdSupplyAddRequest>();
+		//
+		for(RouteProdSupplyAddRequest routeProdSupplyAddRequest : list){
+			routeProdSupplyAddRequest.setOperId(userId);
+			newList.add(routeProdSupplyAddRequest);
+		}
 		RouteProdSupplyAddListRequest requestVo = new RouteProdSupplyAddListRequest();
 		//
-		requestVo.setRouteProdSupplyAddRequestList(list);
+		requestVo.setRouteProdSupplyAddRequestList(newList);
 		//
 		DubboConsumerFactory.getService(IRouteProdSupplyManageSV.class).addRouteProdSupplyList(requestVo);
 		

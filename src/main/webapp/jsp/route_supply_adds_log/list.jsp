@@ -175,7 +175,7 @@
 							<td>{{:beforeUsableNum}}</td>
 							<td>{{:supplyNum}}</td>
 							<td>{{:operId}}</td>
-							<td></td>
+							<td>{{:employeeName}}</td>
 							<td>{{:~timestampToDate('yyyy-MM-dd hh:mm:ss', operTime)}}</td>
 						</tr>
 						{{/for}}
