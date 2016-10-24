@@ -427,7 +427,11 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	},
     	_productList:function(routeId,routeName){
     		var urlHref = _base+"/jsp/route_prod_supply_manage/list.jsp?routeId="+routeId+"&routeName="+routeName;
-    		alert(encodeURI(urlHref));
+    		//alert(encodeURI(urlHref));
+    		location.href = encodeURI(urlHref);
+    	},
+    	_productSelList:function(routeId,routeName){
+    		var urlHref = _base+"/jsp/route_sel_prod/list.jsp?routeId="+routeId+"&routeName="+routeName;
     		location.href = encodeURI(urlHref);
     	}
       	

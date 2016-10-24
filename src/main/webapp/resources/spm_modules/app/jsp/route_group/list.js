@@ -65,8 +65,9 @@ define('app/jsp/route_group/list', function (require, exports, module) {
     	_insertRouteGroup:function(tenantId,standedProdId,standedProdName,routeGroupId,productId){
     		//
     		//alert('standedProdId:'+standedProdId+" length:"+standedProdId.length);
-    		var data = "command.tenantId="+tenantId+"&command.standedProdName="+standedProdName+"&command.standedProdId="+standedProdId+"&command.routeGroupId="+routeGroupId+"&command.productId="+productId;
-    		var dataJson = {"tenantId":tenantId,"standedProdName":standedProdName,"standedProdId":standedProdId,"routeGroupId":routeGroupId,"productId":productId};
+    		var data = encodeURI("command.tenantId="+tenantId+"&command.standedProdName="+standedProdName+"&command.standedProdId="+standedProdId+"&command.routeGroupId="+routeGroupId+"&command.productId="+productId);
+    		var url = _base+"/routeGroupManage/insertRouteGroup?"+data
+    		var dataJson = {"tenantId":tenantId,"standedProdName":encodeURI(standedProdName),"standedProdId":standedProdId,"routeGroupId":routeGroupId,"productId":productId};
     		//alert(JSON.stringify(dataJson));
     		//alert(data);
     		var _this = this;
@@ -77,14 +78,14 @@ define('app/jsp/route_group/list', function (require, exports, module) {
 					processing: true,
 					message: "请等待...",
 					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
-					url: _base+"/routeGroupManage/insertRouteGroup?"+data,
+					url: url,
 					data:dataJson,
 					success: function(data){
 						var responseHeader = data.responseHeader;
 						if(responseHeader.resultCode == '000000'){
 							/*alert('操作成功');
 							_this._queryPageSearch();*/
-							location.href= _base+"/jsp/route_target_area/list.jsp?routeGroupId="+data.routeGroupId+"&standedProdId="+standedProdId+"&standedProdName="+standedProdName+"&productId="+productId;
+							location.href= encodeURI(_base+"/jsp/route_target_area/list.jsp?routeGroupId="+data.routeGroupId+"&standedProdId="+standedProdId+"&standedProdName="+standedProdName+"&productId="+productId);
 						}else{
 							var d = Dialog({
 								content:responseHeader.resultMessage,
@@ -101,6 +102,10 @@ define('app/jsp/route_group/list', function (require, exports, module) {
 					}
 				}
 			);
+    	},
+    	_detailInfo:function(routeGroupId,standedProdId,standedProdName){
+    		//alert(encodeURI(_base+"/jsp/route_item/list.jsp?routeGroupId="+routeGroupId+"&standedProdId="+standedProdId+"&standedProdName="+standedProdName+"&routeGroupName="+standedProdName+"-配货组"));
+    		location.href = encodeURI(_base+"/jsp/route_item/list.jsp?routeGroupId="+routeGroupId+"&standedProdId="+standedProdId+"&standedProdName="+standedProdName+"&routeGroupName="+standedProdName+"-配货组");
     	}
       	
     	
