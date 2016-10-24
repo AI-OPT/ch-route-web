@@ -340,7 +340,7 @@
 							<td title="{{:routeName}}">{{:~subStr(10,routeName)}}</td>
 							<td title="{{:provName}}|{{:cityName}}|{{:countyName}}|{{:address}}">{{:~subStr(10,provName+'|'+cityName+'|'+countyName+'|'+address)}}</td>
 							<td><a href="javascript:void(0);" onclick="pager._productList('{{:routeId}}','{{:routeName}}');">查看商品列表</a></td>
-							<td><a href="javascript:void(0);" onclick="pager_productSelList('{{:routeId}}','{{:routeName}}');">选择商品</a></td>
+							<td><a href="javascript:void(0);" onclick="pager._productSelList('{{:routeId}}','{{:routeName}}');">选择商品</a></td>
 							<td><a href="#" onclick="pager._edit('{{:routeId}}','{{:routeName}}','{{:provCode}}','{{:cityCode}}','{{:countyCode}}','{{:address}}');">编辑</a> 
 								{{if state != '5'}}
 								<a href="#" onclick="pager._editState('changhong','{{:routeId}}','5','{{:state}}');">暂停</a>
