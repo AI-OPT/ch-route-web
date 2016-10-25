@@ -71,7 +71,7 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
 	            		prodInfo.prodId = $(this).text();
 	            	}
 	            	if($(this).index() == 2){
-	            		prodInfo.prodName = $(this).prop("title");
+	            		prodInfo.prodName = encodeURI($(this).prop("title"));
 	            	}
 	            	if($(this).index() == 5){
 	            		prodInfo.amount = $(this).children(":first").val();
