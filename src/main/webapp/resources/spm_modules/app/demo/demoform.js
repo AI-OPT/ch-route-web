@@ -39,9 +39,6 @@ define('app/demo/demoform', function (require, exports, module) {
 			$(":input").bind("focusout",function(){
 				formValidator.element(this);
 			});
-			$(":select").bind("focusout",function(){
-				formValidator.element(this);
-			});
     	},
     	_initValidate:function(){
     		
@@ -92,9 +89,6 @@ define('app/demo/demoform', function (require, exports, module) {
     				idno:{
     					required: true,
     					idcard: true
-    				},
-    				selOne:{
-    					required: true
     				}
     			},
     			messages: {
@@ -135,9 +129,6 @@ define('app/demo/demoform', function (require, exports, module) {
     				},
     				idno:{
     					required: "请输入身份证号码"
-    				},
-    				selOne:{
-    					required: "ssssss"
     				}
     			}
     		});
