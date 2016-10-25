@@ -79,8 +79,13 @@ public class RouteProdSupplyManageController {
 	@ResponseBody
 	public RouteProdSupplyUpdateUsableNumResponse updateUsableNum(HttpServletRequest request) {
 		//
+		com.ai.ch.route.web.model.sso.client.GeneralSSOClientUser user = (com.ai.ch.route.web.model.sso.client.GeneralSSOClientUser) request.getSession().getAttribute(SSOClientConstants.USER_SESSION_KEY);
+		String userId = user.getUserId();
+		log.info("login userId:"+userId);
+		
 		RouteProdSupplyUpdateUsableNumRequest requestVo = RequestParameterUtils.request2Bean(request,
 				RouteProdSupplyUpdateUsableNumRequest.class);
+		requestVo.setOperId(userId);
 		RouteProdSupplyUpdateUsableNumResponse response = DubboConsumerFactory.getService(IRouteProdSupplyManageSV.class).updateUsableNum(requestVo);
 		//
 		log.info("response:"+JSON.toJSONString(response));
