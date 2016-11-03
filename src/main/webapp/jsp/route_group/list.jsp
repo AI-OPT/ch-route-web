@@ -37,7 +37,7 @@
 							<div class="form-label">
 								<form id="queryForm">
 									<input type="hidden" name="command.tenantId" value="changhong">
-									<input type="hidden" name="command.supplierId" value="-1">
+									<input type="hidden" name="command.supplierId" value="2000">
 									<ul>
 										<li class="col-md-6">
 											<p class="word">商品名称</p>

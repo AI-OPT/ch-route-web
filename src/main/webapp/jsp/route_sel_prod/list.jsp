@@ -48,7 +48,7 @@
 									</ul> --%>
 									<input type="hidden" name="command.tenantId" value="changhong">
 									<input type="hidden" name="command.routeId" value="${param.routeId }">
-									<input type="hidden" name="command.supplierId" value="-1">
+									<input type="hidden" name="command.supplierId" value="2000">
 									<input type="hidden" name="command.productCatId" value="">
 									<ul>
 										<li class="col-md-6">

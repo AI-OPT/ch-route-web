@@ -40,7 +40,7 @@
 									
 									<!-- 查询销售商品可配货区域所用参数 -->
 									<input name="command.tenantId" type="hidden" value="changhong"/>
-									<input name="command.supplierId" type="hidden" value="-1"/>
+									<input name="command.supplierId" type="hidden" value="2000"/>
 									<input name="command.productId" type="hidden" value="${param.productId }"/>
 									
 									<!-- 传递routeItemId -->
