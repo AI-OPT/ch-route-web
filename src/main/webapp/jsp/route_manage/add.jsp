@@ -39,13 +39,13 @@
 								<ul>
 													<li class="col-md-12">
 														<input type="hidden" name="command.tenantId" value="changhong" />
-														<p class="word">仓库名称</p>
+														<p class="word"><span>*</span>仓库名称</p>
 														<p>
-															<input id="routeName" name="command.routeName" class="int-text int-medium " type="text" />
+															<input id="routeName" name="command.routeName" class="int-text int-medium " type="text" onkeyup="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
 														</p>
 													</li>
 													<li class="col-md-12">
-														<p class="word">所在地址</p>
+														<p class="word"><span>*</span>所在地址</p>
 														<p>
 															<select id="provinceCode" name="command.provCode" onchange="pager._getCityListByProviceCode(this.value)" class="int-text int-medium ">
 																<option value="">--请选择--</option>
@@ -60,7 +60,7 @@
 													</li>
 													<li class="col-md-12">
 
-														<p class="word">详细地址</p>
+														<p class="word"><span>*</span>详细地址</p>
 														<p>
 															<input id="address" name="command.address" class="int-text int-medium " type="text" />
 														</p>

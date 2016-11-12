@@ -151,13 +151,13 @@
 											<li class="col-md-12"><input type="hidden" id="tenantId"
 												name="command.tenantId" value="changhong" /> <input type="hidden"
 												id="routeId" name="command.routeId" value="" />
-												<p class="word">仓库名称</p>
+												<p class="word"><span>*</span>仓库名称</p>
 												<p>
 													<input name="command.routeName" id="routeName"
-														class="int-text int-medium " type="text" />
+														class="int-text int-medium " type="text" onkeyup="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
 												</p></li>
 											<li class="col-md-12">
-												<p class="word">所在地址</p>
+												<p class="word"><span>*</span>所在地址</p>
 												<p>
 													<input type="hidden" id="provinceCode_old"/>
 													<input type="hidden" id="cityCode_old"/>
@@ -191,7 +191,7 @@
 											</li>
 											<li class="col-md-12">
 
-												<p class="word">详细地址</p>
+												<p class="word"><span>*</span>详细地址</p>
 												<p>
 													<input id="address" name="command.address"
 														class="int-text int-medium " type="text" />
