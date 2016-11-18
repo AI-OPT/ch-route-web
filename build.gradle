@@ -105,6 +105,7 @@ dependencies {
 	//设置配货区域
 	compile 'com.ai.slp.route:routetargetarea:1.0-SNAPSHOT'
 	
+	compile 'com.ai.platform.common:menu:1.0-SNAPSHOT'
 	
     testCompile(
             "org.springframework:spring-test:4.1.7.RELEASE",

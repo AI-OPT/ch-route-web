@@ -85,5 +85,8 @@
 		interface="com.ai.slp.product.api.product.interfaces.IProductSV" />
 	<!-- 配货仓库销售地域 -->
 	<dubbo:reference id="routeTargetAreaSV"
-		interface="com.ai.slp.route.api.routetargetarea.interfaces.IRouteTargetAreaSV" />		
+		interface="com.ai.slp.route.api.routetargetarea.interfaces.IRouteTargetAreaSV" />
+		
+	<dubbo:reference id="iSysMenuQuerySV"
+		interface="com.ai.platform.common.api.menu.interfaces.ISysMenuQuerySV"/>		
 </beans>
