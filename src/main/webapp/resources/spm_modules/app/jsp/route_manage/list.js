@@ -32,6 +32,8 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	},
     	//事件代理
     	events: {
+    		"click #upCloseImg":"_closeEditDiv",
+    		"click #increase-close":"_closeEditDiv",
     		//查询
             "click #queryRouteButtonId":"_queryPageSearch"
         },
@@ -46,7 +48,10 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 				formValidator.element(this);
 			});
     	},
-    	_reset:function(){
+    	
+    	
+    	
+/*    	_reset:function(){
     		//
     		$('#editModal').modal('show');
     		$('#updateRouteFormId')[0].reset();
@@ -62,10 +67,11 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     		
     		//
     		this._getProvinceList('');
-    	},
+    	},*/
     	_edit:function(routeId,routeName,provCode,cityCode,countyCode,address){
+    		this._reset();
     		//
-    		$('#editModal').modal('show');
+    		//$('#editModal').modal('show');
     		//
     		$('#updateRouteFormId :input[id=routeId]').val(routeId);
     		$('#updateRouteFormId :input[id=routeName]').val(routeName);
@@ -135,7 +141,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     					required:true,
     					maxlength:45,
     					minlength:1,
-    					commonText:true
+    					commonText:true 
     				},
     				"command.provCode": {
     					required:true
@@ -227,6 +233,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 									this.close();
 								}
 							});
+							_this._closeEditDiv();
 							d.show();
 							_this._queryPageSearch();
 						}
@@ -268,7 +275,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 					type: "POST",
 					dataType: "json",
 					processing: true,
-					message: "请等待...",
+					message: "加载数据中...",
 					contentType:"application/x-www-form-urlencoded:charset=UTF-8",
 					url: _base+"/areaquery/getProvinceList",
 					data:"",
@@ -286,6 +293,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 							//
 							_this._getCityListByProviceCode(provCode);
 						}
+						
 					}
 				}
 			);
@@ -434,8 +442,39 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
     	_productSelList:function(routeId,routeName){
     		var urlHref = _base+"/jsp/route_sel_prod/list.jsp?routeId="+routeId+"&routeName="+routeName;
     		location.href = encodeURI(urlHref);
-    	}
-      	
+    	},
+    	
+    	
+    	_reset:function(){
+    		$('#updateRouteFormId')[0].reset();
+    		
+    		//
+    		$('#provinceCode_old').val('');
+    		$('#cityCode_old').val('');
+    		$('#countyCode_old').val('');
+    		//
+    		$('#provinceCode').html('');
+    		$('#cityCode').html('');
+    		$('#countyCode').html('');
+    		
+    		$('#eject-mask').fadeIn(100);
+			$('#increase-samll').slideDown(200);
+    		//
+    		this._getProvinceList('');
+    		
+    	},
+    	//关闭编辑页面弹出
+		_closeEditDiv:function(){
+			$('#eject-mask').fadeOut(100);
+			$('#increase-samll').slideUp(200);
+			//清空数据
+			
+			$('#address').val('');
+			$('#routeName').val('');
+			$('#provinceCode_old').val('');
+    		$('#cityCode_old').val('');
+    		$('#countyCode_old').val('');
+		}
       	
     	
     });

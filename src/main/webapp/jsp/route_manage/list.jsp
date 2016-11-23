@@ -134,7 +134,90 @@
 		</div>
 
 		<!-- 模态框（Modal） 开始 -->
-		<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
+		
+		<div class="eject-big" >
+		<div class="eject-medium" id="increase-samll">
+		<!--编辑-->
+		<div class="modal-header">
+<!-- 		<div class="eject-medium-title"> -->
+		<button type="button" class="close" data-dismiss="modal" onclick="pager._closeEditDiv();"
+							aria-hidden="true">&times;</button>
+            <p>编辑仓库信息</p>
+            <!-- <p id="upCloseImg" class="img"><i class="fa fa-times"></i></p> -->
+        </div>
+		<div class="form-label">
+		<form id="updateRouteFormId">
+			<ul>
+				<li class="col-md-12"><input type="hidden" id="tenantId"
+					name="command.tenantId" value="changhong" /> <input type="hidden"
+					id="routeId" name="command.routeId" value="" />
+					<p class="word"><span>*</span>仓库名称</p>
+					<p>
+						<input name="command.routeName" id="routeName"
+							class="int-text int-medium " type="text" onkeyup="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
+					</p></li>
+				<li class="col-md-12">
+					<p class="word"><span>*</span>所在地址</p>
+					<p>
+						<input type="hidden" id="provinceCode_old"/>
+						<input type="hidden" id="cityCode_old"/>
+						<input type="hidden" id="countyCode_old"/>
+						
+						<select id="provinceCode" name="command.provCode"
+							onchange="pager._getCityListByProviceCode(this.value)"
+							class="int-text int-medium ">
+							<option value="">--请选择--</option>
+						</select> 
+					</p>
+				</li>
+				<li class="col-md-12">
+					<p class="word">&nbsp;</p>
+					<p>
+						<select id="cityCode" name="command.cityCode"
+							onchange="pager._getCountyListByCityCode(this.value)"
+							class="int-text int-medium ">
+							<option value="">--请选择--</option>
+						</select>
+					</p>
+				</li>
+				<li class="col-md-12">
+					<p class="word">&nbsp;</p>
+					<p>
+						<select id="countyCode" name="command.countyCode"
+							class="int-text int-medium ">
+							<option value="">--请选择--</option>
+						</select>
+					</p>
+				</li>
+				<li class="col-md-12">
+
+					<p class="word"><span>*</span>详细地址</p>
+					<p>
+						<input id="address" name="command.address"
+							class="int-text int-medium " type="text" />
+					</p>
+				</li>
+			</ul>
+		</form>	 
+		</div>
+		<!--按钮-->
+        <div class="modal-footer">
+			<button onclick="pager._update();" type="button"
+				class="biu-btn  btn-primary btn-blue btn-medium ml-10"
+				>保存</button>
+			<button type="button" onclick="pager._closeEditDiv();"
+				class="biu-btn  btn-primary btn-blue btn-medium ml-10">取消</button>
+			
+		</div>
+	</div>	
+	<div class="mask" id="eject-mask"></div>	
+	</div>
+		
+		
+		
+		
+		
+<!-- 		<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
 			aria-labelledby="editModalLabel" aria-hidden="true">
 			<div class="modal-dialog" style="width: 600px;">
 				<div class="modal-content">
@@ -213,10 +296,10 @@
 						
 					</div>
 				</div>
-				<!-- /.modal-content -->
+				/.modal-content
 			</div>
-			<!-- /.modal -->
-		</div>
+			/.modal
+		</div> -->
 		<!-- 模态框（Modal） 结束-->
 
 		<!-- 模态框（Modal） 开始 -->
