@@ -223,7 +223,7 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 					data:"",
 					success: function(data){
 						if(data == 'true'){
-							$('#editModal').modal('hide');
+							//$('#editModal').modal('hide');
 							//alert(msg+'成功');
 							var d = Dialog({
 								content:msg+"成功",
@@ -474,6 +474,13 @@ define('app/jsp/route_manage/list', function (require, exports, module) {
 			$('#provinceCode_old').val('');
     		$('#cityCode_old').val('');
     		$('#countyCode_old').val('');
+    		
+    		//清空校验信息
+    		$('#routeName-error').html('');
+    		$('#provinceCode-error').html('');
+    		$('#cityCode-error').html('');
+    		$('#countyCode-error').html('');
+    		$('#address-error').html('');
 		}
       	
     	
