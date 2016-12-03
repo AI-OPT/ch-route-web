@@ -4,6 +4,10 @@ import java.util.Map;
 
 import javax.servlet.ServletRequest;
 
+/**
+ * Request工具类
+ *
+ */
 public class RequestParameterUtils {
 
 	public static <T> T request2Bean(ServletRequest request, Class<T> beanClass){
