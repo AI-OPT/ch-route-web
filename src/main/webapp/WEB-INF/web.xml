@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>ch-route-web</display-name>
 	
-	<listener>
+<!-- 	<listener>
 		<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
 	</listener>
 	<filter>
@@ -15,7 +15,7 @@
 	<filter-mapping>
 		<filter-name>singleSignOutFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -56,9 +56,20 @@
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
-
-	
+	<!-- 统一session -->
+	<filter>
+        <filter-name>sessionFilter</filter-name>
+        <filter-class>com.ai.opt.uni.session.filter.CacheSessionFilter</filter-class>
+        <init-param>
+            <param-name>ignore_suffix</param-name>
+            <param-value>.png,.jpg,.jpeg,.gif,.css,.js,.html,.htm</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>sessionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+	<!-- 单点登陆 -->
 	<filter>
 		<filter-name>ssoProxyFilter</filter-name>
 		<filter-class>com.ai.opt.sso.client.filter.FilterChainProxy</filter-class>
@@ -72,18 +83,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-		<filter>
-        <filter-name>sessionFilter</filter-name>
-        <filter-class>com.ai.opt.uni.session.filter.CacheSessionFilter</filter-class>
-        <init-param>
-            <param-name>ignore_suffix</param-name>
-            <param-value>.png,.jpg,.jpeg,.gif,.css,.js,.html,.htm</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>sessionFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+
 
 	<filter>
 		<filter-name>assembleUserInfoFilter</filter-name>
