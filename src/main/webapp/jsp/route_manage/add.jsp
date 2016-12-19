@@ -41,7 +41,7 @@
 														<input type="hidden" name="command.tenantId" value="changhong" />
 														<p class="word"><span>*</span>仓库名称</p>
 														<p>
-															<input id="routeName" name="command.routeName" class="int-text int-medium " type="text" onkeyup="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
+															<input id="routeName" name="command.routeName" class="int-text int-medium " type="text" onblur="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
 														</p>
 													</li>
 													<li class="col-md-12">
