@@ -154,7 +154,7 @@
 					<p class="word"><span>*</span>仓库名称</p>
 					<p>
 						<input name="command.routeName" id="routeName"
-							class="int-text int-medium " type="text" onblur="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
+							class="int-text int-medium " type="text" commonText="/^[a-zA-Z_()0-9\u4e00-\u9fa5\-]+$/" onblur="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
 					</p></li>
 				<li class="col-md-12">
 					<p class="word"><span>*</span>所在地址</p>
@@ -194,7 +194,7 @@
 					<p class="word"><span>*</span>详细地址</p>
 					<p>
 						<input id="address" name="command.address"
-							class="int-text int-medium " type="text" />
+							class="int-text int-medium " type="text" commonText="/^[a-zA-Z_()0-9\u4e00-\u9fa5\-]+$/"/>
 					</p>
 				</li>
 			</ul>

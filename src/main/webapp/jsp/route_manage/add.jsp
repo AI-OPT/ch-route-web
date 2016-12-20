@@ -41,7 +41,9 @@
 														<input type="hidden" name="command.tenantId" value="changhong" />
 														<p class="word"><span>*</span>仓库名称</p>
 														<p>
-															<input id="routeName" name="command.routeName" class="int-text int-medium " type="text" onblur="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
+															<input id="routeName" name="command.routeName" class="int-text int-medium " type="text" 
+															commonText="/^[a-zA-Z_()0-9\u4e00-\u9fa5\-]+$/"
+															onblur="this.value=this.value.replace(/^\s+|\s+$/g,'')" />
 														</p>
 													</li>
 													<li class="col-md-12">
@@ -62,7 +64,7 @@
 
 														<p class="word"><span>*</span>详细地址</p>
 														<p>
-															<input id="address" name="command.address" class="int-text int-medium " type="text" />
+															<input id="address" name="command.address" class="int-text int-medium " type="text" commonText="/^[a-zA-Z_()0-9\u4e00-\u9fa5\-]+$/"/>
 														</p>
 													</li>
 												</ul>
