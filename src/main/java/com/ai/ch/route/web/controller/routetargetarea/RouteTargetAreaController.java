@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.ai.ch.route.web.utils.RequestParameterUtils;
 import com.ai.opt.base.vo.BaseListResponse;
 import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
 import com.ai.opt.sdk.util.CollectionUtil;
+import com.ai.opt.sdk.util.StringUtil;
 import com.ai.opt.sdk.web.model.ResponseData;
 import com.ai.slp.product.api.product.interfaces.IProductSV;
 import com.ai.slp.product.api.product.param.ProdTargetAreaInfo;
@@ -55,8 +57,10 @@ public class RouteTargetAreaController {
 		String[] routeItemIds = request.getParameterValues("routeItemIds");
 		//
 		List<String> routeItemIdList = new ArrayList<String>();
-		for(String routeItemId : routeItemIds){
-			routeItemIdList.add(routeItemId);
+		if (!CollectionUtil.isEmpty(routeItemIds)) {
+			for(String routeItemId : routeItemIds){
+				routeItemIdList.add(routeItemId);
+			}
 		}
 		AreaQueryByRouteItemIdListRequest requestVo = new AreaQueryByRouteItemIdListRequest();
 		requestVo.setTenantId(tenantId);
@@ -208,16 +212,18 @@ public class RouteTargetAreaController {
 		AreaAddListRequest requestVo = new AreaAddListRequest();
 		List<AreaAddVo> voList = new ArrayList<AreaAddVo>();
 		AreaAddVo vo = null;
-		for(String provCode : provCodes){
-			vo = new AreaAddVo();
-			//
-			vo.setOperId("1");
-			vo.setProvCode(provCode);
-			vo.setRouteItemId(routeItemId);
-			vo.setState("1");
-			vo.setTenantId(tenantId);
-			//
-			voList.add(vo);
+		if (!CollectionUtil.isEmpty(provCodes)) {
+			for(String provCode : provCodes){
+				vo = new AreaAddVo();
+				//
+				vo.setOperId("1");
+				vo.setProvCode(provCode);
+				vo.setRouteItemId(routeItemId);
+				vo.setState("1");
+				vo.setTenantId(tenantId);
+				//
+				voList.add(vo);
+			}
 		}
 		//
 		requestVo.setVoList(voList);
