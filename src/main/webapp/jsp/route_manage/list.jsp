@@ -194,7 +194,7 @@
 					<p class="word"><span>*</span>详细地址</p>
 					<p>
 						<input id="address" name="command.address"
-							class="int-text int-medium " type="text" commonText="/^[a-zA-Z_()0-9\u4e00-\u9fa5\-]+$/"/>
+							class="int-text int-medium " type="text" commonText="/^[a-zA-Z_()0-9\u4e00-\u9fa5\-]+$/" onblur="this.value=this.value.replace(/^\s+|\s+$/g,'')"/>
 					</p>
 				</li>
 			</ul>
