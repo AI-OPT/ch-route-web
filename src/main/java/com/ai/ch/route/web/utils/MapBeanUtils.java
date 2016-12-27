@@ -12,6 +12,10 @@ import org.apache.logging.log4j.Logger;
 
 import com.ai.opt.base.exception.BusinessException;
 
+/**
+ * 集合转换工具类 
+ *
+ */
 public class MapBeanUtils {
 	public static Logger log = LogManager.getLogger(MapBeanUtils.class);
 			

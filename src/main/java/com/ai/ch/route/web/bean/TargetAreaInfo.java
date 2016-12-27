@@ -1,9 +1,17 @@
 package com.ai.ch.route.web.bean;
 
 public class TargetAreaInfo {
-
+	/**
+	 * 选择
+	 */
 	private String checked;
+	/**
+	 * 地域编码
+	 */
 	private String areaCode;
+	/**
+	 * 地域名称
+	 */
 	private String areaName;
 
 	public String getChecked() {

@@ -4,15 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductInfo {
-
+	/**
+	 * 
+	 */
 	private String disabled;
+	/**
+	 * 商品标识
+	 */
 	private String productId;
+	/**
+	 * 商品名称
+	 */
 	private String productName;
+	/**
+	 * 类目标识
+	 */
 	private String productCatId;
+	/**
+	 * 属性集合
+	 */
 	private List<AttrInfo> attrOne = new ArrayList<AttrInfo>();
+	/**
+	 * 属性集合
+	 */
 	private List<AttrInfo> attrTwo = new ArrayList<AttrInfo>();
+	/**
+	 * 属性
+	 */
 	private String attrOneStr;
+	/**
+	 * 属性
+	 */
 	private String attrTwoStr;
+	
 	public String getAttrOneStr() {
 		return attrOneStr;
 	}

@@ -14,7 +14,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.StringUtils;
 
-
+/**
+ * 对参数转换的工具类 
+ *
+ */
 public class ParameterMapUtils {
 	
 	public static final String PREFIX = "command.";

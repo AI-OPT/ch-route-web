@@ -5,7 +5,7 @@ import java.util.Map;
 import javax.servlet.ServletRequest;
 
 /**
- * Request工具类
+ * 请求工具类--实现泛型实现map2bean
  *
  */
 public class RequestParameterUtils {

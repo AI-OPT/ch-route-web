@@ -1,7 +1,9 @@
 package com.ai.ch.route.web.bean;
 
 public class AttrInfo {
-
+	/**
+	 * 属性值
+	 */
 	private String attrValue;
 
 	public String getAttrValue() {
