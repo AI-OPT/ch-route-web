@@ -254,19 +254,48 @@ define('app/jsp/route_sel_prod/list', function (require, exports, module) {
     			return;
     		}
     		//
+    		var prodList = [];
+    		//
+    		var routeId = "";
+    		for(var prod =0; prod<prodArray.length;prod++){
+    			//alert(prodArray[prod].prodId+"-"+prodArray[prod].amount);
+    			prodList.push(prodArray[prod].prodId+"-"+prodArray[prod].amount);
+    			if(prod === 0){
+    				routeId = prodArray[prod].routeId;
+    			}
+    		}
+    		//
+    		var prodListSplit = prodList.join(",");
+    		//alert(prodListSplit);
+    		//alert( _base+"/routeprodsupplymanage/addRouteProdSupplyList?jsonProdList="+prodListSplit+"&routeId="+routeId);
+    		/*//
     		var jsonProdList = JSON.stringify(prodArray);//_this._getTableObj();
     		//alert("jsonProdList:"+jsonProdList);
+    		var objArr = [];
+    		var obj = new Object();
+    		obj.jsonProdList = jsonProdList;
+    		
+    		objArr.push(obj);
+    		alert(JSON.stringify(objArr));
+    		console.log(JSON.stringify(objArr));*/
+    		//
+    		
     		ajaxController.ajax({
+    		//$.ajax({
 				type: "POST",
-				dataType: "text",
-				processing: true,
+				dataType: "json",
+				//processing: true,
+				processing: false,
 				message: "请等待...",
 				contentType:"application/x-www-form-urlencoded:charset=UTF-8",
-				url: _base+"/routeprodsupplymanage/addRouteProdSupplyList?command.jsonProdList="+jsonProdList,
+				url: _base+"/routeprodsupplymanage/addRouteProdSupplyList?jsonProdList="+prodListSplit+"&routeId="+routeId,
 				data:"",
+				//url: _base+"/routeprodsupplymanage/addRouteProdSupplyList?command.jsonProdList=",
+				//url: _base+"/routeprodsupplymanage/addRouteProdSupplyList",
+				//data:{"jsonProdList":"jsonProdListjsonProdListjsonProdListjsonProdList"},
 				success: function(data){
 					
-					if(data == 'true'){
+					if(data == true){
 						//alert('操作成功');
 						var d = Dialog({
 							content:'操作成功',

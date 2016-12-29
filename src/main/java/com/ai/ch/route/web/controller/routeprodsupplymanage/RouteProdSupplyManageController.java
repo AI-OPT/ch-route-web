@@ -1,6 +1,7 @@
 package com.ai.ch.route.web.controller.routeprodsupplymanage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +30,9 @@ import com.ai.opt.sso.client.filter.SSOClientConstants;
 import com.ai.slp.product.api.normproduct.interfaces.INormProductSV;
 import com.ai.slp.product.api.normproduct.param.AttrValInfo;
 import com.ai.slp.product.api.normproduct.param.NormProdAndKeyAttrRes;
+import com.ai.slp.product.api.normproduct.param.NormProdInfoResponse;
 import com.ai.slp.product.api.normproduct.param.NormProdRequest;
+import com.ai.slp.product.api.normproduct.param.NormProdUniqueReq;
 import com.ai.slp.route.api.routeprodsupplymanage.interfaces.IRouteProdSupplyManageSV;
 import com.ai.slp.route.api.routeprodsupplymanage.param.ProductCatIdListResponse;
 import com.ai.slp.route.api.routeprodsupplymanage.param.RouteProdSupplyAddListRequest;
@@ -227,8 +231,42 @@ public class RouteProdSupplyManageController {
 		log.info("login userId:"+userId);
 		//
 		String flag = "true";
-		SelProdInfo selProdInfo = RequestParameterUtils.request2Bean(request, SelProdInfo.class);
+		String routeId = request.getParameter("routeId");
+		log.info("routeId:"+routeId);
+		String selProdInfoJsonStr = request.getParameter("jsonProdList");
+		log.info("selProdInfoJsonStr:"+selProdInfoJsonStr);
+		
+		String[] prodAndNums = selProdInfoJsonStr.split(",");
+		//List<String> prodAndNumList = Arrays.asList(prodAndNums);
+		List<RouteProdSupplyAddRequest> list = new ArrayList<>();
+		
+		INormProductSV normProductSV = DubboConsumerFactory.getService(INormProductSV.class);
+		
+		for (int i = 0; i < prodAndNums.length; i++) {
+			String[] prodAndNumArray = prodAndNums[i].split("-");
+			RouteProdSupplyAddRequest addRequest = new RouteProdSupplyAddRequest();
+			
+			NormProdUniqueReq arg = new NormProdUniqueReq();
+			arg.setProductId(prodAndNumArray[0]);
+			arg.setSupplierId("-1");
+			arg.setTenantId("changhong");
+			arg.setOperId(Long.valueOf(userId));
+			NormProdInfoResponse producById = normProductSV.queryProducById(arg);
+			
+			
+			addRequest.setProdId(prodAndNumArray[0]);
+			addRequest.setAmount(new Integer(prodAndNumArray[1]));
+			addRequest.setProdName(producById.getProductName());
+			addRequest.setProdCatId(producById.getProductCatId());
+			addRequest.setTenantId(producById.getTenantId());
+			addRequest.setRouteId(routeId);
+			list.add(addRequest);
+		}
+		
+	/*	SelProdInfo selProdInfo = RequestParameterUtils.request2Bean(request, SelProdInfo.class);
+		log.info("selProdInfo:"+JSON.toJSONString(selProdInfo));
 		List<RouteProdSupplyAddRequest> list = JSON.parseArray(selProdInfo.getJsonProdList(), RouteProdSupplyAddRequest.class);
+		*/
 		//
 		List<RouteProdSupplyAddRequest> newList = new ArrayList<RouteProdSupplyAddRequest>();
 		//
