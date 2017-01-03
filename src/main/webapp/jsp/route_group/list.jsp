@@ -104,6 +104,7 @@
 												<th>商品ID</th>
 												<th>商品名称</th>
 												<th>配货组ID</th>
+												<!-- <th>状态</th> -->
 												<th>操作</th>
 
 											</tr>
@@ -210,12 +211,18 @@
 												<td>{{:standedProdId}} <!--{{:productId}}--></td>
 												<td title="{{:standedProdName}}">{{:~subStr(10,standedProdName)}}</td>
 												<td>{{:routeGroupId}}</td>
+												<!-- <td>{{:state}}</td> -->
 												
+												{{if state=="1" || state=="2" || state=="3"}}
 												<td>
 													<a href="javascript:void(0);" onclick="pager._detailInfo('{{:routeGroupId}}','{{:standedProdId}}','{{:standedProdName}}');">查看</a>
 													<a href="javascript:void(0);" onclick="pager._insertRouteGroup('changhong','{{:standedProdId}}','{{:standedProdName}}','{{:routeGroupId}}','{{:productId}}')">分配仓库配货</a>
-													
 												</td>
+												{{else}}
+												<td>
+													<a href="javascript:void(0);" onclick="pager._detailInfo('{{:routeGroupId}}','{{:standedProdId}}','{{:standedProdName}}');">查看</a>
+												</td>
+												{{/if}}
 						</tr>
 						
 					  </script>

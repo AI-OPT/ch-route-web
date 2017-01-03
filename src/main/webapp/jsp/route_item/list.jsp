@@ -115,7 +115,7 @@
 												<th>仓库ID</th>
 												<th>仓库名称</th>
 												<th>可发货区域</th>
-												<th>操作</th>
+												<!-- <th>操作</th> -->
 
 											</tr>
 
@@ -163,9 +163,11 @@
 										{{:provinceName}} 
 									{{/for}}
 								</td>
+								<!--
 								<td>
 									<a href="javascript:void(0);" onclick="pager._deleteByRouteItemId('{{:routeItemId}}')">删除</a>
 								</td>
+								-->
 							</tr>
 						{{/for}}
 					  </script>
