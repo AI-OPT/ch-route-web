@@ -4,5 +4,6 @@ encoding//src/main/java/com/ai/ch/route/web/utils/MapBeanUtils.java=UTF-8
 encoding//src/main/java/com/ai/ch/route/web/utils/ParameterMapUtils.java=UTF-8
 encoding//src/main/java/com/ai/ch/route/web/utils/RequestParameterUtils.java=UTF-8
 encoding//src/main/resources/config.properties=UTF-8
+encoding//src/main/resources/dubbo.properties=UTF-8
 encoding/<project>=UTF-8
 encoding/src=UTF-8
