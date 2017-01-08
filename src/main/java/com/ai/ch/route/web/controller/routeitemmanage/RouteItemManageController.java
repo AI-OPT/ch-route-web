@@ -27,6 +27,9 @@ import com.alibaba.fastjson.JSON;
 public class RouteItemManageController {
 	private static final Logger log = LoggerFactory.getLogger(RouteItemManageController.class);
 
+	/**
+	 * 查询路由组组成 
+	 */
 	@RequestMapping(value = "/queryPageSearch", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseData<PageInfo<RouteItemResponse>> queryPageSearch(HttpServletRequest request) {
@@ -55,6 +58,9 @@ public class RouteItemManageController {
 		//
 		return responseData;
 	}
+	/**
+	 * 删除 
+	 */
 	@RequestMapping(value = "/deleteByRouteItemId", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public RouteItemDeleteByRouteItemIdResponse deleteByRouteItemId(HttpServletRequest request) {

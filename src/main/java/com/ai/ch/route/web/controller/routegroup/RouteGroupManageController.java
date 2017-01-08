@@ -28,6 +28,9 @@ import com.alibaba.fastjson.JSON;
 public class RouteGroupManageController {
 	private static final Logger log = LoggerFactory.getLogger(RouteGroupManageController.class);
 	//
+	/**
+	 * 查询商品和路由组信息
+	 */
 	@RequestMapping(value="/queryProductAndRouteGroup",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseData<PageInfoResponse<ProductRouteGroupInfo>> queryProductAndRouteGroup(HttpServletRequest request){
@@ -54,6 +57,9 @@ public class RouteGroupManageController {
 
 	}
 	//
+	/**
+	 * 新增路由组
+	 */
 	@RequestMapping(value="/insertRouteGroup",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public RouteGroupAddResponse insertRouteGroup(HttpServletRequest request){

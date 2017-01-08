@@ -90,7 +90,9 @@ public class RouteTargetAreaController {
 		//
 		return response;
 	}
-	
+	/**
+	 * 查询商品的销售地域
+	 */
 	@RequestMapping(value="/queryAreaInfosOfProduct",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<TargetAreaInfo> queryAreaInfosOfProduct(HttpServletRequest request){
@@ -249,6 +251,9 @@ public class RouteTargetAreaController {
 		DubboConsumerFactory.getService(IRouteTargetAreaSV.class).deleteByRouteItemId(request);
 		//
 	}
+	/**
+	 * 删除 
+	 */
 	@RequestMapping(value="/deleteAreaByRouteAreaId",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public AreaDeleteByRouteAreaIdResponse deleteAreaByRouteAreaId(HttpServletRequest request){

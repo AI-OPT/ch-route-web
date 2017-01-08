@@ -26,6 +26,10 @@ import com.alibaba.fastjson.JSON;
 @RestController
 public class RouteManageController {
 	private static final Logger log = LoggerFactory.getLogger(RouteManageController.class);
+	
+	/**
+	 * 新增路由 
+	 */
 	@RequestMapping(value="/addRoute",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String addRoute(HttpServletRequest request){
@@ -39,6 +43,9 @@ public class RouteManageController {
 		
 		return flag;
 	}
+	/**
+	 * 查询路由 
+	 */
 	@RequestMapping(value="/queryPageSearch",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseData<PageInfo<RoutePageSearchVo>> queryPageSearch(HttpServletRequest request) {
@@ -62,6 +69,9 @@ public class RouteManageController {
 		//
 		return responseData;
     }
+	/**
+	 * 更新路由 
+	 */
 	@RequestMapping(value="/updateRoute",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String updateRoute(HttpServletRequest request){
@@ -75,6 +85,9 @@ public class RouteManageController {
 		
 		return flag;
 	}
+	/**
+	 * 更新路由组状态
+	 */
 	@RequestMapping(value="/updateRouteState",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String updateRouteState(HttpServletRequest request){

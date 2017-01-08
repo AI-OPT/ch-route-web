@@ -21,6 +21,9 @@ import com.alibaba.fastjson.JSON;
 public class AreaQueryController {
 	private static final Logger log = LoggerFactory.getLogger(AreaQueryController.class);
 	//
+	/**
+	 * 获取地域信息 
+	 */
 	@RequestMapping(value="/getProvinceList",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<GnAreaVo> getProvinceList(HttpServletRequest request){
@@ -30,6 +33,9 @@ public class AreaQueryController {
 		return list;
 	}
 	//
+	/**
+	 *　根据地域编码获取城市信息 
+	 */
 	@RequestMapping(value="/getCityListByProviceCode",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<GnAreaVo> getCityListByProviceCode(HttpServletRequest request){
@@ -41,6 +47,9 @@ public class AreaQueryController {
 		return list;
 	}
 	//
+	/**
+	 * 根据城市编码获取县信息 
+	 */
 	@RequestMapping(value="/getCountyListByCityCode",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<GnAreaVo> getCountyListByCityCode(HttpServletRequest request){

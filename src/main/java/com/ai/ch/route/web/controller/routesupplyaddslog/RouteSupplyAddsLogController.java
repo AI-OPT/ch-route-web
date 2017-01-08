@@ -24,7 +24,9 @@ import com.alibaba.fastjson.JSON;
 public class RouteSupplyAddsLogController {
 
 private static final Logger log = LoggerFactory.getLogger(RouteSupplyAddsLogController.class);
-	
+	/**
+	 * 查询供应商品添加记录
+	 */
 	@RequestMapping(value="/queryPageSearch",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseData<PageInfo<RouteSupplyAddsLogPageSearchVo>> queryPageSearch(HttpServletRequest request) {

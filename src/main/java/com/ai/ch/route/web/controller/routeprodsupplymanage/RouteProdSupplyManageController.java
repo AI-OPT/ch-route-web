@@ -52,6 +52,9 @@ import com.alibaba.fastjson.JSON;
 public class RouteProdSupplyManageController {
 	private static final Logger log = LoggerFactory.getLogger(RouteProdSupplyManageController.class);
 
+	/**
+	 * 查询供应商品
+	 */
 	@RequestMapping(value = "/queryPageSearch", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseData<PageInfo<RouteProdSupplyPageSearchVo>> queryPageSearch(HttpServletRequest request) {
@@ -78,7 +81,9 @@ public class RouteProdSupplyManageController {
 		//
 		return responseData;
 	}
-
+	/**
+	 * 添加可用库存数量
+	 */
 	@RequestMapping(value = "/updateUsableNum", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public RouteProdSupplyUpdateUsableNumResponse updateUsableNum(HttpServletRequest request) {
@@ -96,6 +101,9 @@ public class RouteProdSupplyManageController {
 		return response;
 	}
 
+	/**
+	 *　查询标准品关键属性 
+	 */
 	@RequestMapping(value = "/queryNormProductAndKeyAttr", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ResponseData<PageInfo<ProductInfo>> queryNormProductAndKeyAttr(
@@ -223,6 +231,9 @@ public class RouteProdSupplyManageController {
 		return responseData;
 	}
 	
+	/**
+	 * 添加供应商品
+	 */
 	@RequestMapping(value = "/addRouteProdSupplyList", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String addRouteProdSupplyList(HttpServletRequest request){
@@ -282,6 +293,10 @@ public class RouteProdSupplyManageController {
 		
 		return flag;
 	}
+	
+	/**
+	 * 查询商品类目信息
+	 */
 	@RequestMapping(value = "/queryProductCatList", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public ProductCatIdListResponse queryProductCatList(HttpServletRequest request){
