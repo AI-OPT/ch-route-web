@@ -72,9 +72,9 @@ dependencies {
 	compile 'com.ai.opt.sso.client:opt-sso-client:1.0.2-SNAPSHOT'
     compile "com.ai:ipaas-idps:0.3"
 	//cache
-	compile 'com.ai.runner.center.mmp:manager:1.0.0-SNAPSHOT'
+//	compile 'com.ai.runner.center.mmp:manager:1.0.0-SNAPSHOT'
 	//短信验证等
-	compile 'com.ai.opt.uac:account:2.0-SNAPSHOT'
+//	compile 'com.ai.opt.uac:account:2.0-SNAPSHOT'
 	//商品web
 	compile 'com.ai.slp.product:webfront:1.2.2-SNAPSHOT'
 	
