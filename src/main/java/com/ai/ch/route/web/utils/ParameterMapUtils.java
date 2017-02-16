@@ -19,7 +19,7 @@ import org.springframework.util.StringUtils;
  *
  */
 public class ParameterMapUtils {
-	
+	//特定前缀
 	public static final String PREFIX = "command.";
 	protected transient final Log log = LogFactory.getLog(getClass());
 	public static Map<String,String> getPropertiesName(String paramName){
@@ -79,6 +79,7 @@ public class ParameterMapUtils {
 		return params;
 	}
 	
+	//回调getParametersStartingWith()方法
 	public static Map<String, String> getCommandParametersMap(ServletRequest request) {
 		return ParameterMapUtils.getParametersStartingWith(request, PREFIX);
 	}
