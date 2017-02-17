@@ -65,15 +65,17 @@
 	
 	<dubbo:reference id="routeProdSupplyManageSV"
 		interface="com.ai.slp.route.api.routeprodsupplymanage.interfaces.IRouteProdSupplyManageSV" />
-	
+	<!-- 仓储量更改记录接口 -->
 	<dubbo:reference id="routeSupplyAddsLogManageSV"
 		interface="com.ai.slp.route.api.routesupplyaddslog.interfaces.IRouteSupplyAddsLogManageSV" />
+	<!-- 配货组组成 -->
 	<dubbo:reference id="routeItemManageSV"
 		interface="com.ai.slp.route.api.routeitemmanage.interfaces.IRouteItemManageSV" />
-	
+	<!-- 标准品 -->
 	<dubbo:reference id="normProductSV"
 		interface="com.ai.slp.product.api.normproduct.interfaces.INormProductSV" />
 	<!-- com.ai.slp.product.api.product.interfaces.IProductServerSV#queryProductAndRouteGroup -->
+	<!-- 商品相关服务 -->
 	<dubbo:reference id="productServerSV"
 		interface="com.ai.slp.product.api.product.interfaces.IProductServerSV" />
 		
@@ -86,7 +88,7 @@
 	<!-- 配货仓库销售地域 -->
 	<dubbo:reference id="routeTargetAreaSV"
 		interface="com.ai.slp.route.api.routetargetarea.interfaces.IRouteTargetAreaSV" />
-		
+	<!-- 系统菜单查询 -->
 	<dubbo:reference id="iSysMenuQuerySV"
 		interface="com.ai.platform.common.api.menu.interfaces.ISysMenuQuerySV"/>		
 </beans>
