@@ -76,12 +76,12 @@ dependencies {
 	//短信验证等
 //	compile 'com.ai.opt.uac:account:2.0-SNAPSHOT'
 	//商品web
-	compile 'com.ai.slp.product:webfront:1.2.2-SNAPSHOT'
+//	compile 'com.ai.slp.product:webfront:1.2.2-SNAPSHOT'
 	
 	//jersey
 	compile 'org.glassfish.jersey.core:jersey-client:2.9.1'
 	
-	compile 'com.ai.baas.smc:sysparamcache:2.0-SNAPSHOT'
+//	compile 'com.ai.baas.smc:sysparamcache:2.0-SNAPSHOT'
     
     //地区
     compile 'com.ai.platform.common:area:1.0-SNAPSHOT'
@@ -90,7 +90,7 @@ dependencies {
     //缓存
     compile 'com.ai.platform.common:cache:1.0-SNAPSHOT'
     compile 'com.ai.platform.common:servicenum:1.0.1-SNAPSHOT'
-    compile 'com.ai.slp.product:webfront:1.1-SNAPSHOT'
+//    compile 'com.ai.slp.product:webfront:1.1-SNAPSHOT'
     //路由管理
     compile 'com.ai.slp.route:routemanage:1.0.2-SNAPSHOT'
 	compile 'com.ai.slp.route:routeprodsupplymanage:1.0-SNAPSHOT'
