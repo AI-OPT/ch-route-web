@@ -18,7 +18,8 @@ import com.ai.opt.base.exception.BusinessException;
  */
 public class MapBeanUtils {
 	public static Logger log = LogManager.getLogger(MapBeanUtils.class);
-			
+	
+	//对象转换map类型
 	public static Map<String, String> bean2map(Object javaBean) {
 		Map<String, String> result = new HashMap<String, String>();
 		Method[] methods = javaBean.getClass().getDeclaredMethods();
