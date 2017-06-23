@@ -77,7 +77,7 @@
     </Async>
   </Appenders>
   <Loggers>
-    <Root level="info">
+    <Root level="error">
       <AppenderRef ref="RollingFile" level="info"/>
       <AppenderRef ref="STDOUT" level="info"/>
     </Root>
