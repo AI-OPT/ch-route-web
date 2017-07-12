@@ -21,6 +21,7 @@ import com.ai.ch.route.web.bean.AttrInfo;
 import com.ai.ch.route.web.bean.ProductInfo;
 import com.ai.ch.route.web.bean.SelProdInfo;
 import com.ai.ch.route.web.utils.RequestParameterUtils;
+import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.vo.PageInfo;
 import com.ai.opt.base.vo.PageInfoResponse;
 import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
@@ -246,7 +247,9 @@ public class RouteProdSupplyManageController {
 		log.info("routeId:"+routeId);
 		String selProdInfoJsonStr = request.getParameter("jsonProdList");
 		log.info("selProdInfoJsonStr:"+selProdInfoJsonStr);
-		
+		if (selProdInfoJsonStr == null) {
+			throw new BusinessException("selProdInfoJsonStr为空");
+		}
 		String[] prodAndNums = selProdInfoJsonStr.split(",");
 		//List<String> prodAndNumList = Arrays.asList(prodAndNums);
 		List<RouteProdSupplyAddRequest> list = new ArrayList<>();

@@ -131,10 +131,12 @@ public class RouteTargetAreaController {
 		//
 		List<String> routeItemIdStrList = new ArrayList<String>();
 		//
-		List<RouteItemVo> routeItemVoList = routeItemListResponse.getVoList();
-		if(!CollectionUtil.isEmpty(routeItemVoList)){
-			for(RouteItemVo routeItemVo : routeItemVoList){
-				routeItemIdStrList.add(routeItemVo.getRouteItemId());
+		if (routeItemListResponse != null) {
+			List<RouteItemVo> routeItemVoList = routeItemListResponse.getVoList();
+			if(!CollectionUtil.isEmpty(routeItemVoList)){
+				for(RouteItemVo routeItemVo : routeItemVoList){
+					routeItemIdStrList.add(routeItemVo.getRouteItemId());
+				}
 			}
 		}
 		
